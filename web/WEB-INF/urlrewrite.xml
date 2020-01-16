@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://www.tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+    
+    <rule>
+        <from>/alimenti-freschi/</from>
+        <to>/alimenti-freschi.jsp</to>
+    </rule>
+    <rule>
+        <from>/dal-Trentino/</from>
+        <to>/dal-trentino.jsp</to>
+    </rule>
+    <rule>
+        <from>/prodotto/([0-9]+)/([\w'-]+)/([\w'-]+)</from>
+        <to>/prodotto.jsp\?id=$1&amp;nome=$3&amp;cat=$2</to>
+    </rule>
+    <rule>
+        <from>/categoria/([0-9]+)/([\w'-]+)/</from>
+        <to>/categoria.jsp\?id=$1&amp;nome=$2</to>
+    </rule>
+    <rule>
+        <from>/bottega-online/(#{1}[\w]*){0,1}</from>
+        <to>/bottega.jsp$1</to>
+    </rule>
+    <rule>
+        <from>/La-Macelleria(#{1}[\w]*){0,1}</from>
+        <to>/macelleria.jsp$1</to>
+    </rule>
+    <rule>
+        <from>/Il-Ristorante(#{1}[\w]*){0,1}</from>
+        <to>/ristorante.jsp$1</to>
+    </rule>
+    <rule>
+        <from>/Il-Blog/tag/([\w'-{1}]+([-]{1}[\w'])*)/</from>
+        <to>/blog.jsp\?tag=$1</to>
+    </rule>
+    <rule>
+        <from>/Il-Blog/categoria/([\w'-{1}]+([-]{1}[\w'])*)/</from>
+        <to>/blog.jsp\?cat=$1</to>
+    </rule>
+    <rule>
+        <from>/Il-Blog/(#{1}[\w]*){0,1}</from>
+        <to>/blog.jsp$1</to>
+    </rule>    
+    <rule>
+        <from>/Idee-in-Cucina/prodotto/([0-9]+)/([\w'-{1}]+([-]{1}[\w'])*)/</from>
+        <to>/idee.jsp\?prod=$1&amp;nome=$2</to>
+    </rule>
+    <rule>
+        <from>/Idee-in-Cucina/le-nostre-idee/</from>
+        <to>/idee.jsp\?cat=1</to>
+    </rule>
+    <rule>
+        <from>/Idee-in-Cucina/le-vostre-idee/</from>
+        <to>/idee.jsp\?cat=2</to>
+    </rule>
+    <rule>
+        <from>/Idee-in-Cucina/(#{1}[\w]*){0,1}</from>
+        <to>/idee.jsp$1</to>
+    </rule>
+    <rule>
+        <from>/articolo/([0-9]+)/([\w'-]+)</from>
+        <to>/articolo.jsp\?id=$1&amp;nome=$2</to>
+    </rule> 
+    <rule>
+        <from>/idea/([0-9]+)/([\w'-]+)</from>
+        <to>/idea.jsp\?id=$1&amp;nome=$2</to>
+    </rule> 
+            
+    <outbound-rule>
+        <name>Strip URL Session ID's</name>
+        <note>
+            Strip ;jsession=XXX from urls passed through response.encodeURL().
+            The characters ? and # are the only things we can use to find out where the jsessionid ends.
+            The expression in 'from' below contains three capture groups, the last two being optional.
+            1, everything before ;jesessionid
+            2, everything after ;jesessionid=XXX starting with a ? (to get the query string) up to #
+            3, everything ;jesessionid=XXX and optionally ?XXX starting with a # (to get the target)
+            eg,
+            from index.jsp;jsessionid=sss?qqq to index.jsp?qqq
+            from index.jsp;jsessionid=sss?qqq#ttt to index.jsp?qqq#ttt
+            from index.jsp;jsessionid=asdasdasdsadsadasd#dfds - index.jsp#dfds
+            from u.jsp;jsessionid=wert.hg - u.jsp
+            from /;jsessionid=tyu - /
+        </note>
+        <from>^(.*?)(?:\;jsessionid=[^\?#]*)?(\?[^#]*)?(#.*)?$</from>
+        <to>$1$2$3</to>
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/categoria.jsp\?id=([0-9]+)&amp;nome=([\w'-]+)</from>  
+        <to>/categoria/$1/$2/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/prodotto.jsp\?id=([0-9]+)&amp;nome=([\w'-]+)&amp;cat=([\w'-]+)</from>  
+        <to>/prodotto/$1/$3/$2</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/home.jsp(#{1}[\w]*){0,1}</from>  
+        <to>/Bortoleto/$1</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/bottega.jsp(#{1}[\w]*){0,1}</from>  
+        <to>/bottega-online/$1</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/macelleria.jsp(#{1}[\w]*){0,1}</from>  
+        <to>/La-Macelleria$1</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/ristorante.jsp(#{1}[\w]*){0,1}</from>  
+        <to>/Il-Ristorante$1</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/blog.jsp\?tag=([\w'-]+([-]{1}[\w'])*)</from>  
+        <to>/Il-Blog/tag/$1/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/blog.jsp\?cat=([\w'-]+([-]{1}[\w'])*)</from>  
+        <to>/Il-Blog/categoria/$1/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/blog.jsp(#{1}[\w]*){0,1}</from>  
+        <to>/Il-Blog/$1</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/idee.jsp\?prod=([0-9]+)&amp;nome=([\w'-]+([-]{1}[\w'])*)</from>  
+        <to>/Idee-in-Cucina/prodotto/$1/$2/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/idee.jsp\?cat=0</from>  
+        <to>/Idee-in-Cucina/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/idee.jsp\?cat=1</from>  
+        <to>/Idee-in-Cucina/le-nostre-idee/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/idee.jsp\?cat=2</from>  
+        <to>/Idee-in-Cucina/le-vostre-idee/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/idee.jsp(#{1}[\w]*){0,1}</from>  
+        <to>/Idee-in-Cucina/$1</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/articolo.jsp\?id=([0-9]+)&amp;nome=([\w'-]+)</from>  
+        <to>/articolo/$1/$2</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/idea.jsp\?id=([0-9]+)&amp;nome=([\w'-]+)</from>  
+        <to>/idea/$1/$2</to>  
+    </outbound-rule>
+    
+    <!--
+
+    INSTALLATION
+
+        in your web.xml add...
+
+        <filter>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+            <init-param>
+                <param-name>logLevel</param-name>
+                <param-value>WARN</param-value>
+            </init-param>
+        </filter>
+        <filter-mapping>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+     EXAMPLES
+
+     Redirect one url
+        <rule>
+            <from>/some/old/page.html</from>
+            <to type="redirect">/very/new/page.html</to>
+        </rule>
+
+    Redirect a directory
+        <rule>
+            <from>/some/olddir/(.*)</from>
+            <to type="redirect">/very/newdir/$1</to>
+        </rule>
+
+    Clean a url
+        <rule>
+            <from>/products/([0-9]+)</from>
+            <to>/products/index.jsp?product_id=$1</to>
+        </rule>
+    eg, /products/1234 will be passed on to /products/index.jsp?product_id=1234 without the user noticing.
+
+    Browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <from>/some/page.html</from>
+            <to>/some/page-for-old-browsers.html</to>
+        </rule>
+    eg, will pass the request for /some/page.html on to /some/page-for-old-browsers.html only for older
+    browsers whose user agent strings match Mozilla/1, Mozilla/2, Mozilla/3 or Mozilla/4.
+
+    Centralised browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <set type="request" name="browser">moz</set>
+        </rule>
+    eg, all requests will be checked against the condition and if matched
+    request.setAttribute("browser", "moz") will be called.
+
+    -->
+
+</urlrewrite>
+

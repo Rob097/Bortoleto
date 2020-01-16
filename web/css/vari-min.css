@@ -1,0 +1,10 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 gen 2020, 10:29:18
+    Author     : Roberto97
+*/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);fieldset,label{margin:0;padding:0}h1{font-size:1.5em;margin:10px}.rating{border:none}.rating>input{display:none}.rating>label:before{margin:5px;font-size:1.25em;font-family:FontAwesome;display:inline-block;content:"\f005"}.rating>.half:before{content:"\f089";position:absolute}.rating>label{color:#ddd;float:right}.rating>input:checked~label,.rating:not(:checked)>label:hover,.rating:not(:checked)>label:hover~label{color:gold}.rating>input:checked + label:hover,.rating>input:checked~label:hover,.rating>label:hover~input:checked~label,.rating>input:checked~label:hover~label{color:#FFED85}.scrollIcon{color:white;font-weight:700;width:100%;bottom:3rem;position:absolute;text-align:center;font-size:3rem;animation-name:scroll;animation-duration:2.2s;animation-timing-function:cubic-bezier(.15,.41,.69,.94);animation-iteration-count:infinite}.scrollIconHome{margin:auto auto;color:white;font-weight:700;width:fit-content;bottom:2rem;position:absolute;text-align:center;font-size:3rem;animation-name:scroll;animation-duration:2.2s;animation-timing-function:cubic-bezier(.15,.41,.69,.94);animation-iteration-count:infinite}@keyframes scroll{0%{opacity:0}10%{transform:translateY(0);opacity:1}100%{transform:translateY(15px);opacity:0}}.overGold:hover{color:#ad9966;transition:0.3s}.cPara{color:white;font-weight:700;float:left;width:fit-content;bottom:10rem;position:absolute}.customPaddingPara{padding:1.5rem}.customStylePara{margin-top:5rem;text-align:center;font-size:5rem;font-family:"Caveat"}.imgPara{height:30rem;width:80%;top:10vh;margin:auto;position:relative;border-radius:0;box-shadow:0 0 35px black}@media (max-width:551px){.imgPara{width:100%}}@media (max-width:490px){.cPara{bottom:3rem}}@media (max-width:400px){.cPara{bottom:5rem}.customPaddingPara{padding:0;margin:auto auto}.customStylePara{margin:auto auto}}
