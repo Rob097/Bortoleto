@@ -663,13 +663,13 @@ ul{
 }
 .div-select{
     width: fit-content;
-    margin: auto auto;
 }
 .div-select select, .addtocart-btn input{
     padding: 3px;
     border: none;
     color: white;
     background-color: #b4505a;
+    cursor: pointer;
 }
 .close-search {
     position: absolute;

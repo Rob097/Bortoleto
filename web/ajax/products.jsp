@@ -5,11 +5,6 @@
 --%>
 
 
-<!-- Per impedire alla maggior parte dei motori di ricerca di indicizzare la pagina -->
-<meta name="robots" content="noindex">
-<!-- Per impedire solo a Google di indicizzare la pagina -->
-<meta name="googlebot" content="noindex">
-
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -112,7 +107,7 @@
     </div>
 
     <div class="tab-pane" id="salumi" role="tabpanel">
-        <h3 class="titoloModal mt-5 mb-5">I <span style="font-weight: 900;">Salumi</span></h3>
+        <h2 class="titoloModal mt-5 mb-5">Salumi Insaccati Elenco</h2>
         <div id="slidesalumi" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner text-center">
                 <div class="carousel-item">

@@ -28,6 +28,10 @@ public class Costanti {
     public static final float MED_COSTO = 200;
     public static final float MAX_COSTO = 275;
     
+    public static final double MIN_PESO = 15;
+    public static final double MED_PESO = 25;
+    public static final double MAX_PESO = 50;
+    
     /* Costo box keatchen più la scatola protettiva obbligatoria + gel refrigerante */
     public static final double MIN_W_PRICE = 4.3+1.75+1.8;
     public static final double MED_W_PRICE = 5.4+1.75+1*1.8;

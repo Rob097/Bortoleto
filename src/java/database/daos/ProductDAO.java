@@ -40,6 +40,7 @@ public interface ProductDAO{
     public ArrayList<Prodotto> getFreshProductsOfCart(HttpServletRequest request) throws DAOException;
     public String getPartial(int quantita, String costo) throws DAOException;
     public String getTotalOfCart(HttpServletRequest request) throws DAOException;
+    public double getTotalWeightOfCart(HttpServletRequest request) throws DAOException;
     public void updateQuantity(int id, String variante, int quantita, HttpServletRequest request, HttpServletResponse response) throws DAOException;
     public int getCartSize(HttpServletRequest request) throws DAOException;
     public String checkWeight(HttpServletRequest request) throws DAOException;
@@ -54,4 +55,7 @@ public interface ProductDAO{
     public LinkedHashMap<ArrayList<Variante>, Integer> getCartVariant(HttpServletRequest request) throws DAOException;
     public String getVariantBlock(ArrayList<Variante> blocco) throws DAOException;
     public LinkedHashMap<ArrayList<Variante>, Integer> getCartProductVariant(HttpServletRequest request, int idProduct) throws DAOException;
+    public double getWeightOfVariantCombination(ArrayList<Variante> blocco) throws DAOException;
+    public double getCostOfVariantCombination(ArrayList<ArrayList<Variante>> blocco) throws DAOException;    
+    public double getWeightOfVariantCombinationFull(ArrayList<ArrayList<Variante>> blocco) throws DAOException;
 }

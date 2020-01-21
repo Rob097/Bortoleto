@@ -558,7 +558,9 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         <h2 class="h1-responsive font-weight-bold my-5" id="raggiungici-ristorante">Contatti</h2>            
         <div class='row flex-column-reverse flex-lg-row' style='width: 100%; margin: 0;'>
             <div class='col-lg-8'>
-                <div class="mb-5 mt-5" id="map1" data-aos="zoom-out-right" data-aos-duration="2000"></div>
+                <div class="mb-5 mt-5" data-aos="zoom-out-right" data-aos-duration="2000">
+                    <div class="mapouter"><div class="gmap_canvas"><iframe style="min-height:550px;" width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=ristorante%20bortoleto%20predazzo&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.divi-discounts.com"></a></div><style>.mapouter{position:relative;text-align:right;height:100%;width:100%;min-height:550px;}.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;min-height:550px;}</style></div>
+                </div>
             </div>
             <div class='col-lg-4'>
                 <div class='contactInfo' data-aos="zoom-in-right" data-aos-duration="2000">
@@ -647,24 +649,6 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         function enableBtn() {
             document.getElementById("senderButton").disabled = false;
         }
-    </script>
-    <script>
-        var map1;
-        function initMap() {
-            //The locations
-            var rist = {lat: 46.310835, lng: 11.601194};
-            // The map, centerd
-            map1 = new google.maps.Map(
-                    document.getElementById('map1'), {zoom: 16.75, center: rist});
-            // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({position: rist, map: map1});
-            marker.addListener("click", function () {
-                window.open("https://www.google.com/maps/place/Ristorante+'l+Bortoleto/@46.310865,11.6015513,16.75z/data=!4m5!3m4!1s0x4778633806ab5a6d:0xef49608af9171d85!8m2!3d46.3108156!4d11.6011964");
-            });
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdJPQRGr1Dh2vWyM2gq8pMgMYsILS_le4&callback=initMap"
-            async defer>
     </script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -783,7 +767,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             $('.lazy').lazy();
         });
     </script>
-    
+
     <!-- Se è un celllulare touchscreen apple che usa safari disabilita l'immagine di sfondo (non la supportano) -->
     <script type="text/javascript">
         var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
@@ -794,7 +778,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             }
         }
     </script>
-    
+
     <!-- Twitter universal website tag code -->
     <script>
         !function (e, t, n, s, u, a) {

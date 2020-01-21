@@ -459,6 +459,7 @@ public class JDBCConsoleDAO extends JDBCDAO implements ConsoleDAO {
                     v.setVariant(rs.getString("variant"));
                     v.setVariantName(rs.getString("variantName"));
                     v.setSupplement(rs.getDouble("supplement"));
+                    v.setPesoMaggiore(rs.getDouble("pesoMaggiore"));
                 }
                 return v;
             }

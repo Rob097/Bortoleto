@@ -505,7 +505,7 @@ ${consoledao.incrementViews("home", request, 0)}
             <ul id="services">
                 <li>
                     <div class="facebook">
-                        <a rel="nofollow" href="https://www.facebook.com/macelleriadellantonio/">
+                        <a target="_blank" rel="nofollow" href="https://www.facebook.com/macelleriadellantonio/">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -513,26 +513,50 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="instagram">
-                        <a rel="nofollow" href="https://www.instagram.com/macelleriabortoleto/">
+                        <a target="_blank" rel="nofollow" href="https://www.instagram.com/macelleriabortoleto/">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>
                     <span>Instagram</span>
                 </li>
                 <li>
+                    <div class="twitter">
+                        <a target="_blank" rel="nofollow" href="https://twitter.com/bortoleto_mac">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <span>Twitter</span>
+                </li>
+                <li>
                     <div class="youtube">
-                        <a rel="nofollow" href="https://www.youtube.com/watch?v=9-3If8AhVwM">
+                        <a target="_blank" rel="nofollow" href="https://www.youtube.com/watch?v=9-3If8AhVwM">
                             <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
                     </div>
                     <span>YouTube</span>
+                </li>
+                <li>
+                    <div class="linkedin">
+                        <a target="_blank" rel="nofollow" href="https://www.linkedin.com/company/macelleria-dellantonio/">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <span>Linkedin</span>
+                </li>
+                <li>
+                    <div class="pinterest">
+                        <a target="_blank" rel="nofollow" href="https://www.pinterest.it/macelleriabortoleto/">
+                            <i class="fab fa-pinterest" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <span>Pinterest</span>
                 </li>
             </ul>
             <p class="sottotitoli text-center" style="font-weight: inherit; margin-top: 2rem; color: white;">RISTORANTE</p>
             <ul id="services">
                 <li>
                     <div class="facebook">
-                        <a rel="nofollow" href="https://www.facebook.com/LBortoleto/">
+                        <a target="_blank" rel="nofollow" href="https://www.facebook.com/LBortoleto/">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -540,7 +564,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="instagram">
-                        <a rel="nofollow" href="https://www.instagram.com/ristorantebortoleto/">
+                        <a target="_blank" rel="nofollow" href="https://www.instagram.com/ristorantebortoleto/">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>

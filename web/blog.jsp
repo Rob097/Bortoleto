@@ -224,14 +224,14 @@ ${consoledao.incrementViews("blog", request, 0)}
                             <c:set var="commenti" value="${commblogdao.getAllCommOfBlog(blog.id).size()}" />
                             <c:if test="${blog.nome.toLowerCase().contains(param.search.replace('+', ' ').toLowerCase()) || blog.categoria.toLowerCase().contains(param.search.replace('+', ' ').toLowerCase())}">
                                 <div class="row mb-4 Post">
-                                    <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
+                                    <div class="col-lg-4  col-md-4 meta-details" style="text-align: right;  margin-top: 35px;">
                                         <ul class="tags key" style="padding-left: 0px;">
                                             <li><a href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>" class="categoriaArt tagLink">${blog.categoria}</a><i class="fas fa-stream ml-2" style="color: black;"></i></li>
                                         </ul>
                                         <ul class="tags realTags key black-text textOverflow">
                                             <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
                                                 <li>
-                                                    <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                                    <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
                                                 </li>
                                             </c:forEach>
                                         </ul>
@@ -242,7 +242,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                                             <p style="padding-left: 0px;" class="comments col-lg-12 col-md-12 col-6"><a style="color: #757777;">${blog.views} Letture</a> <i class="far fa-eye" style="color: black;"></i></p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9 col-md-9 ">
+                                    <div class="col-lg-8 col-md-8 ">
                                         <div class="feature-img text-center">
                                             <img class="lazy img-fluid blogIMG" data-src="/${blog.immagine}" alt="${blog.nome}">
                                         </div>
@@ -302,7 +302,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                                 <c:forEach items="${blogs}" var="blog" >
                                     <c:set var="commenti" value="${commblogdao.getAllCommOfBlog(blog.id).size()}" />
                                     <div class="row mb-4 Post">
-                                        <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
+                                        <div class="col-lg-4  col-md-4 meta-details" style="text-align: right;  margin-top: 35px;">
                                             <ul class="tags key black-text" style="padding-left: 0px;">
                                                 <li>
                                                     <a class="tagLink" href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>" class="categoriaArt">${blog.categoria}</a>
@@ -313,7 +313,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                                             <ul class="tags realTags key black-text textOverflow mt-2">
                                                 <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
                                                     <li>
-                                                        <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                                        <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
                                                     </li>
                                                 </c:forEach>
 
@@ -325,7 +325,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                                                 <p style="padding-left: 0px;" class="comments col-lg-12 col-md-12 col-6"><a style="color: #757777;">${blog.views} Letture</a> <i class="far fa-eye" style="color: black;"></i></p>
                                             </div>
                                         </div>
-                                        <div class="col-lg-9 col-md-9 ">
+                                        <div class="col-lg-8 col-md-8 ">
                                             <div class="feature-img text-center">
                                                 <img class="lazy img-fluid blogIMG" data-src="/${blog.immagine}" alt="${blog.nome}">
                                             </div>

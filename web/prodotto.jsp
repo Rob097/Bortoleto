@@ -3,6 +3,7 @@
     Created on : 4 gen 2020, 10:23:17
     Author     : Roberto97
 --%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="database.jdbc.JDBCCategoryDAO"%>
 <%@page import="database.daos.CategoryDAO"%>
@@ -10,6 +11,7 @@
 <%@page import="database.factories.DAOFactory"%>
 <%@page import="database.jdbc.JDBCProductDAO"%>
 <%@page import="database.daos.ProductDAO"%>
+
 <%
     /* Devo farlo perchè altrimenti facebook e google non vedono i parametri nei metadati e nel testo da quanto si usa l'url rewriting */
     DAOFactory daoFactory = (DAOFactory) super.getServletContext().getAttribute("daoFactory");
@@ -44,6 +46,7 @@
         <c:set value='<%=categoryDAO.getByName(request.getParameter("cat").replace("-", " "))%>' var="cat"/>
         <c:set value="<%= productDAO.getNumberRate(prod.getId())%>" var="numeroReviews" />
         <c:set value="<%= productDAO.getRate(prod.getId())%>" var="valoreReviews" />
+        <c:set value="<%= productDAO.getProductVariant(prod.getId())%>" var="array" />
         ${consoledao.incrementViews("bottega", request, param.id)}
     </c:otherwise>
 </c:choose>
@@ -82,7 +85,7 @@
             </c:otherwise>
         </c:choose>                 
         <meta property="product:condition" content="new">
-        <meta property="product:price:amount" content="${prod.costo}">
+        <meta property="product:price:amount" content="${prod.costo.toString().replace(',', '.')}">
         <meta property="product:type" content="${prod.categoria}">
         <meta property="product:category" content="${prod.categoria}">
         <meta property="product:price:currency" content="EUR">
@@ -340,14 +343,14 @@
                                             <div class="row">
                                                 <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
                                                     <div class="col-lg-4 col-md-6">
-                                                        <a href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
+                                                        <a rel="nofollow" href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
                                                             <img style="max-width: 140px; margin: 10px; border-radius: 5px;" src="/${pr.immagine}" />
                                                             <p style="font-family: 'Montserrat', sans-serif;">${pr.nome}</p>
                                                         </a>
                                                     </div>
                                                 </c:forEach>
                                                 <div class="col-lg-4 col-md-6">
-                                                    <a href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
+                                                    <a rel="nofollow" href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
                                                         <i class="fas fa-arrow-right" style="color: black; font-size: 140px;"></i>
                                                         <p style="font-family: 'Montserrat', sans-serif;">Vai alla categoria</p>
                                                     </a>
@@ -364,14 +367,14 @@
                                             <div class="row">
                                                 <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
                                                     <div class="col-lg-4 col-md-6">
-                                                        <a href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
+                                                        <a rel="nofollow" href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
                                                             <img style="max-width: 140px; margin: 10px; border-radius: 5px;" src="/${pr.immagine}" />
                                                             <p style="font-family: 'Montserrat', sans-serif;">${pr.nome}</p>
                                                         </a>
                                                     </div>
                                                 </c:forEach>
                                                 <div class="col-lg-4 col-md-6">
-                                                    <a href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
+                                                    <a rel="nofollow" href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
                                                         <i class="fas fa-arrow-right" style="color: black; font-size: 140px;"></i>
                                                         <p style="font-family: 'Montserrat', sans-serif;">Vai alla categoria</p>
                                                     </a>
@@ -399,33 +402,33 @@
                     <nav id="breadcrumb">
                         <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
                             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a itemprop="item" href="https://macelleriadellantonio.it<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                                <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
                                 <meta itemprop="position" content="1" />
                             </li>
                             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a itemprop="item" href="https://macelleriadellantonio.it<c:url value="/bottega.jsp"/>"><span itemprop="name">Bottega Online</span></a>
+                                <a itemprop="item" href="<c:url value="/bottega.jsp"/>"><span itemprop="name">Bottega Online</span></a>
                                 <meta itemprop="position" content="2" />
                             </li>
                             <c:choose>
                                 <c:when test="${cat.freschi}">
                                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                        <a itemprop="item" href="https://macelleriadellantonio.it/Bortoleto/alimenti-freschi/"><span itemprop="name">Alimenti Freschi</span></a>
+                                        <a itemprop="item" href="/Bortoleto/alimenti-freschi/"><span itemprop="name">Alimenti Freschi</span></a>
                                         <meta itemprop="position" content="3" />
                                     </li>
                                 </c:when>
                                 <c:otherwise>
                                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                        <a itemprop="item" href="https://macelleriadellantonio.it/Bortoleto/dal-Trentino/"><span itemprop="name">Dal Trentino</span></a>
+                                        <a itemprop="item" href="/Bortoleto/dal-Trentino/"><span itemprop="name">Dal Trentino</span></a>
                                         <meta itemprop="position" content="3" />
                                     </li>
                                 </c:otherwise>
                             </c:choose>
                             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a itemprop="item" href="https://macelleriadellantonio.it<c:url value="/categoria.jsp?id=${cat.id}&nome=${cat.nome.replace(' ', '-')}"/>"><span itemprop="name">${prod.categoria}</span></a>
+                                <a itemprop="item" href="<c:url value="/categoria.jsp?id=${cat.id}&nome=${cat.nome.replace(' ', '-')}"/>"><span itemprop="name">${prod.categoria}</span></a>
                                 <meta itemprop="position" content="4" />
                             </li>
                             <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a href="https://macelleriadellantonio.it/Bortoleto/prodotto/${prod.id}/${prod.categoria.replace(' ','-')}/${prod.nome.replace(' ','-')}" itemprop="item" ><em><span itemprop="name">${prod.nome}</span></em></a>
+                                <a href="<c:url value="/prodotto.jsp?id=${prod.id}&nome=${prod.nome.replace(' ','-')}&cat=${prod.categoria.replace(' ','-')}"/>" itemprop="item" ><em><span itemprop="name">${prod.nome}</span></em></a>
                                 <meta itemprop="position" content="5" />
                             </li>
                         </ol>
@@ -437,15 +440,17 @@
                             <div class="main-image images" style="width: fit-content; margin: auto auto;">
                                 <img style="border-radius: 5px; max-height: 600px;" alt="big images" src="/${prod.immagine}">
                             </div>
+                            <div class="mt-5">
+                                <h4 class="styled">Descrizione</h4>
+                                <p class="description">${prod.descrizione}</p>
+                            </div>
                         </div>
                         <!-- end product images -->
                         <div id="prodotto-informazioni" class="product-info">
                             <div class="htc__product__details__inner">  
                                 <div class="pro__detl__title">
-                                    <h2>
-                                        <span style="font-weight: bold; margin: 10px 0 10px 0;">${prod.nome}</span><br>
-                                        <span style="font-size: 25px;">${prod.categoria}</span>
-                                    </h2>
+                                    <h2 style="font-weight: bold; margin: 10px 0 10px 0;">${prod.nome}</h2><br>
+                                    <h2 style="font-size: 25px;">${prod.categoria}</h2>
                                 </div>
                                 <div id="ratingDiv">
                                     <c:set var="rate" value="${valoreReviews}" />
@@ -465,7 +470,6 @@
                                         </fieldset><br>                                
                                     </div>
                                     <div class="pro__details">
-                                        <p class="description">${prod.descrizione}</p>
                                     <c:if test="${ideeProdotto ne null && !ideeProdotto.isEmpty()}">
                                         <a href="#ideeProdotto"><img style="vertical-align: text-top; margin-right: 5px;" src="/Bortoleto/img/cappello-chef.png" />Scopri curiose idee su come usare questo prodotto</a><br>
                                         </c:if>
@@ -473,40 +477,67 @@
                                         <br><a href="#blogProdotto"><img style="vertical-align: text-top; margin-right: 5px;" src="/Bortoleto/img/libro.png" />Lo sapevi che...</a>
                                         </c:if>
                                 </div>
-                                <ul class="pro__dtl__prize">
-                                    <li>€ ${prod.costo}</li>
-                                </ul>
                                 <c:choose>
                                     <c:when test="${prod.disponibile eq true}">
                                         <c:set var="array" value="${productdao.getProductVariant(prod.id)}"/>
-                                        <c:if test="${array ne null && !array.isEmpty()}">
-                                            <c:forEach items="${array}" var="varianti" >
-                                                <div class="select__color mt-4 mb-4 prodict-statas">
-                                                    <span>${varianti.get(0).variant}</span>
-                                                    <div class="div-select">
-                                                        <select name="${varianti.get(0).variant.replace(" ", "")}" id="${varianti.get(0).variant.replace(" ", "")}">
-                                                            <c:forEach items="${varianti}" var="variante" >
-                                                                <option value="${variante.id}">${variante.variantName} ( + € ${variante.supplement} )</option>
-                                                            </c:forEach>   
-                                                        </select><br>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </c:if>
-                                        <div class="product-action-wrap">
-                                            <div class="prodict-statas"><span>Quantità :</span></div>
-                                            <div class="product-quantity">
-                                                <form id='myform' method='POST' action='#'>
-                                                    <div class="product-quantity">
-                                                        <div class="cart-plus-minus">
-                                                            <input id="quantitaInput" class="cart-plus-minus-box" type="number" name="qtybutton" min="1" value="1">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <ul class="pro__dtl__prize">
+                                                    <li><span>Prezzo: </span></li>
+                                                    <li><span>Peso: </span></li>                                                    
+                                                        <c:if test="${array ne null && !array.isEmpty()}">
+                                                            <c:forEach items="${array}" var="varianti" >
+                                                            <li><span>${varianti.get(0).variant}: </span></li>
+                                                            </c:forEach>
+                                                        </c:if>
+                                                    <li><span>Quantità: </span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-4">
+                                                <ul class="pro__dtl__prize">
+                                                    <c:choose>
+                                                        <c:when test="${array ne null && !array.isEmpty()}">
+                                                            <div id="boxDati-false">
+                                                                <li>€${productdao.getCostOfVariantCombination(array)}</li>
+                                                                <li>${productdao.getWeightOfVariantCombinationFull(array)}kg</li>
+                                                                    <c:forEach items="${array}" var="varianti" >            
+                                                                    <li>
+                                                                        <div class="select__color prodict-statas">
+                                                                            <div class="div-select">
+                                                                                <select onchange="changeVariante(this, ${prod.id}, false);" name="${varianti.get(0).variant.replace(" ", "")}-false" id="${varianti.get(0).variant.replace(" ", "")}-false">
+                                                                                    <c:forEach items="${varianti}" var="variante" >
+                                                                                        <option value="${variante.id}">${variante.variantName}</option>
+                                                                                    </c:forEach>   
+                                                                                </select><br>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </c:forEach>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <li>€${prod.costo}</li>
+                                                            <li>${prod.peso}kg</li>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    <li>
+                                                        <div class="product-action-wrap">
+                                                            <div class="product-quantity">
+                                                                <form id='myform' method='POST' action='#'>
+                                                                    <div class="product-quantity">
+                                                                        <div class="cart-plus-minus">
+                                                                            <input id="quantitaInput" class="cart-plus-minus-box" type="number" name="qtybutton" min="1" value="1">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                         <ul class="pro__dtl__btn">
-                                            <li class="buy__now__btn"><a id="addToCart" onclick="addProdVariant(${prod.id});">Aggiungi al Carrello</a></li>
+                                            <li class="buy__now__btn"><a id="addToCart" onclick="addProdVariant(${prod.id});"><i style="margin-right: 1rem;color: inherit;font-size: 15px;" class="fa fa-cart-plus"></i>Aggiungi al Carrello</a></li>
                                             <li class="heart-${prod.id}">
                                                 <c:choose>
                                                     <c:when test="${productdao.isPreferito(prod.id, request) eq true}">
@@ -646,8 +677,8 @@
                 <c:if test="${ideeProdotto ne null && !ideeProdotto.isEmpty()}">
                     <section id="ideeProdotto" style="padding-top: 10rem;">
                         <div class="mt-5 mb-5">
-                            <p class="sottotitoli" style="text-align: center; margin: 0 auto 0 auto;">incuriosisciti</p>
-                            <h4 class="consigliati-h4">Alcune idee su..<br>“${prod.nome}”</h4>
+                            <p class="sottotitoli" style="text-align: center; margin: 0 auto 0 auto;">Idee interessanti</p>
+                            <h4 class="consigliati-h4">Alcune idee su...<br>“${prod.nome}”</h4>
                             <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 white-text" data-ride="carousel">
                                 <div class="carousel-inner" role="listbox">
                                     <div id="productElements" style="flex-wrap: unset; color: black; margin-top: 1.5rem; overflow-x: auto; overflow-y: hidden; display: inline-flex;" class="carousel-item active nav nav-tabs" role="tablist"> 
@@ -682,7 +713,7 @@
                     <c:set var="articoli" value="${blogdao.getAllBlogsWithTag(blogProdotto)}" />
                     <section id="blogProdotto" style="padding-top: 10rem;">
                         <p class="sottotitoli" style="text-align: center; margin: 0 auto 0 auto;">Interessanti curiosità</p>
-                        <h4 class="consigliati-h4">Parlando di..<br>“${prod.nome}”</h4>
+                        <h4 class="consigliati-h4">Parlando di...<br>“${prod.nome}”</h4>
                         <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 white-text" data-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <div id="productElements" style="flex-wrap: unset; color: black; margin-top: 1.5rem; overflow-x: auto; overflow-y: hidden; display: inline-flex;" class="carousel-item active nav nav-tabs" role="tablist"> 
@@ -888,7 +919,7 @@
         <c:choose>
             <c:when test="${array ne null && !array.isEmpty()}">
                 <c:forEach items="${array}" var="varianti" >
-            variant += $('#${varianti.get(0).variant.replace(" ", "")} option:selected').val() + "_";
+            variant += $('#${varianti.get(0).variant.replace(" ", "")}-false option:selected').val() + "_";
                 </c:forEach>
             variant = variant.substring(0, variant.length - 1);
             </c:when>
@@ -899,7 +930,7 @@
             if (variant !== null && variant.length < 1) {
                 alert("Devi selezionare i valori");
             } else {
-                $('#addToCart').html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
+                $('#addToCart').html("<img style='width: 10%;' src='/Bortoleto/img/91.gif' />");
                 $.ajax({
                     type: "POST",
                     url: "/Bortoleto/addProd",
@@ -912,13 +943,13 @@
                         /*addToCartFacebookEvent();*/
                         $('#addToCart').html("<img style='width: 10%;' src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE3LjgzNyAxNy44MzciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE3LjgzNyAxNy44Mzc7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8Zz4KCTxwYXRoIGQ9Ik0xNi4xNDUsMi41NzFjLTAuMjcyLTAuMjczLTAuNzE4LTAuMjczLTAuOTksMEw2LjkyLDEwLjgwNGwtNC4yNDEtNC4yNyAgIGMtMC4yNzItMC4yNzQtMC43MTUtMC4yNzQtMC45ODksMEwwLjIwNCw4LjAxOWMtMC4yNzIsMC4yNzEtMC4yNzIsMC43MTcsMCwwLjk5bDYuMjE3LDYuMjU4YzAuMjcyLDAuMjcxLDAuNzE1LDAuMjcxLDAuOTksMCAgIEwxNy42Myw1LjA0N2MwLjI3Ni0wLjI3MywwLjI3Ni0wLjcyLDAtMC45OTRMMTYuMTQ1LDIuNTcxeiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=' />");
                         setTimeout(function () {
-                            $('#addToCart').html("Aggiungi al Carrello");
+                            $('#addToCart').html("<i style='margin-right: 1rem;color: inherit;font-size: 15px;' class='fa fa-cart-plus'></i>Aggiungi al Carrello");
                         }, 2000);
                     },
                     error: function () {
                         $('#addToCart').html("<img style='width: 10%;' src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDI4IDI4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyOCAyODsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxnPgoJPGcgaWQ9IngiPgoJCTxnPgoJCQk8cG9seWdvbiBwb2ludHM9IjI4LDIyLjM5OCAxOS41OTQsMTQgMjgsNS42MDIgMjIuMzk4LDAgMTQsOC40MDIgNS41OTgsMCAwLDUuNjAyIDguMzk4LDE0IDAsMjIuMzk4ICAgICAgNS41OTgsMjggMTQsMTkuNTk4IDIyLjM5OCwyOCAgICAiIGZpbGw9IiMwMDAwMDAiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==' />");
                         setTimeout(function () {
-                            $('#addToCart').html("Aggiungi al Carrello");
+                            $('#addToCart').html("<i style='margin-right: 1rem;color: inherit;font-size: 15px;' class='fa fa-cart-plus'></i>Aggiungi al Carrello");
                         }, 2000);
                     }
                 });
@@ -979,6 +1010,40 @@
                     }
                 });
             }
+        }
+        //Change Variante
+        function changeVariante(element, prod, isQuick) {
+
+            var string = ""; //contiene la concatenazione degli id delle varianti scelte per la combinazione di varianti
+            var selects; // nel ciclo foreach seleziona tutti i select delle varianti
+            var optionSelected; //nel ciclo foreach prende l'opzione scelta per ogni select delle varianti
+        <c:choose>
+            <c:when test="${array ne null && !array.isEmpty()}">
+                <c:forEach items="${array}" var="varianti" >
+            selects = $('#${varianti.get(0).variant.replace(" ", "")}-' + isQuick);
+            optionSelected = selects[0].options[selects.prop('selectedIndex')].value;
+            string += optionSelected + "_";
+                </c:forEach>
+            </c:when>
+        </c:choose>
+            string = string.substring(0, string.length - 1); //rimuovo l'ultimo carattere che è un _
+            //immagine di caricamento
+            $('#boxDati-' + isQuick).html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
+
+            //Funzione ajax per aggiornare la schermata, il isQuick è un boolean e serve per capire se ci riferiamo al prodotto o al modal QuickView
+            $.ajax({
+                type: "POST",
+                url: "/Bortoleto/ajax/changeVariante.jsp",
+                data: {id: element.value, prod: prod, quick: isQuick, varianti: string},
+                cache: false,
+                success: function (response) {
+                    $('#boxDati-' + isQuick).html(response);
+                },
+                error: function () {
+                    $('#boxDati-' + isQuick).css("background-color", "red");
+                    $('#boxDati-' + isQuick).html("ERRORE");
+                }
+            });
         }
         //Update CartSize
         function updateCartSize() {
@@ -1068,6 +1133,7 @@
             $("#fluidModalBottomDangerDemo").load("/Bortoleto/ajax/preferitiModalContent.jsp");
 
             /* Carrello Modal */
+            $("#cd-cart").html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
             $("#cd-cart").load("/Bortoleto/ajax/carrelloModalContent.jsp");
 
             /* footer */

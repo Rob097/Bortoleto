@@ -269,7 +269,7 @@ ${consoledao.incrementViews("idee", request, 0)}
                                         <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
                                             <ul class="tags key black-text" style="padding-left: 0px;">
                                                 <li>
-                                                    <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${ricetta.nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
+                                                    <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${productdao.getProduct(ricetta.id_prod).nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
                                                     <i class="fas fa-stream ml-2" style="color: black;"></i>
                                                 </li>
                                             </ul>
@@ -352,7 +352,7 @@ ${consoledao.incrementViews("idee", request, 0)}
                                             <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
                                                 <ul class="tags key black-text" style="padding-left: 0px;">
                                                     <li>
-                                                        <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${ricetta.nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
+                                                        <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${productdao.getProduct(ricetta.id_prod).nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
                                                         <i class="fas fa-stream ml-2" style="color: black;"></i>
                                                     </li>
                                                 </ul>

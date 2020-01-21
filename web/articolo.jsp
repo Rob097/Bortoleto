@@ -235,7 +235,7 @@
                                     <ul class="tags realTags key black-text textOverflow">
                                         <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
                                             <li>
-                                                <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                                <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
                                             </li>
                                         </c:forEach>
                                     </ul>

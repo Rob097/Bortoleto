@@ -462,7 +462,7 @@ main {
 }
 @media only screen and (min-width: 768px) {
     main {
-   @media     padding-top: 90px;
+        @media     padding-top: 90px;
     }
 }
 @media only screen and (min-width: 1200px) {
@@ -856,13 +856,13 @@ input[type=number]::-webkit-outer-spin-button {
     color: black;
 }
 /*style di carrello.jsp*/
-
 #datiBox{
     height: fit-content;
     margin-top: 6rem;
     padding: 20px;
-    background-color: #31353d;
-    color: white;
+    background-color: rgba(180,80,90,.1);
+    color: black;
+    box-shadow: 0 0 20px 10px rgba(0,0,0,.4);
     border-radius: 2%;
     top: 8rem;
 }

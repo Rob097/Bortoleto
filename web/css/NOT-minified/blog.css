@@ -414,13 +414,18 @@ ol, ul {
     padding: 0;
     list-style: none;
 }
-#blog #Posts .Post .meta-details .realTags {
-    margin-bottom: 20px;
+
+#blog #Posts .Post .meta-details .realTags {    
+    margin-bottom: 30px;
+    padding-left: 0px;
+    max-height: fit-content;
+    overflow-y: auto;
+    display: block;
     padding-right: 10px;
     background-color: #f9f9ff;
-    box-shadow: -20.84px 21.58px 30px 0px rgba(176, 176, 176, 0.1);
+    box-shadow: -20.84px 21.58px 30px 0 rgba(176,176,176,.1);
     color: black;
-    border-right: 2px solid !important;
+    border-right: 2px solid!important;
 }
 
 #blog #Posts .Post .meta-details .realTags li {
@@ -442,6 +447,11 @@ ol, ul {
     max-height: fit-content;
     overflow-y: auto;
     display: block;
+    padding-right: 10px;
+    background-color: #f9f9ff;
+    box-shadow: -20.84px 21.58px 30px 0 rgba(176,176,176,.1);
+    color: black;
+    border-right: 2px solid!important;
 }
 
 #articolo .single-post .meta-details .realTags li {

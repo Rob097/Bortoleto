@@ -19,7 +19,8 @@
 <c:set var="response" value="<%=response%>"/>
 <c:set value="${productdao.getAllProductsOfCart(request)}" var="prodottiCart" />
 <c:set value="${productdao.getTotalOfCart(request)}" var="subTotaleCart" />
-<c:set value="${pagamentodao.getSpeseSpedizione(subTotaleCart, ritiroAttribute, request)}" var="spedizioneCart" />
+<c:set value="${productdao.getTotalWeightOfCart(request)}" var="pesoTotaleCart" />
+<c:set value="${pagamentodao.getSpeseSpedizione(pesoTotaleCart, ritiroAttribute, request)}" var="spedizioneCart" />
 <c:set value="${pagamentodao.getTot(subTotaleCart, spedizioneCart)}" var="totaleCart" />
 <c:set value="${productdao.getCartVariant(request)}" var="variantiCart" />
 <%@ page import="varie.Costanti" %>
@@ -208,39 +209,34 @@
                                 <c:set var="hasVariant" value="${false}" />
 
                                 <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                    <div>
+                                    <div style="width: 100%;">
                                         <img src="${prodotto.immagine}" style="width: 100px;"/>
-                                        <h6 class="my-0 pointer mt-2" data-toggle="tooltip" title='€ ${prodotto.costo}'><a href="<c:url value="/prodotto.jsp?id=${prodotto.id}&nome=${prodotto.nome.replace(' ', '-')}&cat=${prodotto.categoria.replace(' ', '-')}"/>">${prodotto.nome}</a></h6>
+                                        <h6 class="my-0 pointer mt-2"><a href="<c:url value="/prodotto.jsp?id=${prodotto.id}&nome=${prodotto.nome.replace(' ', '-')}&cat=${prodotto.categoria.replace(' ', '-')}"/>">${prodotto.nome}</a></h6>
 
-                                        <c:forEach items="${variantiCart}" var="varianti">
+                                        <!-- Prendo tuttel le varianti del prodotto presenti nel carrello -->
+                                        <c:forEach items="${productdao.getCartProductVariant(request, prodotto.id)}" var="varianti">
+                                            <c:set var="hasVariant" value="${true}" />
                                             <c:set var="valori" value="${varianti.key}"/>
-                                            <c:if test="${valori ne null && !valori.isEmpty()}">
-                                                <c:set var="prod" value="${productdao.getProduct(valori.get(0).id_prod)}" />
-                                                <c:if test="${prod.id eq prodotto.id}">
-                                                    <c:set var="hasVariant" value="${true}" />
-                                                    <c:set var="quantita" value="${varianti.value}"/>
-                                                    <c:set var="costoV" value="0"/>
+                                            <c:set var="quantita" value="${varianti.value}"/>
+                                            <c:set var="costoV" value="0"/>
 
-                                                    <hr>
-                                                    <div style="height: fit-content; text-align: right;" class="text-muted red-text pointer"><a  onclick="removeProd(${prodotto.id}, '${productdao.getVariantBlock(valori)}')"  data-toggle="tooltip" title="Rimuovi questa variante dal carrello">X</a></div>
-                                                    <%--<span class="cd-qty"><input onchange="updateQuantity(${prodotto.id}, '${productdao.getVariantBlock(valori)}', $(this).val());" style="border: none; max-width: 3rem;" type="number" min="1" value="${quantita}" /></span>--%>
-                                                    <small class="text-muted">Quantità: </small><small class="text-muted"><input onchange="updateQuantity(${prodotto.id}, '${productdao.getVariantBlock(valori)}', $(this).val());" style="border: none; max-width: 3rem;" type="number" min="1" value="${quantita}" /></small>
-                                                        <c:forEach items="${valori}" var="variante">
-                                                            <c:set var="costoV" value="${costoV + variante.supplement}"/>
-                                                        <div class="cd-price">${variante.variant}: ${variante.variantName}</div>
-                                                    </c:forEach>
-                                                    <div class="cd-price" style="width: max-content;">€ ${Double.parseDouble(prodotto.costo.replace(",", ".")) + costoV}</div>
-
-                                                </c:if>
-                                            </c:if>
+                                            <hr>
+                                            <div style="height: fit-content; text-align: right;" class="text-muted red-text pointer"><a  onclick="removeProd(${prodotto.id}, '${productdao.getVariantBlock(valori)}')"  data-toggle="tooltip" title="Rimuovi questa variante dal carrello">X</a></div>
+                                            <%--<span class="cd-qty"><input onchange="updateQuantity(${prodotto.id}, '${productdao.getVariantBlock(valori)}', $(this).val());" style="border: none; max-width: 3rem;" type="number" min="1" value="${quantita}" /></span>--%>
+                                            <small class="text-muted">Quantità: </small><small class="text-muted"><input onchange="updateQuantity(${prodotto.id}, '${productdao.getVariantBlock(valori)}', $(this).val());" style="border: none; max-width: 3rem;" type="number" min="1" value="${quantita}" /></small>
+                                            <!-- Visualizzo i dati della combinazione di varianti e calcolo il costo -->    
+                                            <c:forEach items="${valori}" var="variante">
+                                                <c:set var="costoV" value="${costoV + variante.supplement}"/>
+                                                <div style="color: #a5aebc; margin: 5px auto;" class="cd-price">${variante.variant}: ${variante.variantName}</div>
+                                            </c:forEach>
+                                            <!-- Mostro il costo e il peso di un unità di questa combinazione di varianti -->
+                                            <div class="cd-price" style="width: max-content;">€ ${String.format('%.2f', costoV).replace(',', '.')} | ${String.format('%.2f', productdao.getWeightOfVariantCombination(valori)).replace(",", ".")} kg.</div>
                                         </c:forEach>
                                         <c:if test="${hasVariant eq false}">
                                             <br>
                                             <small class="text-muted">Quantità: </small><small class="text-muted"><input onchange="updateQuantity(${prodotto.id}, null, $(this).val());" style="border: none; max-width: 3rem;" type="number" min="1" value="${prodotto.quantita}" /></small>
-                                            <div class="cd-price" style="width: max-content;">€ ${Double.parseDouble(prodotto.costo.replace(",", "."))}</div>
+                                            <div class="cd-price" style="width: max-content;">€ ${String.format('%.2f', Double.parseDouble(prodotto.costo.replace(",", ".")))} | ${String.format('%.2f', Double.parseDouble(prodotto.peso)).replace(",", ".")} kg.</div>
                                         </c:if>
-
-                                        <%--<small class="text-muted">Quantità: </small><small class="text-muted"><input onchange="updateQuantity(${prodotto.id}, $(this).val());" style="border: none; max-width: 3rem;" type="number" min="1" value="${prodotto.quantita}" /></small>--%>
                                     </div>
                                     <span style="height: fit-content;" class="text-muted text-center"><br><span class="red-text pointer" onclick="removeProd(${prodotto.id}, null)"  data-toggle="tooltip" title="Rimuovi '${prodotto.nome}' dal carrello">X</span></span>
                                 </li>
@@ -286,14 +282,14 @@
                             <li class="list-group-item d-flex justify-content-between bg-light">
                                 <c:choose>
                                     <c:when test="${!productdao.getFreshProductsOfCart(request).isEmpty() && ritiroAttribute != true}">
-                                        <%String cFRESH = "< €100 -> €8.90\n€100 - €200 -> €12.90\n€200 - €250 -> €21.90\n> €250 -> GRATIS\nVa aggiunto il costo del box refrigerante anche in caso di spedizione gratuita ";%>
+                                        <%String cFRESH = "< 15kg -> €8.90\n15kg - 25kg -> €12.90\n€25kg - 50kg -> €21.90\n> 50kg -> GRATIS\nVa aggiunto il costo del box refrigerante anche in caso di spedizione gratuita ";%>
                                         <div class="text-success">
                                             <h6 class="my-0">Spedizione Keatchen <span><i style="color: black; margin-top: auto; margin-bottom: auto; margin-left: .5rem;" data-toggle="tooltip" title='<%=cFRESH%>' class="fas fa-info-circle"></i></span></h6>
                                         </div>
-                                        <span class="text-success" style="width: 100%; text-align: right;">€ ${spedizioneCart}</span>
-                                    </c:when>
-                                    <c:when test="${productdao.getFreshProductsOfCart(request).isEmpty() && ritiroAttribute != true}">
-                                        <%String c = "< €100 -> €8.90\n€100 - €200 -> €12.90\n€200 - €250 -> €21.90\n> €250 -> GRATIS\n";%>
+                                        <span class="text-success" style="width: 100%; text-align: right;">€ ${spedizioneCart}<br>${String.format('%.2f', pesoTotaleCart).replace(",", ".")} kg</span>
+                                        </c:when>
+                                        <c:when test="${productdao.getFreshProductsOfCart(request).isEmpty() && ritiroAttribute != true}">
+                                            <%String c = "< 15kg -> €8.90\n15kg - 25kg -> €12.90\n€25kg - 50kg -> €21.90\n> 50kg -> GRATIS\n";%>
                                         <div class="text-success">
                                             <h6 class="my-0">Spedizione 
                                                 <c:if test="${ritiroAttribute != true}">
@@ -303,9 +299,9 @@
                                                 </c:if>
                                             </h6>
                                         </div>
-                                        <span class="text-success">€ ${spedizioneCart}</span>
-                                    </c:when>
-                                    <c:otherwise>
+                                        <span class="text-success">€ ${spedizioneCart}<br>${String.format('%.2f', pesoTotaleCart).replace(",", ".")} kg</span>
+                                        </c:when>
+                                        <c:otherwise>
                                         <div class="text-success">
                                             <h6 class="my-0">Ritiro in negozio
                                             </h6>

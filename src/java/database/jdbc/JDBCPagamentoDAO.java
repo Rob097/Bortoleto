@@ -29,12 +29,15 @@ import javax.servlet.http.HttpServletRequest;
 import static varie.Costanti.MAC_MAIL;
 import static varie.Costanti.MAC_PASS;
 import static varie.Costanti.MAX_COSTO;
+import static varie.Costanti.MAX_PESO;
 import static varie.Costanti.MAX_PRICE;
 import static varie.Costanti.MAX_W_PRICE;
 import static varie.Costanti.MED_COSTO;
+import static varie.Costanti.MED_PESO;
 import static varie.Costanti.MED_PRICE;
 import static varie.Costanti.MED_W_PRICE;
 import static varie.Costanti.MIN_COSTO;
+import static varie.Costanti.MIN_PESO;
 import static varie.Costanti.MIN_PRICE;
 import static varie.Costanti.MIN_W_PRICE;
 
@@ -107,39 +110,58 @@ public class JDBCPagamentoDAO extends JDBCDAO implements PagamentoDAO {
             double costoN = 0.00;
             String spedizione = null;
             ProductDAO productdao = (ProductDAO) request.getSession().getAttribute("productdao");
+            
+            double pesoTot = productdao.getTotalWeightOfCart(request);
 
             if (ritiro != true) {
-                try {
-                    costoN += (df.parse(costo).doubleValue());
-                    if (productdao.getFreshProductsOfCart(request) == null || productdao.getFreshProductsOfCart(request).isEmpty()) {
-                        if (costoN <= MIN_COSTO) {
-                            spedizione = "" + MIN_PRICE;
-                        } else if (costoN > MIN_COSTO && costoN <= MED_COSTO) {
-                            spedizione = "" + MED_PRICE;
-                        } else if (costoN > MED_COSTO && costoN < MAX_COSTO) {
-                            spedizione = "" + MAX_PRICE;
-                        } else if (costoN >= MAX_COSTO) {
-                            spedizione = "0.00";
-                        }
-                    } else {
-                        if (costoN <= MIN_COSTO) {
-                            spedizione = "" + (MIN_PRICE + MIN_W_PRICE);
-                        } else if (costoN > MIN_COSTO && costoN <= MED_COSTO) {
-                            spedizione = "" + (MED_PRICE + MED_W_PRICE);
-                        } else if (costoN > MED_COSTO && costoN < MAX_COSTO) {
-                            spedizione = "" + (MAX_PRICE + MAX_W_PRICE);
-                        } else if (costoN >= MAX_COSTO) {
-                            spedizione = String.format("%.2f", MAX_W_PRICE).replace(",", ".");
-                        }
+                /*costoN += (df.parse(costo).doubleValue());
+                if (productdao.getFreshProductsOfCart(request) == null || productdao.getFreshProductsOfCart(request).isEmpty()) {
+                if (costoN <= MIN_COSTO) {
+                spedizione = "" + MIN_PRICE;
+                } else if (costoN > MIN_COSTO && costoN <= MED_COSTO) {
+                spedizione = "" + MED_PRICE;
+                } else if (costoN > MED_COSTO && costoN < MAX_COSTO) {
+                spedizione = "" + MAX_PRICE;
+                } else if (costoN >= MAX_COSTO) {
+                spedizione = "0.00";
+                }
+                } else {
+                if (costoN <= MIN_COSTO) {
+                spedizione = "" + (MIN_PRICE + MIN_W_PRICE);
+                } else if (costoN > MIN_COSTO && costoN <= MED_COSTO) {
+                spedizione = "" + (MED_PRICE + MED_W_PRICE);
+                } else if (costoN > MED_COSTO && costoN < MAX_COSTO) {
+                spedizione = "" + (MAX_PRICE + MAX_W_PRICE);
+                } else if (costoN >= MAX_COSTO) {
+                spedizione = String.format("%.2f", MAX_W_PRICE).replace(",", ".");
+                }
+                }*/
+                
+                if (productdao.getFreshProductsOfCart(request) == null || productdao.getFreshProductsOfCart(request).isEmpty()) {
+                    if (pesoTot <= MIN_PESO) {
+                        spedizione = "" + MIN_PRICE;
+                    } else if (pesoTot > MIN_PESO && pesoTot <= MED_PESO) {
+                        spedizione = "" + MED_PRICE;
+                    } else if (pesoTot > MED_PESO && pesoTot < MAX_PESO) {
+                        spedizione = "" + MAX_PRICE;
+                    } else if (pesoTot >= MAX_PESO) {
+                        spedizione = "0.00";
                     }
-
-                } catch (ParseException ex) {
-                    Logger.getLogger(JDBCPagamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } else {
+                    if (pesoTot <= MIN_PESO) {
+                        spedizione = "" + (MIN_PRICE + MIN_W_PRICE);
+                    } else if (pesoTot > MIN_PESO && pesoTot <= MED_PESO) {
+                        spedizione = "" + (MED_PRICE + MED_W_PRICE);
+                    } else if (pesoTot > MED_PESO && pesoTot < MAX_PESO) {
+                        spedizione = "" + (MAX_PRICE + MAX_W_PRICE);
+                    } else if (pesoTot >= MAX_PESO) {
+                        spedizione = String.format("%.2f", MAX_W_PRICE).replace(",", ".");
+                    }
                 }
             } else {
                 spedizione = "0.00";
             }
-            return spedizione;
+            return String.format("%.2f", Double.parseDouble(spedizione)).replace(",", ".");
         }
     }
 

@@ -28,7 +28,10 @@ import static varie.Costanti.MED_W_PRICE;
 import static varie.Costanti.MIN_W_PRICE;
 import static varie.Costanti.MIN_COSTO;
 import static varie.Costanti.MAX_COSTO;
+import static varie.Costanti.MAX_PESO;
 import static varie.Costanti.MED_COSTO;
+import static varie.Costanti.MED_PESO;
+import static varie.Costanti.MIN_PESO;
 
 /**
  * JDBCDAO Per i metodi relativi ai Prodotti dell'ecommerce
@@ -97,6 +100,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                     prodotti.add(p);
                 }
 
@@ -134,6 +138,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                     prodotti.add(p);
                 }
 
@@ -171,6 +176,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                     prodotti.add(p);
                 }
 
@@ -218,6 +224,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                     prodotti.add(p);
                 }
 
@@ -254,6 +261,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                 }
                 return p;
             }
@@ -309,6 +317,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                             p.setCosto(rs.getFloat("costo"));
                             p.setDisponibile(rs.getBoolean("disponibile"));
                             p.setFresco(rs.getBoolean("fresco"));
+                            p.setPeso(rs.getDouble("peso"));
                             prodotti.add(p);
                         }
                     }
@@ -524,7 +533,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                             ArrayList<Variante> key = entry.getKey();
                             Integer value = entry.getValue();
                             varTot = key.stream().map((v) -> v.getSupplement()).reduce(varTot, (accumulator, _item) -> accumulator + _item);
-                            totale += (df.parse(p.getCosto()).doubleValue() + varTot) * value;
+                            totale += varTot * value;
                         }
                     } else {
                         totale += (df.parse(p.getCosto()).doubleValue() * p.getQuantita());
@@ -536,6 +545,46 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
         }
         String totaleS = String.format("%.2f", totale).replace(",", ".");
         return totaleS;
+    }
+
+    /**
+     * Metodo per calcolare il Peso totale del carrello.<br>
+     * Questo metodo serve per capire quanto pesano i prodotti salvati nel
+     * carrello considerando le quantità.<br> Viene usato per le varie
+     * visualizzazioni e per il calcolo del costo della spedizione.
+     *
+     * @param request E' un httpRequest da passare ad altri metodi richiamati.
+     * @return Ritorna un double uguale al peso del carrello.
+     * @throws database.exceptions.DAOException
+     */
+    @Override
+    public double getTotalWeightOfCart(HttpServletRequest request) throws DAOException {
+        checkCON();
+
+        ArrayList<Prodotto> prodotti = getAllProductsOfCart(request);
+        LinkedHashMap<ArrayList<Variante>, Integer> varianti;
+        DecimalFormat df = new DecimalFormat("0.00");
+        df.setMaximumFractionDigits(2);
+        double totale = 0.00, varTot;
+
+        if (prodotti != null) {
+            for (Prodotto p : prodotti) {
+                varianti = getCartProductVariant(request, p.getId());
+
+                if (!varianti.isEmpty()) {
+                    for (Map.Entry<ArrayList<Variante>, Integer> entry : varianti.entrySet()) {
+                        varTot = 0.00;
+                        ArrayList<Variante> key = entry.getKey();
+                        Integer value = entry.getValue();
+                        varTot = key.stream().map((v) -> v.getPesoMaggiore()).reduce(varTot, (accumulator, _item) -> accumulator + _item);
+                        totale += varTot * value;
+                    }
+                } else {
+                    totale += (p.getPeso() * p.getQuantita());
+                }
+            }
+        }
+        return totale;
     }
 
     /**
@@ -868,6 +917,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                         p.setCosto(rs.getFloat("costo"));
                         p.setDisponibile(rs.getBoolean("disponibile"));
                         p.setFresco(rs.getBoolean("fresco"));
+                        p.setPeso(rs.getDouble("peso"));
                         prodotti.add(p);
                     }
                 }
@@ -888,7 +938,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
      *
      * @param request
      * @return Ritorna la stringa uguale al costo dei vari box da dover
-     * utilizzare in base al costo totale con due cifre decimali.
+     * utilizzare in base al peso totale con due cifre decimali.
      * @throws DAOException
      */
     @Override
@@ -903,15 +953,15 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
 
         if (!prodottiF.isEmpty()) {
 
-            totale = Double.parseDouble(getTotalOfCart(request));
+            totale = getTotalWeightOfCart(request);
 
-            if (totale > 0 && totale < MIN_COSTO) {
+            if (totale > 0 && totale < MIN_PESO) {
                 tot = MIN_W_PRICE;
-            } else if (totale >= MIN_COSTO && totale <= MED_COSTO) {
+            } else if (totale >= MIN_PESO && totale <= MED_PESO) {
                 tot = MED_W_PRICE;
-            } else if (totale > MED_COSTO && totale < MAX_COSTO) {
+            } else if (totale > MED_PESO && totale < MAX_PESO) {
                 tot = MED_W_PRICE;
-            } else if (totale >= MAX_COSTO) {
+            } else if (totale >= MAX_PESO) {
                 tot = MAX_W_PRICE;
             }
 
@@ -1030,6 +1080,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     v.setVariant(rs.getString("variant"));
                     v.setVariantName(rs.getString("variantName"));
                     v.setSupplement(rs.getDouble("supplement"));
+                    v.setPesoMaggiore(rs.getDouble("pesoMaggiore"));
 
                     if (names == null || names.isEmpty()) {
                         names = new ArrayList<>();
@@ -1087,6 +1138,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     v.setVariant(rs.getString("variant"));
                     v.setVariantName(rs.getString("variantName"));
                     v.setSupplement(rs.getDouble("supplement"));
+                    v.setPesoMaggiore(rs.getDouble("pesoMaggiore"));
                 }
                 return v;
             }
@@ -1123,6 +1175,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     v.setVariant(rs.getString("variant"));
                     v.setVariantName(rs.getString("variantName"));
                     v.setSupplement(rs.getDouble("supplement"));
+                    v.setPesoMaggiore(rs.getDouble("pesoMaggiore"));
                     varianti.add(v);
                 }
                 if (varianti.isEmpty()) {
@@ -1149,59 +1202,64 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
     public LinkedHashMap<ArrayList<Variante>, Integer> getCartVariant(HttpServletRequest request) throws DAOException {
         checkCON();
 
-        ArrayList<Variante> varianti;
-        LinkedHashMap<ArrayList<Variante>, Integer> variants = new LinkedHashMap<>();;
-        Variante v;
-        Prodotto p;
-        Cookie[] cookies = request.getCookies();
-        String arrayString = null;
-        String[] blocchi = null;
-        String[] VarQuan;
+        try {
+            ArrayList<Variante> varianti;
+            LinkedHashMap<ArrayList<Variante>, Integer> variants = new LinkedHashMap<>();;
+            Variante v;
+            Prodotto p;
+            Cookie[] cookies = request.getCookies();
+            String arrayString = null;
+            String[] blocchi = null;
+            String[] VarQuan;
 
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                if (c.getName().equals("varianti")) {
-                    arrayString = c.getValue();
+            if (cookies != null) {
+                for (Cookie c : cookies) {
+                    if (c.getName().equals("varianti")) {
+                        arrayString = c.getValue();
+                    }
                 }
             }
-        }
-        if (arrayString != null) {
-            blocchi = arrayString.split(":");
-        }
+            if (arrayString != null) {
+                blocchi = arrayString.split(":");
+            }
 
-        if (blocchi != null) {
-            for (String blocchi1 : blocchi) {
-                if (blocchi1 != null && !blocchi1.equals("")) {
-                    varianti = new ArrayList<>();
-                    VarQuan = blocchi1.split("\\*");
-                    String vars = VarQuan[0];
-                    int q = 1;
-                    if (VarQuan.length == 2) {
-                        q = Integer.parseInt(VarQuan[1]);
-                    }
-                    String[] var = vars.split("_");
-                    for (String s : var) {
-                        if (!s.equals("")) {
-                            v = getVariant(Integer.parseInt(s));
-                            if (v != null) {
-                                p = getProduct(v.getId_prod());
-                                if (p != null) {
-                                    if (p.isDisponibile()) {
-                                        varianti.add(v);
+            if (blocchi != null) {
+                for (String blocchi1 : blocchi) {
+                    if (blocchi1 != null && !blocchi1.equals("")) {
+                        varianti = new ArrayList<>();
+                        VarQuan = blocchi1.split("\\*");
+                        String vars = VarQuan[0];
+                        int q = 1;
+                        if (VarQuan.length == 2) {
+                            q = Integer.parseInt(VarQuan[1]);
+                        }
+                        String[] var = vars.split("_");
+                        if (var != null) {
+                            for (String s : var) {
+                                if (!s.equals("")) {
+                                    v = getVariant(Integer.parseInt(s));
+                                    if (v != null) {
+                                        p = getProduct(v.getId_prod());
+                                        if (p != null) {
+                                            if (p.isDisponibile()) {
+                                                varianti.add(v);
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-
+                        variants.put(varianti, q);
                     }
-                    variants.put(varianti, q);
                 }
             }
-        }
 
-        if (!variants.isEmpty()) {
-            return variants;
-        } else {
+            if (!variants.isEmpty()) {
+                return variants;
+            } else {
+                return null;
+            }
+        } catch (DAOException | NumberFormatException e) {
             return null;
         }
     }
@@ -1268,6 +1326,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                     prodotti.add(p);
                 }
 
@@ -1297,6 +1356,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setCosto(rs.getFloat("costo"));
                     p.setDisponibile(rs.getBoolean("disponibile"));
                     p.setFresco(rs.getBoolean("fresco"));
+                    p.setPeso(rs.getDouble("peso"));
                 }
                 return p;
             }
@@ -1304,5 +1364,26 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
             //throw new DAOException("Impossibile restituire il prodotto. (JDBCProductDAO, getProduct)", ex);
             return null;
         }
+    }
+
+    @Override
+    public double getWeightOfVariantCombination(ArrayList<Variante> blocco) throws DAOException {
+        double peso = 0;
+        peso = blocco.stream().map((v) -> v.getPesoMaggiore()).reduce(peso, (accumulator, _item) -> accumulator + _item);
+        return peso;
+    }
+
+    @Override
+    public double getCostOfVariantCombination(ArrayList<ArrayList<Variante>> blocco) throws DAOException {
+        double costo = 0;
+        costo = blocco.stream().map((Av) -> Av.get(0).getSupplement()).reduce(costo, (accumulator, _item) -> accumulator + _item);
+        return costo;
+    }
+    
+    @Override
+    public double getWeightOfVariantCombinationFull(ArrayList<ArrayList<Variante>> blocco) throws DAOException {
+        double peso = 0;
+        peso = blocco.stream().map((Av) -> Av.get(0).getPesoMaggiore()).reduce(peso, (accumulator, _item) -> accumulator + _item);
+        return peso;
     }
 }

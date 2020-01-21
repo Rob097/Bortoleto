@@ -271,14 +271,14 @@
                                             <div class="row">
                                                 <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
                                                     <div class="col-lg-4 col-md-6">
-                                                        <a href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
+                                                        <a rel="nofollow" href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
                                                             <img style="max-width: 140px; margin: 10px; border-radius: 5px;" src="/${pr.immagine}" />
                                                             <p style="font-family: 'Montserrat', sans-serif;">${pr.nome}</p>
                                                         </a>
                                                     </div>
                                                 </c:forEach>
                                                 <div class="col-lg-4 col-md-6">
-                                                    <a href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
+                                                    <a rel="nofollow" href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
                                                         <i class="fas fa-arrow-right" style="color: black; font-size: 140px;"></i>
                                                         <p style="font-family: 'Montserrat', sans-serif;">Vai alla categoria</p>
                                                     </a>
@@ -295,14 +295,14 @@
                                             <div class="row">
                                                 <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
                                                     <div class="col-lg-4 col-md-6">
-                                                        <a href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
+                                                        <a rel="nofollow" href="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">
                                                             <img style="max-width: 140px; margin: 10px; border-radius: 5px;" src="/${pr.immagine}" />
                                                             <p style="font-family: 'Montserrat', sans-serif;">${pr.nome}</p>
                                                         </a>
                                                     </div>
                                                 </c:forEach>
                                                 <div class="col-lg-4 col-md-6">
-                                                    <a href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
+                                                    <a rel="nofollow" href="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />">
                                                         <i class="fas fa-arrow-right" style="color: black; font-size: 140px;"></i>
                                                         <p style="font-family: 'Montserrat', sans-serif;">Vai alla categoria</p>
                                                     </a>
