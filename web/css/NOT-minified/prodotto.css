@@ -292,8 +292,10 @@
     border: none;
     color: #fff;
 }
-.pro__dtl__btn li.buy__now__btn a {
-    color: #4b4b4b;
+.pro__dtl__btn li.buy__now__btn a {    
+    color: #fff;
+    background: #b4505a;
+    border: none;
     font-size: 14px;
     text-transform: uppercase;
     width: 250px;
@@ -301,9 +303,9 @@
     font-weight: bold;
 }
 .pro__dtl__btn li.buy__now__btn a:hover {
-    color: #fff;
-    background: #b4505a;
-    border: none;
+    color: #4b4b4b;    
+    background: white;
+    border: 1px solid #d5d5d5;
 }
 .pro__social__share {
     align-items: center;
