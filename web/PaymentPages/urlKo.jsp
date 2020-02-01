@@ -28,8 +28,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/Bortoleto/css/font.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar.css">
+        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
         <!-- fine bootstrap include -->
         <style>
             footer{
@@ -48,7 +48,7 @@
             <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
                 <img width="90vh" src="https://www.4shared.com/img/Eqhxxzi7fi/s25/166e3520be8/logo2" alt="Logo">
             </a>
-            <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+            <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
             <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
                 <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
             </a>
@@ -120,7 +120,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="/Bortoleto/js/mdb.min.js"></script>   
-        <script src="/Bortoleto/js/nav.js"></script> 
+        <script src="/Bortoleto/js/nav-min.js"></script> 
         <script>
             /* footer */
             $(function () {

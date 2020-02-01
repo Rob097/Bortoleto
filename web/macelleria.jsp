@@ -28,7 +28,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Macelleria Dellantonio 'l Bortoleto" />
         <meta property="og:description"   content="Acquista online i prodotti artigianali della Val di Fiemme e Val di Fassa Trentino. Carne, salumi, formaggi e prodotti tipici" />
-        <meta property="og:image"         content="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Macelleria"/>
+        <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Macelleria"/>
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
         <meta property="fb:app_id"         content="320307085338651" />
 
@@ -55,7 +55,10 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <link rel="stylesheet" href="css/macelleriaCSS-min.css">
         <link rel="stylesheet" href="css/navbar-min.css">
 
-        <style>            
+        <style> 
+            #eapps-instagram-feed-1 {
+                width: auto !important;
+            }
         </style>
         <script type="text/javascript">
             var _iub = _iub || [];
@@ -68,7 +71,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
             "@context" : "http://schema.org",
             "@type" : "LocalBusiness",
             "name" : "'L Bortoleto Macelleria Dellantonio",
-            "image" : "https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400",
+            "image" : "/Bortoleto/img/logo2.png",
             "telephone" : "0462501231",
             "email" : "info@macelleriadellantonio.it",
             "address" : {
@@ -86,7 +89,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
             }
             },
             "url" : "https://macelleriadellantonio.it/Bortoleto/La-Macelleria",
-            "logo": "https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400",
+            "logo": "/Bortoleto/img/logo2.png",
             "review" : {
             "@type" : "Review",
             "author" : {
@@ -170,9 +173,9 @@ ${consoledao.incrementViews("macelleria", request, 0)}
             <i class="fa fa-bars"></i>
         </button>
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
-            <img width="90vh" src="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Logo">
+            <img width="90vh" src="/Bortoleto/img/logo2.png" alt="Logo">
         </a>
-        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
             <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
         </a>

@@ -46,7 +46,7 @@
             <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
                 <img width="90vh" src="https://www.4shared.com/img/Eqhxxzi7fi/s25/166e3520be8/logo2" alt="Logo">
             </a>
-            <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+            <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
             <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
                 <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
             </a>

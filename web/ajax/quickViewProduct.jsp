@@ -29,7 +29,7 @@
                 <div class="modal-product">
                     <!-- Start product images -->
                     <div id="prodotto-immagine" class="product-images mb-5" style="width: fit-content;">
-                        <div class="main-image images" style="width: fit-content;">
+                        <div class="main-image images" style="width: fit-content;margin: auto;">
                             <img style="border-radius: 5px; max-height: 600px;" alt="${prodotto.nome}" src="/${prodotto.immagine}">
                         </div>
                         <div class="mt-5">

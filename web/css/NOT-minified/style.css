@@ -1142,3 +1142,13 @@ SEARCH
 #fluidModalBottomDangerDemo{
     z-index: 1071;
 }
+.border-footer{
+    border-right: solid 1px rgba(20, 20, 20, 1);
+}
+
+@media(max-width: 991px){
+    .border-footer{
+        border-right: none;
+        margin-bottom: 4rem;
+    }
+}

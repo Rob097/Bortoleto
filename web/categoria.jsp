@@ -154,9 +154,9 @@
             <i class="fa fa-bars"></i>
         </button>
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
-            <img width="90vh" src="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Logo">
+            <img width="90vh" src="/Bortoleto/img/logo2.png" alt="Logo">
         </a>
-        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a id='fav-modal-trigger' data-toggle="modal" data-target="#fluidModalBottomDangerDemo" class="menu-cart-button hs-cart" style='right: 50px !important;'>
             <i style="color: red !important;" class="fas fa-heart nav-ico"></i>
             <div class="count-bg nav-counter-div">

@@ -34,7 +34,7 @@ ${consoledao.incrementViews("idee", request, 0)}
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Le idee de 'l Bortoleto" />
         <meta property="og:description"   content="Scopri sempre interessanti consigli e idee su come preparare i prodotti de 'l Bortoleto" />
-        <meta property="og:image"         content="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" />
+        <meta property="og:image"         content="/Bortoleto/img/logo2.png" />
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
@@ -150,9 +150,9 @@ ${consoledao.incrementViews("idee", request, 0)}
             <i class="fa fa-bars"></i>
         </button>
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
-            <img width="90vh" src="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Logo">
+            <img width="90vh" src="/Bortoleto/img/logo2.png" alt="Logo">
         </a>
-        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
             <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
         </a>

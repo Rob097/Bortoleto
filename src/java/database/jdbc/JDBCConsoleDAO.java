@@ -30,8 +30,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import static tools.EncryptDecryptString.encrypt;
+import static varie.Costanti.ENCRYPT_PASS;
+import static varie.Costanti.ROB_PASS;
 
 /**
  *

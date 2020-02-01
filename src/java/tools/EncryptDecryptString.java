@@ -17,6 +17,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import static varie.Costanti.ENCRYPT_PASS;
+import static varie.Costanti.ENCRYPT_USER;
 
 /**
  *
@@ -24,10 +26,8 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class EncryptDecryptString {
     
-    public static final String USER = "user";
-    public static final String PASS = "thepassword";
     public static final String ATT_NAME = "LOGGED";
-    private static final String stringa = "ROB" + PASS + "-" + USER;
+    private static final String stringa = "ROB" + ENCRYPT_PASS + "-" + ENCRYPT_USER;
     private static final String encryptionKey = stringa.substring(0, 16);
     private static final String characterEncoding = "UTF-8";
     private static final String cipherTransformation = "AES/CBC/PKCS5PADDING";

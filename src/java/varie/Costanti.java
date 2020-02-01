@@ -46,6 +46,8 @@ public class Costanti {
     public static final String ROB_PASS = "jwjdxemvcgvppvgp";
     public static final String MAC_MAIL = "macelleriabortoleto@gmail.com";
     public static final String MAC_PASS = "zwvbnhynldgwqugc";
+    public static final String ENCRYPT_USER = "info@macelleriadellantonio.it";
+    public static final String ENCRYPT_PASS = "Bortoleto1";
     
     public static final String SPACES_COOKIE = "///-_--_";
     

@@ -37,7 +37,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Bottega online - Prodotti Artigianali Trentini" />
         <meta property="og:description"   content="Acquista online i prodotti della Macelleria Dellantonio 'l Bortoleto. Salumi e formaggi artigianali della Val di Fiemme, Trentino Alto Adige" />
-        <meta property="og:image"         content="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Salumi online"/>
+        <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Salumi online"/>
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
         <meta property="fb:app_id"         content="320307085338651" />
 
@@ -134,9 +134,9 @@ ${consoledao.incrementViews("bottega", request, 0)}
             <i class="fa fa-bars"></i>
         </button>
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
-            <img width="90vh" src="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Logo">
+            <img width="90vh" src="/Bortoleto/img/logo2.png" alt="Logo">
         </a>
-        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a id='fav-modal-trigger' data-toggle="modal" data-target="#fluidModalBottomDangerDemo" class="menu-cart-button hs-cart" style='right: 50px !important;'>
             <i style="color: red !important;" class="fas fa-heart nav-ico"></i>
             <div class="count-bg nav-counter-div">

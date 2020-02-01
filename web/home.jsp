@@ -7,6 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="request" value="<%=request%>"/>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate var="year" value="${now}" pattern="yyyy" />
 ${consoledao.incrementViews("home", request, 0)}
 <!DOCTYPE html>
 <html lang="en" id="html">
@@ -29,7 +32,7 @@ ${consoledao.incrementViews("home", request, 0)}
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Macelleria Dellantonio | Ristorante 'l Bortoleto" />
         <meta property="og:description"   content="Macelleria e Ristorante Dellantonio 'l Bortoleto. Prodotti della Val di Fiemme e Val di Fassa Trentino. Vieni a Trovarci!" />
-        <meta property="og:image"         content="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Ristorante Macelleria"/>
+        <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Ristorante Macelleria"/>
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
 
         <!-- Microdati per Facebook Pixel -->
@@ -106,7 +109,7 @@ ${consoledao.incrementViews("home", request, 0)}
             "@context" : "http://schema.org",
             "@type" : "LocalBusiness",
             "name" : "'L Bortoleto",
-            "image" : "https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400",
+            "image" : "/Bortoleto/img/logo2.png",
             "telephone" : "0462501231",
             "email" : "info@macelleriadellantonio.it",
             "address" : {
@@ -122,7 +125,7 @@ ${consoledao.incrementViews("home", request, 0)}
             "@context" : "http://schema.org",
             "@type" : "LocalBusiness",
             "name" : "'L Bortoleto",
-            "image" : "https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400",
+            "image" : "/Bortoleto/img/logo2.png",
             "telephone" : "0462500261",
             "email" : "ristorantebortoleto@gmail.com",
             "address" : {
@@ -136,6 +139,11 @@ ${consoledao.incrementViews("home", request, 0)}
             "url" : "https://macelleriadellantonio.it/Bortoleto/"
             } ]
         </script>
+
+        <!-- MailChimp -->
+        <script id="mcjs">!function (c, h, i, m, p) {
+                m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)
+            }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/fc0d39903de646248e86c6e77/0858107de1b109770a0de8df4.js");</script>
 
         <!-- Facebook Pixel Code -->
         <script>
@@ -207,9 +215,9 @@ ${consoledao.incrementViews("home", request, 0)}
             <i class="fa fa-bars"></i>
         </button>
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
-            <img width="90vh" src="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400" alt="Logo">
+            <img width="90vh" src="/Bortoleto/img/logo2.png" alt="Logo">
         </a>
-        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
             <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
         </a>
@@ -262,7 +270,7 @@ ${consoledao.incrementViews("home", request, 0)}
     </nav>
 
     <section id="LBortoleto" class="image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/Bortoleto/img/carne-bortoleto.jpg">
-        <div class="effetto1" style="height: 100%;">
+        <div class="effetto1" style="height: 100%;background-color: rgba(0, 0, 0, 0.3);position: relative;">
             <div class="row first">
                 <div class="col-12">
                     <h1 style='display: none;'>'L Bortoleto</h1>
@@ -281,6 +289,7 @@ ${consoledao.incrementViews("home", request, 0)}
         </div>
     </section>
     <section id='chi-siamo'>
+        <div class="et_pb_top_inside_divider ui-sortable-handle divider-custom divider5"></div>
         <div class="container">
             <h4 class="sottotitoli" style="text-align: right;">nel cuore delle dolomiti</h4>       
             <h3 class="styled" style="text-align: right; margin: 0;">Chi siamo</h3>
@@ -355,7 +364,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <div class="colonna-differenza text-center">
                         <i class="fas fa-hourglass-start exp-ico"></i><br>
                         <p>
-                            <span class='numscroller exp-counter' data-min='0' data-max='119' data-delay='4' data-increment='1'>119</span><br>
+                            <span class='numscroller exp-counter' data-min='0' data-max='${year - 1901}' data-delay='4' data-increment='1'>${year - 1901}</span><br>
                             <span class="exp-text">Anni di servizio</span>
                         </p>
                     </div>
@@ -430,7 +439,7 @@ ${consoledao.incrementViews("home", request, 0)}
         <div class="container">
             <div class="row white-text"style="margin-bottom: 6rem;">
                 <div class="col-lg-8" style="margin-bottom: 2rem; text-align: center;">
-                    <img src="https://lh3.googleusercontent.com/1nJwqw8n93uSSVkiOcuosGxA84pLvNAH5WDakvcRHohk2ccrL0SmxBlHB87WOxZXcWkD2ToK0YmNzspklIqHjZI8XQcVFfiDhpawN03k_rwm2pARMbFxIFSQiI3fvlC529-UVTMNbg=w2400"  alt="Bottega Online"/>
+                    <img src="/Bortoleto/img/logo2.png"  alt="Bottega Online"/>
                 </div>
                 <div class="col-lg-4 text-center">
                     <h2 class="dif-title mb-5">Bottega Online</h2>
@@ -488,7 +497,7 @@ ${consoledao.incrementViews("home", request, 0)}
 
                 </div>
                 <div class="col-lg-4 text-center">
-                    <h2 class="dif-title mb-5">Idee in cucine</h2>
+                    <h2 class="dif-title mb-5">Idee in Cucina</h2>
                     <p class="servizi-text">Se non sai come poter usare i prodotti che ti offriamo o semplicemente hai voglia di provare <strong>qualcosa di nuovo</strong>, dai uno sguardo alla nostra sezione sulle <strong>idee in cucina</strong>.
                         Hai qualche idea interessante? Faccela sapere, saremo lieti di renderti partecipe!
                     </p>
@@ -632,7 +641,7 @@ ${consoledao.incrementViews("home", request, 0)}
                                 <p class="articolo-testo">${lastBlog.descrizione}</p>
                             </div>                        
                         </div>
-                        <div style="width: 100%; text-align: center; z-index: 1;">
+                        <div class="articolo-bottone">
                             <a href="<c:url value="/articolo.jsp?id=${lastBlog.id}&nome=${lastBlog.nome.replace(' ', '-')}"/>" target="_blank" rel="noopener" class="btn btnAcquista" style="padding: 12px 20px;">leggi di più</a>
                         </div>
                     </c:if>
@@ -648,7 +657,7 @@ ${consoledao.incrementViews("home", request, 0)}
                                 <p class="articolo-testo">${lastIdea.descrizione}</p>
                             </div>
                         </div>
-                        <div  class="articolo-bottone">
+                        <div class="articolo-bottone">
                             <a href="<c:url value="/idea.jsp?id=${lastIdea.id}&nome=${lastIdea.nome.replace(' ', '-')}"/>" target="_blank" rel="noopener" class="btn btnAcquista" style="padding: 12px 20px;">leggi di più</a>
                         </div>
                     </c:if>
@@ -869,7 +878,7 @@ ${consoledao.incrementViews("home", request, 0)}
             $("#footer").load("ajax/footer.html");
         });
     </script>
-    
+
     <!-- Se è un celllulare touchscreen apple che usa safari disabilita l'immagine di sfondo (non la supportano) -->
     <script type="text/javascript">
         var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
@@ -880,7 +889,7 @@ ${consoledao.incrementViews("home", request, 0)}
             }
         }
     </script>
-    
+
     <!-- Twitter universal website tag code -->
     <script>
         !function (e, t, n, s, u, a) {

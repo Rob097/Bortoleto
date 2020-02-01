@@ -1,43 +1,38 @@
-<%-- 
-    Document   : 404
-    Created on : 29-dic-2019, 12.42.19
-    Author     : della
---%>
-
-
 <!-- Per impedire alla maggior parte dei motori di ricerca di indicizzare la pagina -->
 <meta name="robots" content="noindex">
 <!-- Per impedire solo a Google di indicizzare la pagina -->
 <meta name="googlebot" content="noindex">
 
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% response.setHeader("Content-Encoding", "UTF-8");%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
-        <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-        <title>404 Pagina non trovata</title>
+        <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c9f39799b272f00119ab911&product=social-ab' async='async'></script>
+        <link rel="icon" href="https://lh3.googleusercontent.com/VG0xqWynqDpNvACWMyJogjD33onUwKccF6u3Fchrn1f_uIthdtIA274HKBdVZUnnOHyWTYqs2WSthS0oc5kWdoh3aFo3enZshECnIga2DqwVFKUmpeg2cPunqqDd2ztnW3dR9Yg8GfLo0t_Agnj-0I6_GorvaZmi78QHqgWra1JOJk_emcWTLyCjl6Nrixlz6JM1CXcVvmQb3zN05B-hLszQ86_CnQwzjxxVZPjqztikX7f2518X_wGyJYISAzYGtUYK6dhoqnCdku1ZNfNkZzRlOUbN6OuLp5PSgVk2FakHOOEHCNnBNf_VOVOZsNYRbzpAga7ixc1o3fnO3MJHLYIr5t06cAi9iPAdZjq-cCDUaepyUdYNZNnTGhJr_aUdK_Lagrq8qBdH8dRiMYSluHT-7zK4pKenXLxJDaoygPyO8cFk_rLuMbytcYEi9CfhI4inrl7WxFbst0b288P-6T5qVpTHs5jykMgXCw0cGSoSvee-wq_QZSMTVW6CncvC82_qpfLgZFZ6gWljq7BNNvVWn1a0wiS9Ko3pGG_slaRTNJfX7LnLqIIBoyxdZ946ym-a17TYLGrbzb_9ftNP-QxF9m76iOPd-_xm0h3dF4wCHIdSbZHqKhzjCPHF_UN7Q6wWjcWnYyUjIFVTA5GnqsYF5aXJ7XQ=w371-h237-no" sizes="16x16" type="image/png">
+        <title>Disiscritto</title>
+        <meta name="Description" content="Attenzione! Il tuo ordine è stato ANNULLATO">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#31353d">
 
         <!-- bootstrap include -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
-        <!--include css -->
-        <link rel="stylesheet" href="/Bortoleto/css/style-min.css">
         <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/ErrorPages/ErrorPages_CSS/style.css">
         <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
+        <!-- fine bootstrap include -->
+        <style>
+            footer{
+                background-color:#222222;
+                color:white;
+                font-family: 'Caveat';
+            }
+        </style>
     </head>
-
-    <body class="foo white-text" id="topPage" data-spy="scroll" data-target=".sidebar" style='background-color: #ffce92;'>
-        <a class="rightGold" href="#topPage" id="myBtn45" title="Torna in cima"><i class="fas fa-arrow-up"></i></a>
-
+    <body class="text-center" style="margin: auto auto;">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -98,25 +93,32 @@
             </div>
         </nav>
 
-        <div id="notfound">
-
-            <div class="notfound">
-                <div class="notfound-404">
-                    <h1>404</h1>
-                </div>
-                <h2>Ci dispiace, la pagina richiesta non è stata trovata</h2>
-                <p>La pagina che hai cercato non esiste all'interno del nostro sito</p>
-                <a href="<c:url value="/#"/>">Torna alla Homepage</a><br><br>
-                <a href="<c:url value="/bottega.jsp"/>">Torna alla Bottega Online</a>
-            </div>
+        <div class="jumbotron" style="margin: auto auto; padding-top: 10rem !important;">
+            <h1 class="display-3">Non sei più iscritto</h1>
+            <p class="lead"><strong>Sembra che tu abbia annullato l'iscrizione alla nostra newsletter</strong></p>
+            <hr>
+            <p>
+                Se hai qualche problema non esitare a <a href="<c:url value="/#contattaci"/>">contattarci</a>
+            </p>
+            <p class="lead">
+                <a class="btn btn-primary btn-sm" href="<c:url value="/bottega.jsp"/>" role="button">Torna al negozio</a>
+            </p>
         </div>
+        <footer id="footer" class="container-fluid text-center">
 
+        </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-        <script src="/Bortoleto/js/main.js" async></script>    
-        <script src="/Bortoleto/js/nav.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="/Bortoleto/js/mdb.min.js"></script>   
+        <script src="/Bortoleto/js/nav-min.js"></script> 
+        <script>
+            /* footer */
+            $(function () {
+                $("#footer").load("/Bortoleto/ajax/footer.html");
+            });
+        </script>
     </body>
-
 </html>

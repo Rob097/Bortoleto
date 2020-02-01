@@ -109,6 +109,9 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             #eapps-instagram-feed-1 {
                 width: auto !important;
             }
+            .eapps-widget-toolbar-panel-share{
+                position: relative !important;
+            }
         </style>
         <script type="text/javascript">
             var _iub = _iub || [];
@@ -211,7 +214,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
             <img width="90vh" src="https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400" alt="Logo">
         </a>
-        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+        <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
             <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
         </a>

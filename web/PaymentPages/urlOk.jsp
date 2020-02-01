@@ -31,8 +31,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/Bortoleto/css/font.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar.css">
+        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
         <!-- fine bootstrap include -->
         <style>
             footer{
@@ -41,6 +41,36 @@
                 font-family: 'Caveat';
             }
         </style>
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function (f, b, e, v, n, t, s)
+            {
+                if (f.fbq)
+                    return;
+                n = f.fbq = function () {
+                    n.callMethod ?
+                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq)
+                    f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '467659847403449');
+            fbq('track', 'PageView');
+        </script>
+        <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=467659847403449&ev=PageView&noscript=1" alt="Facebook"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
     </head>
     <body class="text-center" style="margin: auto auto;">
 
@@ -52,7 +82,7 @@
             <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
                 <img width="90vh" src="https://www.4shared.com/img/Eqhxxzi7fi/s25/166e3520be8/logo2" alt="Logo">
             </a>
-            <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="<c:url value="/bottega.jsp"/>">'L Bortoleto</a>
+            <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
             <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
                 <i style="margin-right: 20px; font-size: 30px; vertical-align:middle;" class="fas fa-shopping-cart"></i>
             </a>
@@ -134,12 +164,6 @@
                         response.addCookie(cc);
                         request.getSession().setAttribute("varianti", "");
                     }
-                    /*if (cc.getName().equals("DELI")) {
-                        cc.setValue("");
-                        cc.setMaxAge(0);
-                        cc.setPath(request.getContextPath());
-                        response.addCookie(cc);
-                    }*/
                 }
             }
         %>
