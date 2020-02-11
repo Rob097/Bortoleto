@@ -411,7 +411,7 @@
 #quantitaInput-Quick[type=number]{
     -moz-appearance:textfield;
 }
-h3.styled{
+.styled{
     font-family: "Montserrat", sans-serif;
     font-size: 3rem;
 }

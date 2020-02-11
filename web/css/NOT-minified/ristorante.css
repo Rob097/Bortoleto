@@ -118,7 +118,7 @@ body{
     left: 0;
     text-align: center;
     color: white;
-    font-family: PlayfairDisplay-Bold;
+    font-family: 'Montserrat',sans-serif;
     font-size: 30px;
     letter-spacing: 2px;
     -webkit-transition: all 0.4s;
@@ -172,7 +172,6 @@ svg.n2{
     border-radius: 8px;
 }
 .background2, .background3{
-    background-image: url(https://lh3.googleusercontent.com/ixN4bzXDDBzJpoHGooHd3Ryo5f1FTKoJgQV4Bs-lgGo6_k8zwVq9r3RCuTrSwtZ2eIWzc8ysfoZT398MDcOV0cJYh1vhhA9Yuo42G8Rmy_qTlluZIp68fVjN3IVZoK8HJIPZNX-ngg=w2400);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -26,15 +26,15 @@ ${consoledao.incrementViews("macelleria", request, 0)}
 
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/macelleria.jsp"/>" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Macelleria Dellantonio 'l Bortoleto" />
-        <meta property="og:description"   content="Acquista online i prodotti artigianali della Val di Fiemme e Val di Fassa Trentino. Carne, salumi, formaggi e prodotti tipici" />
+        <meta property="og:title"         content="Macelleria Dellantonio - Predazzo e Campitello | Trentino" />
+        <meta property="og:description"   content="Macelleria Dellantonio Predazzo val di Fiemme e Campitello val di Fassa. Antica macelleria km 0 del Trentino. Scopri la carne e i salumi del Trentino Alto Adige" />
         <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Macelleria"/>
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16"  alt="Macelleria">
-        <title>Macelleria Dellantonio 'l Bortoleto</title>
-        <meta name="Description" content="Acquista online i prodotti artigianali della Val di Fiemme e Val di Fassa Trentino. Carne, salumi, formaggi e prodotti tipici">
+        <title>Macelleria Dellantonio - Predazzo e Campitello | Trentino</title>
+        <meta name="Description" content="Macelleria Dellantonio Predazzo val di Fiemme e Campitello val di Fassa. Antica macelleria km 0 del Trentino. Scopri la carne e i salumi del Trentino Alto Adige">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">
@@ -58,6 +58,23 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <style> 
             #eapps-instagram-feed-1 {
                 width: auto !important;
+            }
+            body{
+                background-image: url("/Bortoleto/img/dolomiti-macelleria.jpg");
+                background-color: transparent !important;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                background-blend-mode: color;
+            }
+            @media (max-width: 991px){
+                body{
+                    background-size: 172vh;
+                }
+            }
+            #content {
+                background-image: -webkit-linear-gradient(315deg,rgba(255, 255, 240, 0.85) 0%,#ffffff);
             }
         </style>
         <script type="text/javascript">
@@ -136,7 +153,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=467659847403449&ev=PageView&noscript=1"/></noscript>
     <!-- End Facebook Pixel Code -->
 </head>
-<body style="background-color: white;" id="topPage">
+<body style="" id="topPage">
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
@@ -185,7 +202,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</div>
                     <div id="" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<c:url value="/#chi-siamo"/>">Chi Siamo</a>
+                        <a class="dropdown-item" href="<c:url value="/#ristorante-macelleria"/>">Chi Siamo</a>
                         <a class="dropdown-item" href="<c:url value="/#qualita-e-professionalita"/>">Qualità e Professionalità</a>
                         <a class="dropdown-item" href="<c:url value="/#i-nostri-servizi"/>">I Nostri Servizi</a>
                         <a class="dropdown-item" href="<c:url value="/#dicono-di-noi"/>">Dicono di Noi</a>
@@ -302,11 +319,39 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <div id="sections" class="container mb-5">                    
             <div class="mt-5 mb-5 text-center">
                 <h2 class="bortoTitle" data-aos="fade-right" data-aos-duration="2000">'L Bortoleto</h2>
-                <h1 class="macTitle" data-aos="fade-right" data-aos-duration="2000">Macelleria Dellantonio</h1>
+                <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">Macelleria</h2>
             </div>
+
+            <div style="text-align: right; margin: 8rem auto 10rem auto;">
+                <h4 class="sottotitoli">Conosciamoci</h4>
+                <h1 class="styled">Macelleria Dellantonio</h1>
+
+                <div class="row mt-5 mb-5">
+                    <div class="col-lg-5" style="width: fit-content; margin: 2rem auto 4rem auto;">
+                        <img style="width: 30rem;" src="/Bortoleto/img/spiedini.jpg" />
+                    </div>
+                    <div class="col-lg-7">
+                        <p class="description">
+                            La <strong>macelleria Dellantonio</strong> di Predazzo è un'<strong>antica macelleria</strong> della val di Fiemme in Trentino. 
+                            Sono infatti più di <strong>110</strong> anni che la macelleria a <strong>Predazzo</strong> e in tutta la valle rappresenta un punto di riferimento 
+                            sia per i residenti sia per i tantissimi turisti che, ogni anno, la scelgono per gustare la carne e i <strong>salumi del Trentino Alto Adige</strong>.
+                        </p>
+                        <p class="description">La passione nel nostro lavoro ci ha sempre spronato a realizzare prodotti di <em><strong>altissima qualità</strong></em> della tradizione Trentina. 
+                            <br>Con il passare degli anni abbiamo rivoluzionato le nostre sedi e i servizi che offriamo quotidianamente ai nostri clienti. Oltre alla macelleria, i nostri prodotti comprendono anche 
+                            la <strong>salumeria</strong>, infatti è proprio qui che la passione, le materie prime a <strong>km0</strong> e la centenaria esperienza ci permettono di realizzare 
+                            salumi tradizionali del Trentino Alto Adige di altissima qualità. <br />Per questo motivo dal 2020 la nostra <strong>macelleria tipica Trentina</strong> di 
+                            <strong>Campitello</strong> in val di Fassa è stata trasformata per permettere a tutti di capire da vicino il nostro concetto di qualità e di professionalità.
+                        </p>
+                        <p class="description">Noi della macelleria Dellantonio, sia in <strong>val di Fiemme</strong> sia in <strong>val di Fassa</strong>, siamo orgogliosi di offrire un servizio di qualità con materie prime km0.<br />
+                            <a title="Vai alla mappa" href="#raggiungici-macelleria">Vieni a trovarci</a> per scoprire tu stesso la qualità della carne e dei <strong>salumi del Trentino Alto Adige</strong>!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div id="la-nostra-storia" class='row' style="margin-top: 5rem; margin-bottom: 5rem;">
                 <div class='col-lg-8'>
-                    <div id="parallaxN1" class="image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/0TT64b4uvq2cGqYWAg38MjoXHfaIdvg_FE3pbhl3LlvKUZwt1jCdrhqIA1AdJ-UHoFw_DkiMi9PeGv_BrEt8uzxAe-F8Kf9W_YsdwK4rG5XnRxsQJssSoWqHQqFm8cVnQKk3z0oMxg=w2400" style="height: 700px; width: 100%; position: relative; border-radius: 0; background-repeat: no-repeat; background-size: cover; background-position: center center;">
+                    <div id="parallaxN1" class="image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/immagini_sito/storia/1901.JPG" style="height: 700px; width: 100%; position: relative; border-radius: 0; background-repeat: no-repeat; background-size: cover; background-position: center center;">
                         <div class="">
                             <div style="height: 700px;">
                             </div>
@@ -381,7 +426,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <!-- Section: Testimonials v.2 -->
 
         <!-- Section: Contact Us -->
-        <section class="text-center my-5" id="raggiungici-macelleria">
+        <section class="text-center mt-5 pb-5" id="raggiungici-macelleria">
 
             <h2 class="h1-responsive font-weight-bold my-5">Contatti</h2>
             <a style="display: inline-block;" href="mailto:info@macelleriadellantonio.it"><p class='Architects' style='font-size: 1.5rem; width: fit-content; margin: auto auto;'>info@macelleriadellantonio.it</p></a>
@@ -557,7 +602,6 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                 cache: false,
                 success: function (response) {
                     principale = $('#content').html().toString();
-                    $('#content').addClass("container");
                     $('#content').html("");
                     $('#content').html(response);
                     mirrors = $('.parallax-mirror');
@@ -576,7 +620,6 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                 cache: false,
                 success: function (response) {
                     principale = $('#content').html().toString();
-                    $('#content').addClass("container");
                     $('#content').html("");
                     $('#content').html(response);
                     mirrors = $('.parallax-mirror');

@@ -39,6 +39,10 @@ footer{
     font-family: 'Caveat';
 }
 
+b, strong {
+    font-weight: bold;
+}
+
 ::-webkit-scrollbar-button{
     display: none;
     height: 13px;

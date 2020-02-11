@@ -85,6 +85,7 @@ public class SendEmail extends HttpServlet {
 
             switch (per) {
                 case "macelleria":
+                default:
                     try {
                         //Dati email Roberto
                         String to1 = MAC_MAIL;
@@ -146,9 +147,6 @@ public class SendEmail extends HttpServlet {
 
                 case "ristorante":
                     System.out.println("Email per il ristorante");
-                    break;
-                default:
-                    System.out.println("Email in Default");
                     break;
             }
         }

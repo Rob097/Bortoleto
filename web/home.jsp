@@ -30,18 +30,18 @@ ${consoledao.incrementViews("home", request, 0)}
         <!-- OpenGraph metaTags -->
         <meta property="og:url"           content="https://macelleriadellantonio.it/Bortoleto/" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Macelleria Dellantonio | Ristorante 'l Bortoleto" />
-        <meta property="og:description"   content="Macelleria e Ristorante Dellantonio 'l Bortoleto. Prodotti della Val di Fiemme e Val di Fassa Trentino. Vieni a Trovarci!" />
+        <meta property="og:title"         content="Ristorante Macelleria 'L Bortoleto" />
+        <meta property="og:description"   content="Ristorante Macelleria 'L Bortoleto. Qualità e tradizione delle specialità Trentine dal 1901. Predazzo Val di Fiemme (Trentino)." />
         <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Ristorante Macelleria"/>
-        <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
+        <meta property="og:site_name" content="Ristorante Macelleria Dellantonio 'L Bortoleto">
 
         <!-- Microdati per Facebook Pixel -->
         <meta property="fb:app_id"         content="320307085338651" />
 
         <!-- MetaDati per Google e Sito Web-->
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" alt="Macelleria Dellantonio favicon">
-        <title>Macelleria Dellantonio | Ristorante 'l Bortoleto</title>
-        <meta name="Description" content="Macelleria e Ristorante Dellantonio 'l Bortoleto. Prodotti della Val di Fiemme e Val di Fassa Trentino. Vieni a Trovarci!">
+        <title>Ristorante Macelleria 'L Bortoleto</title>
+        <meta name="Description" content="Ristorante Macelleria 'L Bortoleto. Qualità e tradizione delle specialità Trentine dal 1901. Predazzo Val di Fiemme (Trentino).">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">
@@ -227,7 +227,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</div>
                     <div id="" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<c:url value="/#chi-siamo"/>">Chi Siamo</a>
+                        <a class="dropdown-item" href="<c:url value="/#ristorante-macelleria"/>">Chi Siamo</a>
                         <a class="dropdown-item" href="<c:url value="/#qualita-e-professionalita"/>">Qualità e Professionalità</a>
                         <a class="dropdown-item" href="<c:url value="/#i-nostri-servizi"/>">I Nostri Servizi</a>
                         <a class="dropdown-item" href="<c:url value="/#dicono-di-noi"/>">Dicono di Noi</a>
@@ -271,48 +271,52 @@ ${consoledao.incrementViews("home", request, 0)}
 
     <section id="LBortoleto" class="image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/Bortoleto/img/carne-bortoleto.jpg">
         <div class="effetto1" style="height: 100%;background-color: rgba(0, 0, 0, 0.3);position: relative;">
-            <div class="row first">
+            <div class="row first" style='margin-left: unset;'>
                 <div class="col-12">
-                    <h1 style='display: none;'>'L Bortoleto</h1>
-                    <svg id="scrittaLogo" width="100%">
+                    <svg id="scrittaLogo" width='100%'>                    
                     <text y="70%" fill="none" class="scrittalogo">
                     <tspan x="50%" text-anchor="middle">'L Bortoleto</tspan>
-                    </text>
+                    </text>                     
                     </svg>
                 </div>                       
             </div>
             <div class="second">
                 <p class='sottotitolo-sezione-inizio'>Da oltre 110 anni qualità della tradizione trentina.</p>
                 <a href="<c:url value="/bottega.jsp" />" class='btn bottone-sezione-inizio'>BOTTEGA ONLINE</a><br>
-                <a href="#chi-siamo"><i style="color: white; font-size: 30px;" class="fas fa-long-arrow-alt-down"></i></a>
+                <a href="#ristorante-macelleria"><i style="color: white; font-size: 30px;" class="fas fa-long-arrow-alt-down"></i></a>
             </div>
         </div>
     </section>
-    <section id='chi-siamo'>
+    <section id='ristorante-macelleria'>
         <div class="et_pb_top_inside_divider ui-sortable-handle divider-custom divider5"></div>
         <div class="container">
             <h4 class="sottotitoli" style="text-align: right;">nel cuore delle dolomiti</h4>       
-            <h3 class="styled" style="text-align: right; margin: 0;">Chi siamo</h3>
+            <h1 class="styled" style="text-align: right; margin: 0;">Ristorante Macelleria</h1>
             <div class="row">
                 <div class="col-lg-6 mt-5">
                     <div class="rwd-video">
-                        <iframe src="https://www.youtube.com/embed/9-3If8AhVwM?autoplay=0&loop=1&mute=1" allowfullscreen="" frameborder="0" height="315" width="560" title="Video Presentazione">
+                        <iframe src="https://www.youtube.com/embed/9-3If8AhVwM?autoplay=0&loop=1&mute=1" allowfullscreen="" frameborder="0" height="315" width="560" title="Ristorante Macelleria 'l Bortoleto" alt="Ristorante Macelleria 'l Bortoleto">
                         </iframe>
                     </div>
                 </div>
                 <div class="col-lg-6 mt-5">
                     <p class="description">
-                        Le radici della nostra attività, risalenti a più di <i><b>110 anni fa</b></i>, hanno origine a <i><strong>Predazzo</strong></i> in val di Fiemme (Trentino).
-                        La passione nel nostro lavoro ci ha sempre spronato a realizzare prodotti di <i><strong>altissima qualità</strong></i> della tradizione Trentina. 
-                        Con il passare degli anni abbiamo rivoluzionato le nostre sedi e i servizi che offriamo quotidianamente ai nostri clienti. 
-                        Per questo motivo siamo stati e saremo sempre un <i><b>punto di riferimento</b></i> sia per i nostri compaesani, che ogni 
-                        giorno scelgono la qualità  e la professionalità  che riusciamo ad offrire, sia per le persone che ogni anno decidono di 
-                        affidarsi a noi per scoprire i <i><strong>migliori prodotti gastronomici locali</strong></i>, i quali sono realizzati <i><strong>artigianalmente</strong></i>
-                        nei nostri laboratori da Marco e Mario.<br>
-                        Il nostro nuovo ristorante ci ha permesso di allietare i nostri clienti con la migliore carne proveniente direttamente dai <i><strong>pascoli della Val di Fiemme</strong></i>
-                        e lavorata da noi.<br>
-                        In questo sito web potrai facilmente <i><strong>acquistare</strong></i> la maggior parte dei nostri prodotti, <i><strong>scoprire curiosità</strong></i> sulle lavorazioni e sulle materie prime che utiliziamo 
-                        e <i><strong>scoprire nuovi e curiosi modi per consumare i prodotti che acquisti</strong></i>.
+                        Le radici della nostra attività, risalenti a più di <em><strong>110 anni fa</strong></em>, hanno origine a 
+                        <em><strong>Predazzo</strong></em> in <strong>val di Fiemme</strong> (Trentino).<br>
+                        La passione per il nostro lavoro ci ha sempre spronato a realizzare prodotti di altissima qualità e, arrivati alla quinta generazione noi de 'l Bortoleto, 
+                        abbiamo deciso di puntare ancor di più sulle <strong>specialità trentine</strong> allargandoci da macelleria a <strong>ristorante-macelleria</strong> 
+                        nel centro storico di Predazzo.</p>
+                    <p class="description">Con un <strong>ristorante macelleria</strong>, quello che 'l <strong>Bortoleto</strong> vuole offrire è un'esperienza a 360° nelle specialità 
+                        trentine attraverso un percorso che tratta la <strong>qualità nel piatto</strong> partendo dalle <em>materie prime km0</em>, dalla <em>stagionalità</em> 
+                        degli alimenti e dalla <em>cura nelle lavorazioni</em>, da sempre fondamentale per la nostra azienda.<br />Rappresentiamo una delle poche realtà di <strong>
+                            ristorante e macelleria italiana</strong> presenti sul territorio e questo è motivo di orgoglio e di costante impegno per garantire la qualità in ogni momento.
+                    </p>
+                    <p class="description">In questo sito web potrai facilmente 
+                        <a title="Bottega Online" href="https://macelleriadellantonio.it/bottega-online/" target="_blank"><em>acquistare</em></a> 
+                        la maggior parte dei nostri prodotti, <a title="Blog" href="https://macelleriadellantonio.it/Il-Blog/" target="_blank"><em>leggere curiosità</em></a> 
+                        sulle lavorazioni e sulle materie prime che utilizziamo e 
+                        <a title="Idee in Cucina" href="https://macelleriadellantonio.it/Idee-in-Cucina/" target="_blank"><em>scoprire</em></a> 
+                        nuovi e curiosi modi per consumare i prodotti che più ti incuriosiranno.
                     </p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
                         <a href="<c:url value="/bottega.jsp" />" target="_blank" rel="noopener" class="btn btnAcquista">bottega online</a>
@@ -444,7 +448,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 <div class="col-lg-4 text-center">
                     <h2 class="dif-title mb-5">Bottega Online</h2>
                     <p class="servizi-text">Servizio <strong>semplice</strong> e <strong>sicuro</strong> per poter ordinare comodamente da casa tutti i prodotti sia <strong>confezionati</strong> sia <strong>freschi</strong> con imballaggi certificati <strong>KEATCHEN</strong>.
-                        La qualità artigianale Trentina direttamente dalla val di Fiemme a casa tua. In <strong>24 ore</strong>.</p>
+                        La specialità artigianali Trentine direttamente dalla val di Fiemme a casa tua. In <strong>24 ore</strong>.</p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
                         <a href="<c:url value="/bottega.jsp" />" target="_blank" rel="noopener" class="btn btnAcquista" style="padding: 12px 20px;">ordina ora</a>
                     </div>
@@ -455,7 +459,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 <div class="col-lg-4 text-center">
                     <h2 class="dif-title mb-5">La Macelleria</h2>
                     <p class="servizi-text">La passione per il nostro lavoro ci permette, da ormai <strong>5 generazioni</strong>, di garantire la più alta qualità a tutti i nostri clienti con un servizio <em><strong>familiare</strong> </em>e curato.
-                        Un secolo di cura e innovazione portata avanti da una passione comune. <strong><i>Il mangia bene e sano</i></strong>.</p>
+                        Un secolo di cura e innovazione portata avanti da una passione comune. <strong><i>Il mangiar bene e sano</i></strong>.</p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
                         <a href="<c:url value="/macelleria.jsp" />" target="_blank" rel="noopener" class="btn btnDiscover">Scopri di più</a>
                     </div>
@@ -466,12 +470,12 @@ ${consoledao.incrementViews("home", request, 0)}
             </div>
 
             <div class="row white-text" style="margin-bottom: 6rem;">
-                <div style="margin-bottom: 2rem;" class="col-lg-8 servizi-divImage image-liquid image-holder--original parallax-window"  data-parallax="scroll" data-image-src="/Bortoleto/img/sedi/Ristorante/sala2.jpg">
+                <div style="margin-bottom: 2rem;" class="col-lg-8 servizi-divImage image-liquid image-holder--original parallax-window"  data-parallax="scroll" data-image-src="/Bortoleto/img/sedi/Ristorante/Ristorante 'L Bortoleto Predazzo.jpg">
 
                 </div>
                 <div class="col-lg-4 text-center">
                     <h2 class="dif-title mb-5">Il Ristorante</h2>
-                    <p class="servizi-text">Ai piedi delle Dolomiti offriamo un esperienza gastronomica a km 0 in grado di soddisfare i palati più fini. Vieni a trovarci a Predazzo in via Cavour 2 per capire come la qualità nel piatto riesce a fare la differenza.</p>
+                    <p class="servizi-text">Ai piedi delle <strong>Dolomiti</strong> offriamo un esperienza gastronomica a km 0 in grado di soddisfare i palati più fini. <strong>Vieni a trovarci</strong> a Predazzo in via Cavour 2 per capire come la <strong>qualità nel piatto</strong> riesce a fare la differenza.</p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
                         <a href="<c:url value="/ristorante.jsp" />" target="_blank" rel="noopener" class="btn btnDiscover">Scopri di più</a>
                     </div>
@@ -523,7 +527,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 <li>
                     <div class="instagram">
                         <a target="_blank" rel="nofollow" href="https://www.instagram.com/macelleriabortoleto/">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                            <i class="fab fa-instagram" aria-hidden="true" alt="macelleria dellantonio instagram"></i>
                         </a>
                     </div>
                     <span>Instagram</span>

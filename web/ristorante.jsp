@@ -28,15 +28,15 @@ ${consoledao.incrementViews("ristorante", request, 0)}
 
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/ristorante.jsp"/>" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Ristorante 'l Bortoleto" />
-        <meta property="og:description"   content="Ristorante Macelleria a Predazzo Val di Fiemme Trentino. Scopri da dove nasce la nostra passione per la buona cucina e come la concretizziamo." />
-        <meta property="og:image"         content="https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400" />
+        <meta property="og:title"         content="Ristorante 'L Bortoleto - Predazzo" />
+        <meta property="og:description"   content="Ristorante 'L Bortoleto a Predazzo offriamo un'esperienza gastronomica a km0 in grado di soddisfare i palati più fini rispettando la stagionalità dei prodotti." />
+        <meta property="og:image"         content="/Bortoleto/img/logoNeg.jpg" />
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
         <meta property="fb:app_id"         content="320307085338651" />
 
-        <link rel="icon" href="https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400" type="image/png">
-        <title>Ristorante 'l Bortoleto</title>
-        <meta name="Description" content="Ristorante a Predazzo Val di Fiemme Trentino. Scopri da dove nasce la nostra passione per la buona cucina e come la concretizziamo.">
+        <link rel="icon" href="/Bortoleto/img/logoNeg.jpg" type="image/png" alt="Logo Ristorante Bortoleto Predazzo" title="Logo Ristorante Bortoleto Predazzo">
+        <title>Ristorante 'L Bortoleto - Predazzo</title>
+        <meta name="Description" content="Ristorante 'L Bortoleto a Predazzo offriamo un'esperienza gastronomica a km0 in grado di soddisfare i palati più fini rispettando la stagionalità dei prodotti.">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">        
@@ -70,7 +70,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 color: #b4505a;
                 margin: 60px 0 20px 0;
             }
-            h3.styled{
+            .styled{
                 font-family: "Montserrat",sans-serif;
                 font-size: 3rem;
             }
@@ -124,7 +124,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             "@context" : "http://schema.org",
             "@type" : "LocalBusiness",
             "name" : "'L Bortoleto Ristorante 'L Bortoleto",
-            "image" : "https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400",
+            "image" : "/Bortoleto/img/logoNeg.jpg",
             "telephone" : "0462-500261",
             "email" : "ristorantebortoleto@gmail.com",
             "address" : {
@@ -136,7 +136,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             "postalCode" : "38037"
             },
             "url" : "https://macelleriadellantonio.it/Bortoleto/Il-Risorante",
-            "logo": "https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400",
+            "logo": "/Bortoleto/img/logoNeg.jpg",
             "openingHoursSpecification" : {
             "@type" : "OpeningHoursSpecification",
             "dayOfWeek" : {
@@ -212,7 +212,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             <i class="fa fa-bars"></i>
         </button>
         <a id="nav-logo-img" class="navbar-brand" href="<c:url value="/#Bortoleto"/>">
-            <img width="90vh" src="https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400" alt="Logo">
+            <img width="90vh" src="/Bortoleto/img/logoNeg.jpg" alt="Logo Ristorante Bortoleto">
         </a>
         <a id="nav-logo-title" class="navbar-brand js-scroll-trigger" href="/Bortoleto/">'L Bortoleto</a>
         <a class="menu-cart-button hs-cart" href="<c:url value="/bottega.jsp"/>">
@@ -224,7 +224,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</div>
                     <div id="" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<c:url value="/#chi-siamo"/>">Chi Siamo</a>
+                        <a class="dropdown-item" href="<c:url value="/#ristorante-macelleria"/>">Chi Siamo</a>
                         <a class="dropdown-item" href="<c:url value="/#qualita-e-professionalita"/>">Qualità e Professionalità</a>
                         <a class="dropdown-item" href="<c:url value="/#i-nostri-servizi"/>">I Nostri Servizi</a>
                         <a class="dropdown-item" href="<c:url value="/#dicono-di-noi"/>">Dicono di Noi</a>
@@ -293,7 +293,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
 
                 <!--Caption-->
                 <div class="videoCaption">
-                    <img style="width: 60vh;" src="https://lh3.googleusercontent.com/kbvJO4XfUpn2DEQ_7l789Dz_nZjXYGJVsr_Ot22TEtR0LfqMVDPXWujbQqCwP8zQ6X3k75CaRVG61LZw-nC2DHpoi1hSGsqEMnZBmfloRAH4vvD2lWgZVRzrEC_g-NtFWt_mB2DRkA=w2400" alt="Ristorante 'l Bortoleto" />
+                    <img style="width: 60vh;" src="/Bortoleto/img/logoNeg.jpg" alt="Ristorante 'l Bortoleto" />
 
                     <div class="scrollIcon">
                         <a style="color: white;" href="#home">
@@ -311,7 +311,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <div class="view" style="background-image: url('https://lh3.googleusercontent.com/Qfpukrg2L5m_JGZ3tvX3skJbly1GCSUndEN-I3GJIqqNK90-d15pArC0ZxgwJDiRZh312e1QCQPnLN_RO0raBQHrPDcJCTwy1rV6vNkHyBZbyYC_EGVbBDMzY_CFbGa4DbxGcGfVvg=w2400'); height: 100%; width: 100%; background-size: cover; background-position: center center; background-repeat: no-repeat;">
                 </div>
                 <div class="carousel-caption capBox">                        
-                    <h3 class="h3-responsive" style="font-weight: 900;">Bottega di Predazzo</h3>
+                    <h4 class="h3-responsive" style="font-weight: 900;">Bottega di Predazzo</h4>
                     <p>Via Cesare Battisti 2</p><br>
                 </div>
             </div>
@@ -322,7 +322,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <div class="view" style="background-image: url('https://lh3.googleusercontent.com/ixN4bzXDDBzJpoHGooHd3Ryo5f1FTKoJgQV4Bs-lgGo6_k8zwVq9r3RCuTrSwtZ2eIWzc8ysfoZT398MDcOV0cJYh1vhhA9Yuo42G8Rmy_qTlluZIp68fVjN3IVZoK8HJIPZNX-ngg=w2400'); background-repeat: no-repeat; background-size: cover; width: 100%; height: 100%; background-position: center center;">
                 </div>
                 <div class="carousel-caption capBox">
-                    <h3 class="h3-responsive" style="font-weight: 900;">Bottega di Campitello</h3>
+                    <h4 class="h3-responsive" style="font-weight: 900;">Bottega di Campitello</h4>
                     <p>Piaz de Ciampedel 28</p><br>
                 </div>
             </div>
@@ -333,7 +333,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <div class="view" style="background-image: url('https://lh3.googleusercontent.com/B49sL65bzYSo4tJrSB3--_ObqsXncjul0XIRqollfPF_eQ-qG4jgUsvVqf1DGi8uZdLw3g9EYReCkbyKsYkRaGdTTHYfl2qHl756vohNQtbHQCT_dXqaQip8cMfNcdAav-wAoh39Vg=w2400'); background-repeat: no-repeat; background-size: cover; width: 100%; height: 100%; background-position: center center;">
                 </div>
                 <div class="carousel-caption capBox">
-                    <h3 class="h3-responsive" style="font-weight: 900;">Macello e laboratorio</h3>
+                    <h4 class="h3-responsive" style="font-weight: 900;">Macello e laboratorio</h4>
                     <p>Via Dell Is-Cion</p><br>
                 </div>
             </div>
@@ -358,81 +358,63 @@ ${consoledao.incrementViews("ristorante", request, 0)}
 
     <div id="home" class="wrap-intro">
         <div class="mt-5 mb-5 text-center">
-            <h2 class="bortoTitle" data-aos="fade-right" data-aos-duration="2000">'L Bortoleto</h2>
-            <h1 class="macTitle" data-aos="fade-right" data-aos-duration="2000">Ristorante 'L Bortoleto</h1>
+            <h1 class="macTitle" data-aos="fade-right" data-aos-duration="2000"><span class="bortoTitle">'L Bortoleto</span><br>Ristorante</h1>
         </div>
 
-        <div id="carousel-team" class="carousel slide" data-ride="carousel">
+        <div class="container" style="text-align: right;">
+            <h4 class="sottotitoli">Conosciamoci</h4>
+            <h2 class="styled">Il Ristorante</h2>
 
-            <!--Indicators-->
-            <ol class="carousel-indicators" style="margin: -3rem auto;">
-                <li data-target="#carousel-team" data-slide-to="0" class="active" style="background-color: black;"></li>
-                <li data-target="#carousel-team" data-slide-to="1" style="background-color: black;"></li>
-            </ol>
-            <!--/.Indicators-->
-
-            <div id="innerTeam" class="container carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="text-intro col-sm-10 col-md-7 wow fadeInDown" data-wow-delay="0.5s" style="margin: auto auto; visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                            <h3 class="sottotitoli">Chef</h3>
-                            <h2 class="styled">Simone Dellantonio</h2>
-                            <p class="description">
-                                Donec quis euismod purus. Donec feugiat ligula rhoncus, varius nisl sed, tincidunt lectus. Nulla vulputate, lectus vel volutpat efficitur, orci lacus sodales sem, at interdum quam ligula sit amet quam. Praesent molestie est ut lorem malesuada pretium at sit amet magna.
-                            </p>
-                            <p class="description">
-                                Donec quis euismod purus. Donec feugiat ligula rhoncus, varius nisl sed, tincidunt lectus. Nulla vulputate, lectus vel volutpat efficitur, orci lacus sodales sem, at interdum quam ligula sit amet quam. Praesent laoreet malesuada ex, sed blandit sem dictum id. Donec vulputate ultricies nibh, quis dapibus ex cursus sit amet. Duis non ex pellentesque, sollicitudin justo a, porttitor magna. Mauris eleifend est purus. Phasellus non ornare nunc, nec ullamcorper eros. Praesent molestie est ut lorem malesuada pretium at sit amet magna. Sed et volutpat sem. 
-                            </p>
-                        </div>
-
-                        <div style="margin: auto auto;" class="wrap-pic-intro col-sm-10 col-md-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="pic-intro wow zoomIn" style="visibility: visible; animation-name: zoomIn;">
-                                        <img style="border-radius: 5px;" class="lazy" data-src="http://templates.aucreative.co/deli/images/home-onepage-img-intro.jpg" alt="Chef">
-                                    </div>
-                                </div>
+            <div class="row mt-5 mb-5">
+                <div class="col-md-5 mt-3 mb-5">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="8000">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" style="height: 300px; min-height: 300px !important;">
+                                <img style="height: 100%; max-width: none !important;" class="d-block" src="/Bortoleto/img/sedi/Ristorante/Ristorante 'L Bortoleto Predazzo.jpg" alt="Ristorante 'L Bortoleto Predazzo" title="Ristorante 'L Bortoleto Predazzo">
+                            </div>
+                            <div class="carousel-item" style="height: 300px; min-height: 300px !important;">
+                                <img class="d-block w-100" src="http://templates.aucreative.co/deli/images/home-onepage-img-intro.jpg" alt="Simone Dellantonio">
+                            </div>
+                            <div class="carousel-item" style="height: 300px; min-height: 300px !important;">
+                                <img style="height: 100%; max-width: none !important;" class="d-block" src="https://careersmart.org.uk/sites/default/files/2017-04/Waiters-and-waitresses.jpg" alt="Valeria Dellantonio">
                             </div>
                         </div>
+                        <a class="carousel-control-prev" data-target="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" data-target="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
-                <div class="carousel-item ">
-
-                    <div class="row"> 
-                        <div class="text-intro col-sm-10 col-md-7 wow fadeInDown order-md-2" data-wow-delay="0.5s" style="margin: auto auto; visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                            <h3 class="sottotitoli">Sala</h3>
-                            <h2 class="styled">Valeria Dellantonio</h2>
-                            <p class="description">
-                                Donec quis euismod purus. Donec feugiat ligula rhoncus, varius nisl sed, tincidunt lectus. Nulla vulputate, lectus vel volutpat efficitur, orci lacus sodales sem, at interdum quam ligula sit amet quam. Praesent molestie est ut lorem malesuada pretium at sit amet magna.
-                            </p>
-                            <p class="description">
-                                Donec quis euismod purus. Donec feugiat ligula rhoncus, varius nisl sed, tincidunt lectus. Nulla vulputate, lectus vel volutpat efficitur, orci lacus sodales sem, at interdum quam ligula sit amet quam. Praesent laoreet malesuada ex, sed blandit sem dictum id. Donec vulputate ultricies nibh, quis dapibus ex cursus sit amet. Duis non ex pellentesque, sollicitudin justo a, porttitor magna. Mauris eleifend est purus. Phasellus non ornare nunc, nec ullamcorper eros. Praesent molestie est ut lorem malesuada pretium at sit amet magna. Sed et volutpat sem. 
-                            </p>
-                        </div>
-
-                        <div style="margin: auto auto;" class="wrap-pic-intro col-sm-10 col-md-5 order-md-1">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="pic-intro wow zoomIn" style="visibility: visible; animation-name: zoomIn;">
-                                        <img style="border-radius: 5px;" class="lazy" data-src="https://careersmart.org.uk/sites/default/files/2017-04/Waiters-and-waitresses.jpg" alt="Sala">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-7">
+                    <p class="description">
+                        Il <strong>Ristorante 'L Bortoleto</strong> apre nel 2018 nel centro storico di <strong>Predazzo</strong>, 
+                        nel cuore delle Dolomiti Trentine, con l'idea di offrire un'esperienza gastronomica a km0 attraverso le <strong>specialità del Trentino</strong>.
+                    </p>
+                    <p class="description">
+                        Il ristorante intende valorizzare le carni della <a title="Macelleria Dellantonio" href="https://macelleriadellantonio.it/Bortoleto/La-Macelleria" target="_blank">macelleria</a>, 
+                        una delle botteghe storiche del paese. La carne è, quindi, ovviamente il punto di forza del locale, che punta molto sulla <strong>stagionalità</strong>, 
+                        con un menù che cambia in base al periodo dell'anno.
+                        Questa è proprio la direzione principale di <strong>Simone Dellantonio</strong>, lo Chef.<br />
+                        L'idea di adattare il menu in base alla stagione utilizzando <strong>materie prime fresche e di qualità</strong> è andata persa nel tempo ed è giusto recuperarla 
+                        per creare un consumo sostenibile e per apprezzare tutti i prodotti meno conosciuti e utilizzati.
+                    </p>
+                    <p class="description">
+                        Tra i <strong>ristoranti a Predazzo</strong>, il ristorante 'L Bortoleto, offre l'opportunità di gustare le <strong>specialità trentine</strong> con prodotti freschi e di stagione, 
+                        apprezzabili ancor di più con i giusti abbinamenti dei principali <strong>vini</strong> della regione e di tutto il territorio Italiano, consigliati da <strong>Valeria Dellantonio</strong>, responsabile della sala.<br />
+                        <strong>Cosa aspetti? <a title="Chiama il ristorante Bortoleto" href="tel:0462500261">Prenota il tuo tavolo!</a></strong>
+                    </p>
                 </div>
             </div>
-            <!--Controls-->
-            <a class="carousel-control-prev" data-target="#carousel-team" role="button" data-slide="prev">
-                <span aria-hidden="true"><i style="font-size: xx-large;" class="fas fa-angle-left"></i></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" data-target="#carousel-team" role="button" data-slide="next">
-                <span aria-hidden="true"><i style="font-size: xx-large;" class="fas fa-angle-right"></i></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
-        </div><!-- Fine carousel -->            
+        </div>
     </div>
 
     <section id="menu" class="mb-5">
@@ -491,21 +473,21 @@ ${consoledao.incrementViews("ristorante", request, 0)}
     <section id="materiePrime" class="content-menu-02">
         <div class="container" style="padding-top: 5rem;">
             <div class="mb-5 text-center">
-                <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">Le nostre Materie Prime</h2>
+                <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">La Stagionalità dei Prodotti</h2>
             </div>
             <div class="row">
                 <div class="col-content-menu-02 col-sm-7 col-md-3" style="margin: auto auto;">
                     <div class="row">
                         <div class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                            <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img">
+                            <a class="hover-img" href="#materiePrime" onclick="callMaterie('Dal Trentino')">
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-01.jpg" alt="FattoDaNoi">
-                                <h3 class="text-in-img-menu-02">Fatto da noi</h3>
+                                <h3 class="text-in-img-menu-02">Dal Trentino</h3>
                             </a>
                         </div>
                         <div class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                            <a href="#materiePrime" onclick="callMaterie('Varie')" class="hover-img">
+                            <a class="hover-img"><!-- href="#materiePrime" onclick="callMaterie('Varie')"-->
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-03.jpg" alt="Varie">
-                                <h3 class="text-in-img-menu-02">Varie</h3>
+                                <h3 class="text-in-img-menu-02">Cooming Soon</h3>
                             </a>
                         </div>
                     </div>
@@ -519,9 +501,9 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                             </a>
                         </div>
                         <div class="col-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#materiePrime" onclick="callMaterie('La Pasta')" class="hover-img">
+                            <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img">
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-04.jpg" alt="LaPasta">
-                                <h3 class="text-in-img-menu-02">La Pasta</h3>
+                                <h3 class="text-in-img-menu-02">Fatto da noi</h3>
                             </a>
                         </div>
                     </div>
@@ -539,7 +521,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
     <!-- Section: Testimonials v.2 Facebook review -->
     <section class="effetto1 container text-center my-5" style='margin: auto auto; color: white !important;'>
         <h4 class="sottotitoli" style="text-align: center;">testimonials</h4>  
-        <h3 class="styled" style="text-align: center; margin: 0; color: black;">Dicono di noi</h3>
+        <h2 class="styled" style="text-align: center; margin: 0; color: black;">Dicono di noi</h2>
         <script src="https://apps.elfsight.com/p/platform.js" defer></script>
         <div class="elfsight-app-2dbedd8a-3277-4550-a616-d563381ec957"></div>
         <h3 class="styled" style="text-align: center; margin: 0; color: black;">News</h3>
