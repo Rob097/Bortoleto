@@ -19,6 +19,7 @@ public interface BlogDAO {
     
     public ArrayList<Blog> getAllBlogs() throws DAOException;
     public Blog getBlogById(int id) throws DAOException;
+    public Blog getBlogByName(String nome) throws DAOException;
     public Blog getPrevOrNextById(boolean type, int id) throws DAOException;
     public ArrayList<Blog> getBlogByCat(String cat) throws DAOException;
     public ArrayList<Blog> getMostViewedBlog() throws DAOException;

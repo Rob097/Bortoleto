@@ -160,4 +160,19 @@ public class Ricetta {
         this.approvata = approvata;
     }
     
+    public String getTempoFormat(){
+        String ore, minuti;
+        if((int)this.tempo/60 < 10){
+            ore = "0" + (int)this.tempo/60;
+        }else{
+            ore = "" + (int)this.tempo/60;
+        }
+        if((int)this.tempo%60 < 10){
+            minuti = "0" + (int)this.tempo%60;
+        }else{
+            minuti = "" + (int)this.tempo%60;
+        }
+        return ore + ":" + minuti;
+    }
+    
 }

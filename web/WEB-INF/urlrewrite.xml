@@ -75,24 +75,15 @@
         <to>/idea.jsp\?id=$1&amp;nome=$2</to>
     </rule> 
             
-    <outbound-rule>
-        <name>Strip URL Session ID's</name>
-        <note>
-            Strip ;jsession=XXX from urls passed through response.encodeURL().
-            The characters ? and # are the only things we can use to find out where the jsessionid ends.
-            The expression in 'from' below contains three capture groups, the last two being optional.
-            1, everything before ;jesessionid
-            2, everything after ;jesessionid=XXX starting with a ? (to get the query string) up to #
-            3, everything ;jesessionid=XXX and optionally ?XXX starting with a # (to get the target)
-            eg,
-            from index.jsp;jsessionid=sss?qqq to index.jsp?qqq
-            from index.jsp;jsessionid=sss?qqq#ttt to index.jsp?qqq#ttt
-            from index.jsp;jsessionid=asdasdasdsadsadasd#dfds - index.jsp#dfds
-            from u.jsp;jsessionid=wert.hg - u.jsp
-            from /;jsessionid=tyu - /
-        </note>
-        <from>^(.*?)(?:\;jsessionid=[^\?#]*)?(\?[^#]*)?(#.*)?$</from>
-        <to>$1$2$3</to>
+    <outbound-rule encodefirst="true">
+        <note>Remove jsessionid from embedded urls - for urls WITH query parameters</note>
+        <from>^/(.*);jsessionid=.*[?](.*)$</from>
+        <to encode="false">/$1?$2</to>
+    </outbound-rule>
+    <outbound-rule encodefirst="true">
+        <note>Remove jsessionid from embedded urls - for urls WITHOUT query parameters</note>
+        <from>^/(.*);jsessionid=.*[^?]$</from>
+        <to encode="false">/$1</to>
     </outbound-rule>
     <outbound-rule>  
         <from>/categoria.jsp\?id=([0-9]+)&amp;nome=([\w'-]+)</from>  

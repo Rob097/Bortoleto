@@ -145,6 +145,48 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
             throw new DAOException("Impossibile restituire il blog dall'id. (JDBCCatBlogDAO, getBlogById)", ex);
         }
     }
+    
+    /**
+     * Metodo per ritrovare un articolo in base al nome.
+     *
+     * @param nome
+     * @return Ritorna un oggetto di tipo Blog (Un articolo)
+     * @throws DAOException
+     */
+    @Override
+    public Blog getBlogByName(String nome) throws DAOException {
+        checkCON();
+
+        try (PreparedStatement stm = CON.prepareStatement("SELECT * FROM blog where nome = ? and pubblicato = true")) {
+            stm.setString(1, nome);
+            Blog c = new Blog();
+            boolean check = false;
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    c.setId(rs.getInt("id"));
+                    c.setCategoria(rs.getString("categoria"));
+                    c.setNome(rs.getString("nome"));
+                    c.setTesto(rs.getString("testo"));
+                    c.setDescrizione(rs.getString("descrizione"));
+                    c.setImmagine(rs.getString("immagine"));
+                    c.setCreatore(rs.getString("creatore"));
+                    c.setData(rs.getTimestamp("data"));
+                    c.setViews(rs.getInt("views"));
+                    c.setPubblicato(rs.getBoolean("pubblicato"));
+                    check = true;
+                }
+
+                if (check) {
+                    return c;
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("Impossibile restituire il blog dal nome. (JDBCCatBlogDAO, getBlogById)", ex);
+        }
+    }
 
     /**
      * Metodo che ritorna il blog precedente o il successivo

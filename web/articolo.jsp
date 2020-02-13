@@ -4,6 +4,10 @@
     Author     : Roberto97
 --%>
 
+<%@page import="database.factories.DAOFactory"%>
+<%@page import="database.jdbc.JDBCBlogDAO"%>
+<%@page import="database.daos.BlogDAO"%>
+<%@page import="database.entities.Blog"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,16 +17,32 @@
 <c:set value="${catblogdao.getAllCatBlog()}" var="catblog"/>
 <c:set value="${blogdao.getAllBlogs()}" var="blogs"/>
 <c:set value="${blogdao.getMostViewedBlog()}" var="viewed"/>
-<c:if test="${param.id ne null && param.nome ne null && param.id ne '' && param.nom ne '' && param.nome eq blogdao.getBlogById(param.id).nome.replace(' ', '-')}">
-    <c:set value="${blogdao.getBlogById(param.id)}" var="blog"/>
-    <c:set value="${commblogdao.getAllCommOfBlog(blog.id)}" var="commenti"/>
-    ${blogdao.incrementViews(blog.id, blog.views, request)}
-    ${consoledao.incrementViews("blog", request, param.id)}
-</c:if>
+<%
+    /* Devo farlo perchè altrimenti facebook e google non vedono i parametri nei metadati e nel testo da quanto si usa l'url rewriting */
+    DAOFactory daoFactory = (DAOFactory) super.getServletContext().getAttribute("daoFactory");
+    if (daoFactory == null) {
+        throw new ServletException("Impossible to get dao factory for user storage system");
+    }
+    BlogDAO blogDAO = new JDBCBlogDAO(daoFactory.getConnection());
+
+    Blog blog = blogDAO.getBlogByName(request.getParameter("nome").replace("-", " "));
+%>
+<c:set value="<%=blog%>" var="blog" />
+<c:set value="<%=blogDAO%>" var="blogdao" />
+<c:choose>
+    <c:when test="${param.id ne null && param.nome ne null && param.id ne '' && param.nom ne '' && param.nome eq blogdao.getBlogById(param.id).nome.replace(' ', '-')}">    
+        <c:set value="${commblogdao.getAllCommOfBlog(blog.id)}" var="commenti"/>
+        ${blogdao.incrementViews(blog.id, blog.views, request)}
+        ${consoledao.incrementViews("blog", request, param.id)}
+    </c:when>
+    <c:otherwise>
+        <c:set value="${null}" var="blog"/>
+    </c:otherwise>
+</c:choose>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156001507-1"></script>
         <script>
@@ -34,16 +54,16 @@
 
             gtag('config', 'UA-156001507-1');
         </script>
-        
+
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>">
         <meta property="og:type"          content="website">
-        <meta property="og:title"         content="${blog.nome}">
+        <meta property="og:title"         content="${blog.nome} - ${blog.categoria} | Bortoleto">
         <meta property="og:description"   content="${blog.descrizione}">
         <meta property="og:image"         content="https://www.macelleriadellantonio.it/console/${blog.immagine}">
         <meta property="fb:app_id"        content="320307085338651">
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
-        <title>${blog.nome}</title>
+        <title>${blog.nome} - ${blog.categoria} | Bortoleto</title>
         <meta name="Description" content="${blog.descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,6 +149,37 @@
     <!-- End Facebook Pixel Code -->
 </head>
 <body class="foo white-text" id="topPage" data-spy="scroll" data-target=".sidebar" style='background-color: white;'>
+
+    <!-- Markup JSON-LD generato da Assistente per il markup dei dati strutturati di Google. -->
+    <script type="application/ld+json">
+        {
+        "@context" : "http://schema.org",
+        "@type" : "Article",
+        "name" : "${blog.nome}",
+        "headline" : "${blog.nome}",
+        "publisher": {
+            "@type" : "Organization",
+            "name": "'L Bortoleto",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/Bortoleto/img/logo2.png",
+                "height": "60px",
+                "width": "auto"
+            }
+        },
+        "author" : {
+        "@type" : "Person",
+        "name" : "${blog.creatore}"
+        },
+        "datePublished" : "${blog.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-yy"))}",
+        "dateModified": "${blog.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-yy"))}",
+        "image" : "/${blog.immagine}",
+        "articleSection" : "${blog.categoria}",
+        "articleBody" : "${blog.descrizione}",
+        "url" : "https://macelleriadellantonio.it/Bortoleto/articolo/${blog.id}/${blog.nome.replace(" ", "-")}"
+        }
+    </script>
+
     <a style="bottom: 20px;" href="#topPage" id="myBtn45" title="Torna in cima" class="rightGray"><i class="fas fa-angle-up"></i></a>
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -222,6 +273,26 @@
                             </div>
                         </c:when>
                         <c:otherwise>
+                            <nav id="breadcrumb">
+                                <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                                        <meta itemprop="position" content="1" />
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a itemprop="item" href="<c:url value="/blog.jsp"/>"><span itemprop="name">Il Blog</span></a>
+                                        <meta itemprop="position" content="2" />
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a itemprop="item" href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>"><span itemprop="name">${blog.categoria}</span></a>
+                                        <meta itemprop="position" content="3" />
+                                    </li>
+                                    <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a href="<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ','-')}"/>" itemprop="item" ><em><span itemprop="name">${blog.nome}</span></em></a>
+                                        <meta itemprop="position" content="4" />
+                                    </li>
+                                </ol>
+                            </nav>
                             <div class="single-post row">
                                 <div class="col-lg-12 img-margin-bottom-large">
                                     <div class="feature-img" style="text-align: center;">

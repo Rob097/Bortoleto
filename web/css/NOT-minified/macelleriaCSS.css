@@ -228,11 +228,8 @@ body{
     margin-top: 3rem;
     text-decoration: underline;
 }
-#bottegaLink a {
-    color: #c79a27 !important;
-}
 #bottegaOnlineDiscover{
-    background-image: linear-gradient(to left, rgba(49, 53, 61, 0.3) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(49, 53, 61, 0.3) 100%);
+    //background-image: linear-gradient(to left, rgba(49, 53, 61, 0.3) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 75%, rgba(49, 53, 61, 0.3) 100%);
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
@@ -262,7 +259,7 @@ body{
 }
 @media screen and (max-width: 575px) {   
     #bottegaGif{
-        background-image: url(../img/bottegaSmall.gif);
+        background-image: url(../img/bottegaBig.gif);
     } 
 }
 @media screen and (min-width: 576px) {   

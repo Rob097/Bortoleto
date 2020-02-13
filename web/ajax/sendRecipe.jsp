@@ -54,6 +54,14 @@
 <script src="/Bortoleto/js/dynamic-form-min.js"></script>
 <script src="/Bortoleto/js/bootstrap-maxlength-min.js"></script>
 <script>
+    
+    $('#sendRicetta').submit(function () {
+        $('#sendButton').attr("disabled", true);
+        $('#sendButton').val("Sto Inviando...");
+        alert("Stiamo inviando la tua idea, un secondo solo...\nPer Favore non chiudere o ricaricare la pagina nel frattempo, grazie!");
+    });
+    
+    
     $(document).ready(function () {
         var dynamic_form = $("#dynamic_form").dynamicForm("#dynamic_form", "#plus", "#minus", {
             limit: 10,
@@ -76,7 +84,6 @@
             $.each($('form').serializeArray(), function (i, field) {
                 values[field.name] = field.value;
             });
-            console.log(values);
             event.preventDefault();
         });
     });

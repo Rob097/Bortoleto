@@ -162,6 +162,50 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
             return null;
         }
     }
+    
+    /**
+     * Metodo per trovare una particolare ricetta dal nome.
+     * @param nome
+     * @return Ritorna un'oggetto di tipo ricetta.
+     * @throws DAOException
+     */
+    @Override
+    public Ricetta getRecipeByName(String nome) throws DAOException {
+        checkCON();
+        
+        try (PreparedStatement stm = CON.prepareStatement("SELECT * FROM ricette where nome = ? AND approvata = true")) {
+            stm.setString(1, nome);
+            Ricetta r = null;
+            String[] ingredienti;
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    r = new Ricetta();
+                    r.setId(rs.getInt("id"));
+                    r.setId_prod(rs.getInt("id_prod"));
+                    r.setNome(rs.getString("nome"));
+                    ingredienti = rs.getString("ingredienti").split("_");
+                    r.setIngredienti(new ArrayList<>(Arrays.asList(ingredienti)));
+                    r.setImmagine(rs.getString("immagine"));
+                    r.setProcedimento(rs.getString("procedimento"));
+                    r.setTempo(rs.getInt("tempo"));
+                    r.setDifficolta(rs.getString("difficolta"));
+                    String s = Character.toUpperCase(r.getDifficolta().charAt(0)) + r.getDifficolta().substring(1);
+                    r.setDifficolta(s);
+                    r.setCreatore(rs.getString("creatore"));
+                    r.setData(rs.getTimestamp("data"));
+                    r.setDescrizione(rs.getString("descrizione"));
+                    r.setViews(rs.getInt("views"));
+                    r.setCategory(rs.getBoolean("categoria"));
+                    r.setApprovata(rs.getBoolean("approvata"));
+                }
+                return r;
+            }
+        } catch (SQLException ex) {
+            //throw new DAOException("Impossibile restituire il prodotto. (JDBCProductDAO, getProduct)", ex);
+            return null;
+        }
+    }
 
     /**
      * Metodo che restituisce tutte le ricette che sono legate ad un determinato prodotto.<br>

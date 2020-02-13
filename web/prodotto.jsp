@@ -68,7 +68,7 @@
 
         <meta property="og:url"           content="https://macelleriadellantonio.it/Bortoleto/prodotto/${prod.id}/${prod.categoria.replace(' ','-')}/${prod.nome.replace(' ','-')}" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="${prod.nome}" />
+        <meta property="og:title"         content="${prod.nome} - ${prod.categoria} | Bortoleto" />
         <meta property="og:description"   content="${prod.descrizione}" />        
         <meta property="og:image"         content="https://macelleriadellantonio.it/Bortoleto/${prod.immagine}" />
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">

@@ -1156,3 +1156,61 @@ SEARCH
         margin-bottom: 4rem;
     }
 }
+.cd-breadcrumb, .cd-multi-steps {
+    width: fit-content;
+    margin: 3rem 0 1rem 0;
+    background-color: #edeff0;
+    border-radius: .25em;
+    padding: 0.5em 1em;
+}
+.cd-breadcrumb:after, .cd-multi-steps:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.cd-breadcrumb li, .cd-multi-steps li {
+    display: inline-block;
+    float: left;
+    margin: 0.5em 0;
+}
+.cd-breadcrumb li::after, .cd-multi-steps li::after {
+    /* this is the separator between items */
+    display: inline-block;
+    content: '\00bb';
+    margin: 0 .6em;
+    color: #959fa5;
+}
+.cd-breadcrumb li:last-of-type::after, .cd-multi-steps li:last-of-type::after {
+    /* hide separator after the last item */
+    display: none;
+}
+.cd-breadcrumb li > *, .cd-multi-steps li > * {
+    /* single step */
+    display: inline-block;
+    font-size: 1rem;
+    color: #2c3f4c;
+}
+.cd-breadcrumb li.current > *, .cd-multi-steps li.current > * {
+    /* selected step */
+    color: #b4505a;
+}
+.no-touch .cd-breadcrumb a:hover, .no-touch .cd-multi-steps a:hover {
+    /* steps already visited */
+    color: #96c03d;
+}
+.cd-breadcrumb.custom-separator li::after, .cd-multi-steps.custom-separator li::after {
+    /* replace the default arrow separator with a custom icon */
+    content: '';
+    height: 16px;
+    width: 16px;
+    background: url(../img/cd-custom-separator.svg) no-repeat center center;
+    vertical-align: middle;
+}
+@media only screen and (min-width: 768px) {
+    .cd-breadcrumb, .cd-multi-steps {
+        padding: 0 1.2em;
+    }
+    .cd-breadcrumb li::after, .cd-multi-steps li::after {
+        margin: 0 1em;
+    }
+}

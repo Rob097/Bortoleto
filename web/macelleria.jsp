@@ -387,10 +387,10 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <!-- Section: bottegaOnlineDiscover -->
         <section id="bottegaOnlineDiscover">
             <div class="container" style="min-height: 35vh; width: 100%;">
-                <h3 class="mt-4" style="margin-bottom: 3rem; font-size: 2rem; font-family: 'Coming Soon'; font-weight: bold;">Scopri la nostra nuova Bottega Online!</h3>
+                <h3 class="mt-4 description" style="text-align: center; color: black; margin-bottom: 3rem; font-size: 2rem; font-weight: bold;">Scopri la nostra nuova Bottega Online!</h3>
                 <div class="row">
                     <div class="col-lg-6 Girl">
-                        <div id="bottegaDesc" data-aos="fade-right" data-aos-duration="2000">
+                        <div class="description" id="bottegaDesc" data-aos="fade-right" data-aos-duration="2000" style="color: black;">
                             <p>Facile da utilizzare<i class="ml-3 mr-3 fas fa-arrow-left bottegaDescIco"></i></p>
                             <p>Puoi salvare i prodotti nei preferiti<i class="ml-3 mr-3 fas fa-arrow-left bottegaDescIco"></i></p>
                             <p>Pagamenti sicuri<i class="ml-3 mr-3 fas fa-arrow-left bottegaDescIco"></i></p>
@@ -398,11 +398,15 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                             <p>Ritiro in negozio<i class="ml-3 mr-3 fas fa-arrow-left bottegaDescIco"></i></p>
                             <p>Consegna in 24h<i class="ml-3 mr-3 fas fa-arrow-left bottegaDescIco"></i></p>
                         </div>
-                        <div id="bottegaLink">
+                        <div id="bottegaLink" class="description">
                             <a href="<c:url value="/bottega.jsp"/>" target="_blank" rel="noopener">Cosa aspetti? Provala subito!</a>
                         </div>
                     </div>
-                    <div onclick="window.open('img/bottegaBig.gif');" class="col-lg-6" id="bottegaGif" data-aos="fade-up-right" data-aos-duration="2000">
+                    <div onclick="window.open('/Bortoleto/img/video-bottega.mp4');" class="col-lg-6" data-aos="fade-up-right" data-aos-duration="2000">
+                        <video style="width: inherit;" autoplay muted loop id="myVideo">
+                            <source src="/Bortoleto/img/video-bottega.mp4" type="video/mp4">
+                        </video>
+
                     </div>
                 </div>
             </div>

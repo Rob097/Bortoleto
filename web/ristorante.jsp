@@ -266,14 +266,14 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         </div>
     </nav>
 
-    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel" style="height: 101vh;">
+    <div id="galleria-ristorante-bortoleto" class="carousel slide carousel-fade" data-ride="carousel" style="height: 101vh;">
 
         <!--Indicators-->
         <ol class="carousel-indicators">
-            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-            <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-            <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+            <li data-target="#galleria-ristorante-bortoleto" data-slide-to="0" class="active"></li>
+            <li data-target="#galleria-ristorante-bortoleto" data-slide-to="1"></li>
+            <li data-target="#galleria-ristorante-bortoleto" data-slide-to="2"></li>
+            <li data-target="#galleria-ristorante-bortoleto" data-slide-to="3"></li>
         </ol>
         <!--/.Indicators-->
 
@@ -308,11 +308,11 @@ ${consoledao.incrementViews("ristorante", request, 0)}
 
             <!--First slide -->
             <div class="carousel-item" style="height: 100%;">
-                <div class="view" style="background-image: url('https://lh3.googleusercontent.com/Qfpukrg2L5m_JGZ3tvX3skJbly1GCSUndEN-I3GJIqqNK90-d15pArC0ZxgwJDiRZh312e1QCQPnLN_RO0raBQHrPDcJCTwy1rV6vNkHyBZbyYC_EGVbBDMzY_CFbGa4DbxGcGfVvg=w2400'); height: 100%; width: 100%; background-size: cover; background-position: center center; background-repeat: no-repeat;">
+                <div class="view" style="background-image: url('/Bortoleto/img/sedi/Ristorante/Ristorante-Bortoleto-Predazzo.jpg'); height: 100%; width: 100%; background-size: cover; background-position: center center; background-repeat: no-repeat;">
                 </div>
                 <div class="carousel-caption capBox">                        
-                    <h4 class="h3-responsive" style="font-weight: 900;">Bottega di Predazzo</h4>
-                    <p>Via Cesare Battisti 2</p><br>
+                    <h4 class="h3-responsive" style="font-weight: 900;">Sala in pietra</h4>
+                    <p>Antico laboratorio della macelleria restaurato</p><br>
                 </div>
             </div>
             <!--/First slide -->
@@ -343,11 +343,11 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         <!--/.Slides-->
 
         <!--Controls-->
-        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#galleria-ristorante-bortoleto" role="button" data-slide="prev">
             <span aria-hidden="true"><i style="font-size: xx-large;" class="fas fa-angle-left"></i></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#galleria-ristorante-bortoleto" role="button" data-slide="next">
             <span aria-hidden="true"><i style="font-size: xx-large;" class="fas fa-angle-right"></i></span>
             <span class="sr-only">Next</span>
         </a>
@@ -375,7 +375,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active" style="height: 300px; min-height: 300px !important;">
-                                <img style="height: 100%; max-width: none !important;" class="d-block" src="/Bortoleto/img/sedi/Ristorante/Ristorante 'L Bortoleto Predazzo.jpg" alt="Ristorante 'L Bortoleto Predazzo" title="Ristorante 'L Bortoleto Predazzo">
+                                <img style="height: 100%; max-width: none !important;" class="d-block" src="/Bortoleto/img/sedi/Ristorante/Ristorante-Bortoleto-Predazzo.jpg" alt="Ristorante 'L Bortoleto Predazzo" title="Ristorante 'L Bortoleto Predazzo">
                             </div>
                             <div class="carousel-item" style="height: 300px; min-height: 300px !important;">
                                 <img class="d-block w-100" src="http://templates.aucreative.co/deli/images/home-onepage-img-intro.jpg" alt="Simone Dellantonio">
@@ -421,6 +421,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         <div id="sections" class="container">                    
             <div class="mt-5 mb-5 text-center">
                 <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">Il Menu</h2>
+                <h3 style="display: none;">ristorante l bortoleto predazzo menu</h3>
             </div>
 
             <c:set var="position" value="0"/>
@@ -473,18 +474,19 @@ ${consoledao.incrementViews("ristorante", request, 0)}
     <section id="materiePrime" class="content-menu-02">
         <div class="container" style="padding-top: 5rem;">
             <div class="mb-5 text-center">
+                <h4 class="sottotitoli" data-aos="fade-right" data-aos-duration="2000">Le materie prime</h4>
                 <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">La Stagionalità dei Prodotti</h2>
             </div>
             <div class="row">
                 <div class="col-content-menu-02 col-sm-7 col-md-3" style="margin: auto auto;">
                     <div class="row">
-                        <div class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+                        <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                             <a class="hover-img" href="#materiePrime" onclick="callMaterie('Dal Trentino')">
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-01.jpg" alt="FattoDaNoi">
                                 <h3 class="text-in-img-menu-02">Dal Trentino</h3>
                             </a>
                         </div>
-                        <div class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+                        <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                             <a class="hover-img"><!-- href="#materiePrime" onclick="callMaterie('Varie')"-->
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-03.jpg" alt="Varie">
                                 <h3 class="text-in-img-menu-02">Cooming Soon</h3>
@@ -494,13 +496,13 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 </div>
                 <div class="col-content-menu-02 col-sm-7 col-md-5" style="margin: auto auto;">
                     <div class="row">
-                        <div class="col-12 wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
+                        <div data-aos="fade-down" data-aos-duration="2000" class="col-12 wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
                             <a href="#materiePrime" onclick="callMaterie('La Carne')" class="hover-img">
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-02.jpg" alt="LaCarne">
                                 <h3 class="text-in-img-menu-02">La Carne</h3>
                             </a>
                         </div>
-                        <div class="col-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <div data-aos="fade-up" data-aos-duration="2000" class="col-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img">
                                 <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-04.jpg" alt="LaPasta">
                                 <h3 class="text-in-img-menu-02">Fatto da noi</h3>
@@ -508,7 +510,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                         </div>
                     </div>
                 </div>
-                <div class="col-content-menu-02 col-sm-7 col-md-4 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; margin: auto auto;">
+                <div data-aos="fade-up" data-aos-duration="2000" class="col-content-menu-02 col-sm-7 col-md-4 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; margin: auto auto;">
                     <a href="#materiePrime" onclick="callMaterie('Il Vino')" class="hover-img">
                         <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-05.jpg" alt="IlVino">
                         <h3 class="text-in-img-menu-02">Il Vino</h3>

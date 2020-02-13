@@ -20,6 +20,7 @@ public interface RicetteDAO {
     
     public ArrayList<Ricetta> getAllRecipes() throws DAOException;
     public Ricetta getRecipe(int id) throws DAOException;
+    public Ricetta getRecipeByName(String nome) throws DAOException;
     public ArrayList<Ricetta> getRecipeOfProduct(int id_prod) throws DAOException;
     public ArrayList<Ricetta> getMostViewedRecipes() throws DAOException;
     public void incrementViews(int id, int viewsOld, HttpServletRequest request) throws DAOException;

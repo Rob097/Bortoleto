@@ -470,7 +470,7 @@ ${consoledao.incrementViews("home", request, 0)}
             </div>
 
             <div class="row white-text" style="margin-bottom: 6rem;">
-                <div style="margin-bottom: 2rem;" class="col-lg-8 servizi-divImage image-liquid image-holder--original parallax-window"  data-parallax="scroll" data-image-src="/Bortoleto/img/sedi/Ristorante/Ristorante 'L Bortoleto Predazzo.jpg">
+                <div style="margin-bottom: 2rem;" class="col-lg-8 servizi-divImage image-liquid image-holder--original parallax-window"  data-parallax="scroll" data-image-src="/Bortoleto/img/sedi/Ristorante/Ristorante-Bortoleto-Predazzo.jpg">
 
                 </div>
                 <div class="col-lg-4 text-center">

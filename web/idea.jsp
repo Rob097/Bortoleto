@@ -4,6 +4,12 @@
     Author     : Roberto97
 --%>
 
+<%@page import="database.daos.ProductDAO"%>
+<%@page import="database.jdbc.JDBCProductDAO"%>
+<%@page import="database.jdbc.JDBCRicetteDAO"%>
+<%@page import="database.factories.DAOFactory"%>
+<%@page import="database.entities.Ricetta"%>
+<%@page import="database.daos.RicetteDAO"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,16 +17,34 @@
 <c:set var="request" value="<%=request%>"/>
 <c:set value="${ricettedao.getMostViewedRecipes()}" var="viewed" />
 <c:set value="${ricettedao.getAllRecipes()}" var="ricette" />
-<c:if test="${param.id ne null && param.nome ne null && param.id ne '' && param.nom ne '' && param.nome eq ricettedao.getRecipe(param.id).nome.replace(' ', '-')}">
-    <c:set value="${ricettedao.getRecipe(param.id)}" var="ricetta" />
-    <c:set value="${ricettedao.getComments(ricetta.id)}" var="commenti" />
-    ${ricettedao.incrementViews(ricetta.id, ricetta.views, request)}
-    ${consoledao.incrementViews("idee", request, param.id)}
-</c:if>
+<%
+    /* Devo farlo perchè altrimenti facebook e google non vedono i parametri nei metadati e nel testo da quanto si usa l'url rewriting */
+    DAOFactory daoFactory = (DAOFactory) super.getServletContext().getAttribute("daoFactory");
+    if (daoFactory == null) {
+        throw new ServletException("Impossible to get dao factory for user storage system");
+    }
+    RicetteDAO ricetteDAO = new JDBCRicetteDAO(daoFactory.getConnection());
+    ProductDAO productDAO = new JDBCProductDAO(daoFactory.getConnection());
+
+    Ricetta idea = ricetteDAO.getRecipeByName(request.getParameter("nome").replace("-", " "));
+%>
+<c:set value="<%=idea%>" var="ricetta" />
+<c:set value="<%=ricetteDAO%>" var="ricettedao" />
+<c:set value="<%=productDAO%>" var="productdao" />
+<c:choose>
+    <c:when test="${param.id ne null && param.nome ne null && param.id ne '' && param.nom ne '' && param.nome eq ricettedao.getRecipe(param.id).nome.replace(' ', '-')}">
+        <c:set value="${ricettedao.getComments(ricetta.id)}" var="commenti" />
+        ${ricettedao.incrementViews(ricetta.id, ricetta.views, request)}
+        ${consoledao.incrementViews("idee", request, param.id)}
+    </c:when>
+    <c:otherwise>
+        <c:set value="${null}" var="ricetta" />
+    </c:otherwise>
+</c:choose>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156001507-1"></script>
         <script>
@@ -32,16 +56,57 @@
 
             gtag('config', 'UA-156001507-1');
         </script>
-        
+        <!-- Markup JSON-LD generato da Assistente per il markup dei dati strutturati di Google. -->
+        <script type="application/ld+json">
+            {
+            "@context" : "http://schema.org",
+            "@type" : "Recipe",
+            "name" : "${ricetta.nome}",
+            "author" : {
+            "@type" : "Person",
+            "name" : "${ricetta.creatore}"
+            },
+            "datePublished" : "${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-yy"))}",
+            "image" : "/${ricetta.immagine}",
+            "recipeInstructions": [
+                {
+                  "@type": "HowToStep",
+                  "text": "${ricetta.procedimento}"
+                }
+            ],
+            "description": "${ricetta.procedimento}",
+            "recipeCuisine": "Italiana",
+            <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
+            "keywords": "${productdao.getProduct(ricetta.id_prod).nome}",
+            </c:if>
+            <c:if test="${ricetta.ingredienti ne null && !ricetta.ingredienti.isEmpty() && !ricetta.ingredienti.get(0).equals('')}">
+                "recipeIngredient": [
+                <c:set var="size" value="${0}"/>
+                <c:forEach items="${ricetta.ingredienti}" var="ingrediente">                    
+                    <c:set var="size" value="${size + 1}"/>
+                        "${ingrediente}"<c:if test="${size < ricetta.ingredienti.size()}">,</c:if>
+                </c:forEach>
+                ],
+            </c:if>
+            "url" : "https://macelleriadellantonio.it/Bortoleto/idea/${ricetta.id}/${ricetta.nome.replace(" ", "-")}",
+            "aggregateRating" : {
+            "@type" : "AggregateRating",
+            "ratingValue" : "${ricettedao.getRate(ricetta.id)}",
+            "ratingCount" : "${ricettedao.getNumberRate(ricetta.id)}"
+            },
+            "totalTime": "${ricetta.getTempoFormat()}"
+            }
+        </script>
+
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="${ricetta.nome}" />
+        <meta property="og:title"         content="${ricetta.nome} | Bortoleto" />
         <meta property="og:description"   content="${ricetta.descrizione}" />
         <meta property="og:image"         content="https://www.macelleriadellantonio.it/console/${ricetta.immagine}" />
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
-        <title>${ricetta.nome}</title>
+        <title>${ricetta.nome} | Bortoleto</title>
         <meta name="Description" content="${ricetta.descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -249,6 +314,22 @@
                             </div>
                         </c:when>
                         <c:otherwise>
+                            <nav id="breadcrumb">
+                                <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                                        <meta itemprop="position" content="1" />
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a itemprop="item" href="<c:url value="/idee.jsp"/>"><span itemprop="name">Idee in Cucina</span></a>
+                                        <meta itemprop="position" content="2" />
+                                    </li>
+                                    <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                        <a href="<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ','-')}"/>" itemprop="item" ><em><span itemprop="name">${ricetta.nome}</span></em></a>
+                                        <meta itemprop="position" content="3" />
+                                    </li>
+                                </ol>
+                            </nav>
                             <div class="single-post row">
                                 <div class="col-lg-12 img-margin-bottom-large">
                                     <div class="feature-img" style="text-align: center;">
@@ -308,7 +389,7 @@
                                             </c:if>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="personalized view" style="text-align: right;">${ricetta.tempo} Minuti<i class="far fa-clock ml-2" style="color: black;"></i></p>
+                                            <p class="personalized view" style="text-align: right;">${ricetta.getTempoFormat()}<i class="far fa-clock ml-2" style="color: black;"></i></p>
                                             <p class="personalized view" style="text-align: right;">${ricetta.difficolta}<i class="far fa-smile ml-2" style="color: black;"></i></p> 
                                         </div>
                                     </div>
@@ -631,18 +712,18 @@ FINE CONTENUTO -- INIZIO MODALI
         $('.lazy').lazy();
     });
 </script>
-    <!-- Twitter universal website tag code -->
-    <script>
-        !function (e, t, n, s, u, a) {
-            e.twq || (s = e.twq = function () {
-                s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-            }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-                    a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-        }(window, document, 'script');
-        // Insert Twitter Pixel ID and Standard Event data below
-        twq('init', 'o2zav');
-        twq('track', 'PageView');
-    </script>
-    <!-- End Twitter universal website tag code -->
+<!-- Twitter universal website tag code -->
+<script>
+    !function (e, t, n, s, u, a) {
+        e.twq || (s = e.twq = function () {
+            s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'o2zav');
+    twq('track', 'PageView');
+</script>
+<!-- End Twitter universal website tag code -->
 </body>
 </html>

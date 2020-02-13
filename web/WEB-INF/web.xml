@@ -72,6 +72,10 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>GZipServletFilter</filter-name>
+        <url-pattern>*.mp4</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GZipServletFilter</filter-name>
         <url-pattern>*.js</url-pattern>
     </filter-mapping>
     <filter-mapping>
