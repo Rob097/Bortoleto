@@ -33,7 +33,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
             gtag('config', 'UA-156001507-1');
         </script>
         <!--<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c9f39799b272f00119ab911&product=social-ab' async='async'></script>-->
-        <meta property="og:url"           content="https://macelleriadellantonio.it/alimenti-freschi/" />
+        <meta property="og:url"           content="<c:url value="/alimenti-freschi.jsp"/>" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Bottega online - Carne Trentina e Salumi Freschi" />
         <meta property="og:description"   content="Acquista online i prodotti della Macelleria Dellantonio 'l Bortoleto. Carne e salumi freschi della Val di Fiemme, Trentino Alto Adige" />
@@ -220,7 +220,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
                     <div class="col-md-4">
                         <div class="nav flex-column nav-pills pills-nav-link-box" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <c:if test="${!productdao.getFreshProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/alimenti-freschi/">Alimenti Freschi</a><span>${categorydao.getFreshCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/alimenti-freschi.jsp"/>"><%=varie.Costanti.FRESCHI%></a><span>${categorydao.getFreshCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${freshCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -229,7 +229,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${!productdao.getConfProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/dal-Trentino/">Prodotti da Noi</a><span>${categorydao.getConfCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/dal-trentino.jsp"/>">Prodotti da Noi</a><span>${categorydao.getConfCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${confCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -307,7 +307,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
         </div>
         <section id="categorie"> 
             <p class="sottotitoli" style="text-align: center; margin: 2rem auto 0 auto;">Qualità Trentina</p>
-            <h1 class='consigliati-h4'>Alimenti Freschi</h1>
+            <h1 class='consigliati-h4'><%=varie.Costanti.FRESCHI%></h1>
             <nav id="breadcrumb">
                 <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -319,7 +319,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
                         <meta itemprop="position" content="2" />
                     </li>
                     <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                        <em><span itemprop="name">Alimenti Freschi</span></em>
+                        <em><span itemprop="name"><%=varie.Costanti.FRESCHI%></span></em>
                         <meta itemprop="position" content="3" />
                     </li>
                 </ol>

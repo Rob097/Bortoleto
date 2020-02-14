@@ -75,6 +75,7 @@ public class JDBCCategoryDAO extends JDBCDAO implements CategoryDAO{
                     c.setId(rs.getInt("id"));
                     c.setNome(rs.getString("nome"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setFreschi(rs.getBoolean("freschi"));
                     categorie.add(c);
@@ -105,6 +106,7 @@ public class JDBCCategoryDAO extends JDBCDAO implements CategoryDAO{
                     c.setId(rs.getInt("id"));
                     c.setNome(rs.getString("nome"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setFreschi(rs.getBoolean("freschi"));
                     categorie.add(c);
@@ -135,6 +137,7 @@ public class JDBCCategoryDAO extends JDBCDAO implements CategoryDAO{
                     c.setId(rs.getInt("id"));
                     c.setNome(rs.getString("nome"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setFreschi(rs.getBoolean("freschi"));
                     categorie.add(c);
@@ -167,6 +170,7 @@ public class JDBCCategoryDAO extends JDBCDAO implements CategoryDAO{
                     c.setId(rs.getInt("id"));
                     c.setNome(rs.getString("nome"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setFreschi(rs.getBoolean("freschi"));
                 }
@@ -198,6 +202,7 @@ public class JDBCCategoryDAO extends JDBCDAO implements CategoryDAO{
                     c.setId(rs.getInt("id"));
                     c.setNome(rs.getString("nome"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setFreschi(rs.getBoolean("freschi"));
                 }

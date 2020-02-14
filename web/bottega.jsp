@@ -9,6 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:useBean id="cons" class="varie.Costanti" scope="session"/>
 <c:set var="request" value="<%=request%>"/> <!-- Request lo chiamo con una scriplets e lo salvo in una variabile perchè serve per diversi metodi java -->
 <c:set var="response" value="<%=response%>"/> <!-- Response lo chiamo con una scriplets e lo salvo in una variabile perchè serve per diversi metodi java -->
 <c:set value="${productdao.getAllProductsOfCart(request)}" var="prodottiCart" />
@@ -259,23 +260,23 @@ ${consoledao.incrementViews("bottega", request, 0)}
             <h4 class='consigliati-h4'>Scegli tra...</h4>
             <div class="row">
                 <div class="col-md-6">
-                    <a href="/Bortoleto/alimenti-freschi/">
+                    <a href="<c:url value="/alimenti-freschi.jsp"/>">
                         <div class="categoria-principale-box">
                             <div class='img-cat'>
                                 <img src="/Bortoleto/img/carne-bortoleto.jpg" />
                             </div>
-                            <h2>Alimenti Freschi</h2>
+                            <h2><%=varie.Costanti.FRESCHI%></h2>
                             <p class="sottotitoli">Carne 100% Locale</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="/Bortoleto/dal-Trentino/">
+                    <a href="<c:url value="/dal-trentino.jsp"/>">
                         <div class="categoria-principale-box">
                             <div class='img-cat'>
                                 <img src="/console/img/prodotti/confezionati/7.jpg" />
                             </div>
-                            <h2>Dal Trentino</h2>
+                            <h2><%=varie.Costanti.TRENTINO%></h2>
                             <p class="sottotitoli">Prodotti Artigianalmente</p>
                         </div>
                     </a>

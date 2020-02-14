@@ -28,8 +28,8 @@
             <div class="modal-body">
                 <div class="modal-product">
                     <!-- Start product images -->
-                    <div id="prodotto-immagine" class="product-images mb-5" style="width: fit-content;">
-                        <div class="main-image images" style="width: fit-content;margin: auto;">
+                    <div id="prodotto-immagine" class="product-images mb-5" style="width: fit-content;width: -moz-fit-content;">
+                        <div class="main-image images" data-scale="1.6" style="width: fit-content;width: -moz-fit-content;margin: auto;overflow:hidden;">
                             <img style="border-radius: 5px; max-height: 600px;" alt="${prodotto.nome}" src="/${prodotto.immagine}">
                         </div>
                         <div class="mt-5">
@@ -58,7 +58,8 @@
 
                                 </fieldset><br>                                
                             </div>
-                            <div class="quick-desc">
+                            <p class="description" style="font-size: 15px;">${prodotto.meta_descrizione}</p>
+                        <div class="quick-desc">
                             <c:if test="${ideeProdotto ne null && !ideeProdotto.isEmpty()}">
                                 <br><a target="_blank" href="<c:url value="/idee.jsp?prod=${prodotto.id}&nome=${prodotto.nome.replace(' ', '-')}" />"><img style="vertical-align: text-top; margin-right: 5px;" src="/Bortoleto/img/cappello-chef.png" />Scopri curiose idee su come usare questo prodotto</a><br>
                                 </c:if>
@@ -76,7 +77,7 @@
                                             <li><span>Peso: </span></li>                                                    
                                                 <c:if test="${array ne null && !array.isEmpty()}">
                                                     <c:forEach items="${array}" var="varianti" >
-                                                    <li><span>${varianti.get(0).variant}: </span></li>
+                                                    <li><span style="white-space: nowrap;">${varianti.get(0).variant}: </span></li>
                                                     </c:forEach>
                                                 </c:if>
                                             <li><span>Quantità: </span></li>
@@ -226,39 +227,39 @@
     //Change Variante Quick
     /* Il motivo per cui ho fatto questa funziona uguale a quella nel prodotto.jsp dove cambia solo il nome è che l'oggetto array veniva preso sbagliato nelle quickview
      * quindi ho dovuto ripetere la funzione anche qui. Comunque in questo modo non devo rcopiare la funzione in tutti i .jsp dove ci sono le quickview ma solo in product con il metodo non quick */
-        function changeVarianteQuick(element, prod, isQuick) {
+    function changeVarianteQuick(element, prod, isQuick) {
 
-            var string = ""; //contiene la concatenazione degli id delle varianti scelte per la combinazione di varianti
-            var selects; // nel ciclo foreach seleziona tutti i select delle varianti
-            var optionSelected; //nel ciclo foreach prende l'opzione scelta per ogni select delle varianti
-        <c:choose>
-            <c:when test="${array ne null && !array.isEmpty()}">
-                <c:forEach items="${array}" var="varianti" >
-            selects = $('#${varianti.get(0).variant.replace(" ", "")}-' + isQuick);
-            optionSelected = selects[0].options[selects.prop('selectedIndex')].value;
-            string += optionSelected + "_";
-                </c:forEach>
-            </c:when>
-        </c:choose>
-            string = string.substring(0, string.length - 1); //rimuovo l'ultimo carattere che è un _
-            //immagine di caricamento
-            $('#boxDati-' + isQuick).html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
+        var string = ""; //contiene la concatenazione degli id delle varianti scelte per la combinazione di varianti
+        var selects; // nel ciclo foreach seleziona tutti i select delle varianti
+        var optionSelected; //nel ciclo foreach prende l'opzione scelta per ogni select delle varianti
+    <c:choose>
+        <c:when test="${array ne null && !array.isEmpty()}">
+            <c:forEach items="${array}" var="varianti" >
+        selects = $('#${varianti.get(0).variant.replace(" ", "")}-' + isQuick);
+        optionSelected = selects[0].options[selects.prop('selectedIndex')].value;
+        string += optionSelected + "_";
+            </c:forEach>
+        </c:when>
+    </c:choose>
+        string = string.substring(0, string.length - 1); //rimuovo l'ultimo carattere che è un _
+        //immagine di caricamento
+        $('#boxDati-' + isQuick).html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
 
-            //Funzione ajax per aggiornare la schermata, il isQuick è un boolean e serve per capire se ci riferiamo al prodotto o al modal QuickView
-            $.ajax({
-                type: "POST",
-                url: "/Bortoleto/ajax/changeVariante.jsp",
-                data: {id: element.value, prod: prod, quick: isQuick, varianti: string},
-                cache: false,
-                success: function (response) {
-                    $('#boxDati-' + isQuick).html(response);
-                },
-                error: function () {
-                    $('#boxDati-' + isQuick).css("background-color", "red");
-                    $('#boxDati-' + isQuick).html("ERRORE");
-                }
-            });
-        }
+        //Funzione ajax per aggiornare la schermata, il isQuick è un boolean e serve per capire se ci riferiamo al prodotto o al modal QuickView
+        $.ajax({
+            type: "POST",
+            url: "/Bortoleto/ajax/changeVariante.jsp",
+            data: {id: element.value, prod: prod, quick: isQuick, varianti: string},
+            cache: false,
+            success: function (response) {
+                $('#boxDati-' + isQuick).html(response);
+            },
+            error: function () {
+                $('#boxDati-' + isQuick).css("background-color", "red");
+                $('#boxDati-' + isQuick).html("ERRORE");
+            }
+        });
+    }
     var sizePref = '${productdao.getAllProductsOfSession(preferiti).size()}';
     var sizeCart = '${productdao.getCartSize(request)}';
     //Funzioni ajax preferiti
@@ -328,4 +329,22 @@
         }
         $button.parent().find("input").val(newVal);
     });
+
+    $('.main-image')
+            // tile mouse actions
+            .on('mouseover', function () {
+                $(this).children('img').css({'transform': 'scale(' + $(this).attr('data-scale') + ')'});
+            })
+            .on('mouseout', function () {
+                $(this).children('img').css({'transform': 'scale(1)'});
+            })
+            .on('mousemove', function (e) {
+                $(this).children('img').css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 + '%'});
+            })
+            // tiles set up
+            .each(function () {
+                // set up a background image for each tile based on data-image attribute
+                $(this).children('img').css({'background-image': 'url(' + $(this).attr('data-image') + ')'});
+                $(this).css({'border-radius': '5px'});
+            });
 </script>

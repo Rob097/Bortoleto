@@ -35,6 +35,22 @@
     </c:when>
     <c:when test="${param.prod != null && param.prod != 0}">
         <c:set value="${ricettedao.getRecipeOfProduct(param.prod)}" var="ricette" /> 
+        <nav id="breadcrumb">
+            <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/idee.jsp"/>"><span itemprop="name">Idee in Cucina</span></a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="<c:url value="/idee.jsp?prod=${productdao.getProduct(param.prod).id}&nome=${productdao.getProduct(param.prod).nome.replace(' ', '-')}"/>" itemprop="item" ><em><span itemprop="name">${productdao.getProduct(param.prod).nome}</span></em></a>
+                    <meta itemprop="position" content="3" />
+                </li>
+            </ol>
+        </nav>
         <h3 class="mt-5 mb-5 black-text">
             <i class="fas fa-stream mr-3" style="color: black;"></i>
             ${productdao.getProduct(param.prod).nome}

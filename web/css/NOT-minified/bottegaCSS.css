@@ -184,7 +184,7 @@ body{
 }
 .pro__thumb {
     max-height: 250px;
-    width: fit-content;
+    width: fit-content;width: -moz-fit-content;
     margin: auto auto;
     overflow: hidden;
 }
@@ -533,7 +533,7 @@ h3.widget-title-modal {
     margin-top: 66px;
     text-align: left;
     margin: auto;
-    width: fit-content;
+    width: fit-content;width: -moz-fit-content;
 }
 .addtocart-btn a {
     background: #333 none repeat scroll 0 0;
@@ -604,7 +604,7 @@ ul{
     }
 }
 .div-select{
-    width: fit-content;
+    width: fit-content;width: -moz-fit-content;
 }
 .div-select select, .addtocart-btn input{
     padding: 3px;

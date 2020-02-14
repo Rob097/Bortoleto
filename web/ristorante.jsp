@@ -481,14 +481,14 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <div class="col-content-menu-02 col-sm-7 col-md-3" style="margin: auto auto;">
                     <div class="row">
                         <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                            <a class="hover-img" href="#materiePrime" onclick="callMaterie('Dal Trentino')">
-                                <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-01.jpg" alt="FattoDaNoi">
+                            <a class="hover-img tipo1" href="#materiePrime" onclick="callMaterie('Dal Trentino')">
+                                <div class="div-img-materie" style="min-width: 150px;  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/console/img/ristorante/dal-trentino/il-cappelli.jpg);" alt="Dal Trentino"></div>
                                 <h3 class="text-in-img-menu-02">Dal Trentino</h3>
                             </a>
                         </div>
                         <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                            <a class="hover-img"><!-- href="#materiePrime" onclick="callMaterie('Varie')"-->
-                                <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-03.jpg" alt="Varie">
+                            <a class="hover-img tipo2">
+                                <div class="div-img-materie" style="min-width: 150px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://templates.aucreative.co/deli/images/img-menu-page-02-03.jpg');" alt="Varie"></div>
                                 <h3 class="text-in-img-menu-02">Cooming Soon</h3>
                             </a>
                         </div>
@@ -497,22 +497,22 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <div class="col-content-menu-02 col-sm-7 col-md-5" style="margin: auto auto;">
                     <div class="row">
                         <div data-aos="fade-down" data-aos-duration="2000" class="col-12 wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
-                            <a href="#materiePrime" onclick="callMaterie('La Carne')" class="hover-img">
-                                <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-02.jpg" alt="LaCarne">
+                            <a href="#materiePrime" onclick="callMaterie('La Carne')" class="hover-img tipo1">
+                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/ristorante/la-carne/manzo-al-sesamo.jpg');" alt="La Carne"></div>
                                 <h3 class="text-in-img-menu-02">La Carne</h3>
                             </a>
                         </div>
                         <div data-aos="fade-up" data-aos-duration="2000" class="col-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img">
-                                <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-04.jpg" alt="LaPasta">
+                            <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img tipo2">
+                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/ristorante/fatto-da-noi/frittelle.jpg');" alt="Fatto da Noi"></div>
                                 <h3 class="text-in-img-menu-02">Fatto da noi</h3>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="2000" class="col-content-menu-02 col-sm-7 col-md-4 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; margin: auto auto;">
-                    <a href="#materiePrime" onclick="callMaterie('Il Vino')" class="hover-img">
-                        <img class="lazy" data-src="http://templates.aucreative.co/deli/images/img-menu-page-02-05.jpg" alt="IlVino">
+                    <a href="#materiePrime" onclick="callMaterie('Il Vino')" class="hover-img tipo3">
+                        <div class="div-img-materie" style="min-width: 210px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://templates.aucreative.co/deli/images/img-menu-page-02-05.jpg');" alt="Il Vino"></div>
                         <h3 class="text-in-img-menu-02">Il Vino</h3>
                     </a>
                 </div>

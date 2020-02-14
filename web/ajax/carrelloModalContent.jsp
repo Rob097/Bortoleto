@@ -141,7 +141,7 @@
         <div class="cd-cart-total" style="color: #000080; font-weight: bold;">
             <p>Total <span>€ ${totaleCart}</span></p>
         </div> <!-- cd-cart-total -->
-        <a href="/Bortoleto/carrello.jsp" class="checkout-btn">Checkout</a>
+        <a href="/Bortoleto/carrello.jsp" class="checkout-btn" style="font-weight: 900; color: black;">Procedi con l'ordine</a>
         <a onclick="svuotaCarrello();" class="checkout-btn" style="background-color: #5f0b0b; font-weight: 600;">Svuota carrello</a>
     </c:otherwise>
 </c:choose>    

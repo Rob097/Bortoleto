@@ -1157,7 +1157,7 @@ SEARCH
     }
 }
 .cd-breadcrumb, .cd-multi-steps {
-    width: fit-content;
+    width: fit-content;width: -moz-fit-content;
     margin: 3rem 0 1rem 0;
     background-color: #edeff0;
     border-radius: .25em;

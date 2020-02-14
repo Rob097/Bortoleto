@@ -327,7 +327,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                 <h1 class="styled">Macelleria Dellantonio</h1>
 
                 <div class="row mt-5 mb-5">
-                    <div class="col-lg-5" style="width: fit-content; margin: 2rem auto 4rem auto;">
+                    <div class="col-lg-5" style="width: fit-content;width: -moz-fit-content; margin: 2rem auto 4rem auto;">
                         <img style="width: 30rem;" src="/Bortoleto/img/spiedini.jpg" />
                     </div>
                     <div class="col-lg-7">
@@ -433,7 +433,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
         <section class="text-center mt-5 pb-5" id="raggiungici-macelleria">
 
             <h2 class="h1-responsive font-weight-bold my-5">Contatti</h2>
-            <a style="display: inline-block;" href="mailto:info@macelleriadellantonio.it"><p class='Architects' style='font-size: 1.5rem; width: fit-content; margin: auto auto;'>info@macelleriadellantonio.it</p></a>
+            <a style="display: inline-block;" href="mailto:info@macelleriadellantonio.it"><p class='Architects' style='font-size: 1.5rem; width: fit-content;width: -moz-fit-content; margin: auto auto;'>info@macelleriadellantonio.it</p></a>
             <div class='row flex-column-reverse flex-lg-row' style='width: 100%; margin: 0;'>
                 <div class='col-lg-8'>
                     <div class="mb-5 mt-5" id="map1" data-aos="zoom-out-right" data-aos-duration="2000"></div>

@@ -33,7 +33,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
             gtag('config', 'UA-156001507-1');
         </script>
 
-        <meta property="og:url"           content="https://macelleriadellantonio.it/dal-Trentino/" />
+        <meta property="og:url"           content="<c:url value="/dal-trentino.jsp"/>" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Bottega online - Prodotti Artigianali Trentini" />
         <meta property="og:description"   content="Acquista online i prodotti della Macelleria Dellantonio 'l Bortoleto. Salumi e formaggi artigianali della Val di Fiemme, Trentino Alto Adige" />
@@ -220,7 +220,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
                     <div class="col-md-4">
                         <div class="nav flex-column nav-pills pills-nav-link-box" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <c:if test="${!productdao.getFreshProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/alimenti-freschi/">Alimenti Freschi</a><span>${categorydao.getFreshCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/alimenti-freschi.jsp"/>"><%=varie.Costanti.FRESCHI%></a><span>${categorydao.getFreshCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${freshCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -229,7 +229,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${!productdao.getConfProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/dal-Trentino/">Prodotti da Noi</a><span>${categorydao.getConfCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/dal-trentino.jsp"/>"><%=varie.Costanti.TRENTINO%></a><span>${categorydao.getConfCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${confCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -308,7 +308,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
         </div>
         <section id="categorie"> 
             <p class="sottotitoli" style="text-align: center; margin: 2rem auto 0 auto;">Qualità Trentina</p>
-            <h1 class='consigliati-h4'>Dal Trentino</h1>
+            <h1 class='consigliati-h4'><%=varie.Costanti.TRENTINO%></h1>
             <nav id="breadcrumb">
                 <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -320,7 +320,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
                         <meta itemprop="position" content="2" />
                     </li>
                     <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                        <em><span itemprop="name">Dal Trentino</span></em>
+                        <em><span itemprop="name"><%=varie.Costanti.TRENTINO%></span></em>
                         <meta itemprop="position" content="3" />
                     </li>
                 </ol>

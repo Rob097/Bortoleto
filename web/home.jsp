@@ -414,7 +414,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <div class="colonna-differenza text-center">
                         <i class="fas fa-box-open exp-ico"></i><br>
                         <h4 class="text-center dif-title">Spedizioni refrigerate</h4>
-                        <p>Spedizioni a temperatura controllata KEATCHEN in tutta Italia</p>
+                        <p>Spedizioni a temperatura controllata <a href="https://www.keatchen.it/" title="KEATCHEN trasporti alimentari" target="_blank" rel="noopener">KEATCHEN</a> in tutta Italia</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-12 mb-3">
@@ -450,7 +450,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <p class="servizi-text">Servizio <strong>semplice</strong> e <strong>sicuro</strong> per poter ordinare comodamente da casa tutti i prodotti sia <strong>confezionati</strong> sia <strong>freschi</strong> con imballaggi certificati <strong>KEATCHEN</strong>.
                         La specialità artigianali Trentine direttamente dalla val di Fiemme a casa tua. In <strong>24 ore</strong>.</p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
-                        <a href="<c:url value="/bottega.jsp" />" target="_blank" rel="noopener" class="btn btnAcquista" style="padding: 12px 20px;">ordina ora</a>
+                        <a href="<c:url value="/bottega.jsp" />" class="btn btnAcquista" style="padding: 12px 20px;">ordina ora</a>
                     </div>
                 </div>
             </div>
@@ -461,7 +461,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <p class="servizi-text">La passione per il nostro lavoro ci permette, da ormai <strong>5 generazioni</strong>, di garantire la più alta qualità a tutti i nostri clienti con un servizio <em><strong>familiare</strong> </em>e curato.
                         Un secolo di cura e innovazione portata avanti da una passione comune. <strong><i>Il mangiar bene e sano</i></strong>.</p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
-                        <a href="<c:url value="/macelleria.jsp" />" target="_blank" rel="noopener" class="btn btnDiscover">Scopri di più</a>
+                        <a href="<c:url value="/macelleria.jsp" />" class="btn btnDiscover">Scopri di più</a>
                     </div>
                 </div>
                 <div style="margin-bottom: 2rem;" class="col-lg-8 servizi-divImage image-liquid image-holder--original parallax-window"  data-parallax="scroll" data-image-src="/Bortoleto/img/sedi/PredazzoNegozio/negozio1.jpg">
@@ -477,7 +477,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <h2 class="dif-title mb-5">Il Ristorante</h2>
                     <p class="servizi-text">Ai piedi delle <strong>Dolomiti</strong> offriamo un esperienza gastronomica a km 0 in grado di soddisfare i palati più fini. <strong>Vieni a trovarci</strong> a Predazzo in via Cavour 2 per capire come la <strong>qualità nel piatto</strong> riesce a fare la differenza.</p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
-                        <a href="<c:url value="/ristorante.jsp" />" target="_blank" rel="noopener" class="btn btnDiscover">Scopri di più</a>
+                        <a href="<c:url value="/ristorante.jsp" />" class="btn btnDiscover">Scopri di più</a>
                     </div>
                 </div>
             </div>
@@ -488,7 +488,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <p class="servizi-text">Il lato <strong>professionale</strong> e attendo dietro ad ogni aspetto del nostro lavoro fa si che ogni <strong>scelta</strong> derivi da attente <strong>riflessioni</strong>. Da oggi puoi scoprire come garantiamo la <strong>qualità</strong> partendo dalle <strong>materie prime</strong> e passando per le giuste <strong>lavorazioni</strong> con articoli utili e interessanti.
                     </p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
-                        <a href="<c:url value="/blog.jsp" />" target="_blank" rel="noopener" class="btn btnDiscover">Scopri di più</a>
+                        <a href="<c:url value="/blog.jsp" />" class="btn btnDiscover">Scopri di più</a>
                     </div>
                 </div>
                 <div style="margin-bottom: 2rem;" class="col-lg-8 servizi-divImage image-liquid image-holder--original parallax-window"  data-parallax="scroll" data-image-src="/Bortoleto/img/sfondo-blog.jpg">
@@ -506,7 +506,7 @@ ${consoledao.incrementViews("home", request, 0)}
                         Hai qualche idea interessante? Faccela sapere, saremo lieti di renderti partecipe!
                     </p>
                     <div style="width: 100%; text-align: center; z-index: 1;">
-                        <a href="<c:url value="/idee.jsp" />" target="_blank" rel="noopener" class="btn btnDiscover">Scopri di più</a>
+                        <a href="<c:url value="/idee.jsp" />" class="btn btnDiscover">Scopri di più</a>
                     </div>
                 </div>
             </div>
@@ -518,7 +518,7 @@ ${consoledao.incrementViews("home", request, 0)}
             <ul id="services">
                 <li>
                     <div class="facebook">
-                        <a target="_blank" rel="nofollow" href="https://www.facebook.com/macelleriadellantonio/">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.facebook.com/macelleriadellantonio/">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -526,7 +526,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="instagram">
-                        <a target="_blank" rel="nofollow" href="https://www.instagram.com/macelleriabortoleto/">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.instagram.com/macelleriabortoleto/">
                             <i class="fab fa-instagram" aria-hidden="true" alt="macelleria dellantonio instagram"></i>
                         </a>
                     </div>
@@ -534,7 +534,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="twitter">
-                        <a target="_blank" rel="nofollow" href="https://twitter.com/bortoleto_mac">
+                        <a target="_blank" rel="nofollow noopener" href="https://twitter.com/bortoleto_mac">
                             <i class="fab fa-twitter" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -542,7 +542,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="youtube">
-                        <a target="_blank" rel="nofollow" href="https://www.youtube.com/watch?v=9-3If8AhVwM">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.youtube.com/watch?v=9-3If8AhVwM">
                             <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -550,7 +550,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="linkedin">
-                        <a target="_blank" rel="nofollow" href="https://www.linkedin.com/company/macelleria-dellantonio/">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.linkedin.com/company/macelleria-dellantonio/">
                             <i class="fab fa-linkedin" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -558,7 +558,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="pinterest">
-                        <a target="_blank" rel="nofollow" href="https://www.pinterest.it/macelleriabortoleto/">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.pinterest.it/macelleriabortoleto/">
                             <i class="fab fa-pinterest" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -569,7 +569,7 @@ ${consoledao.incrementViews("home", request, 0)}
             <ul id="services">
                 <li>
                     <div class="facebook">
-                        <a target="_blank" rel="nofollow" href="https://www.facebook.com/LBortoleto/">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.facebook.com/LBortoleto/">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -577,7 +577,7 @@ ${consoledao.incrementViews("home", request, 0)}
                 </li>
                 <li>
                     <div class="instagram">
-                        <a target="_blank" rel="nofollow" href="https://www.instagram.com/ristorantebortoleto/">
+                        <a target="_blank" rel="nofollow noopener" href="https://www.instagram.com/ristorantebortoleto/">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>

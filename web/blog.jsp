@@ -18,7 +18,7 @@ ${consoledao.incrementViews("blog", request, 0)}
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156001507-1"></script>
         <script>
@@ -30,7 +30,7 @@ ${consoledao.incrementViews("blog", request, 0)}
 
             gtag('config', 'UA-156001507-1');
         </script>
-        
+
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/blog.jsp"/>" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Blog de 'l Bortoleto" />
@@ -272,7 +272,23 @@ ${consoledao.incrementViews("blog", request, 0)}
                         <c:choose>
                             <c:when test="${param.cat != null}">
                                 <c:set var="cat" value="${catblogdao.getCatByName(param.cat.replace('-', ' '))}" />
-                                <h1>${param.cat}</h1>
+                                <nav id="breadcrumb">
+                                    <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                            <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                                            <meta itemprop="position" content="1" />
+                                        </li>
+                                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                            <a itemprop="item" href="<c:url value="/blog.jsp"/>"><span itemprop="name">Il Blog</span></a>
+                                            <meta itemprop="position" content="2" />
+                                        </li>
+                                        <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                            <a itemprop="item" href="<c:url value="/blog.jsp?cat=${param.cat}"/>"><span itemprop="name">${param.cat.replace('-', ' ')}</span></a>
+                                            <meta itemprop="position" content="3" />
+                                        </li>
+                                    </ol>
+                                </nav>
+                                <h2>${param.cat}</h2>
                                 <c:choose>
                                     <c:when test="${blogdao.hasVisibileBlogs(cat.id_cat) eq true}">
                                         <c:set value="${blogdao.getAllBlogsOfCategory(cat.id_cat)}" var="blogs" />
@@ -290,6 +306,22 @@ ${consoledao.incrementViews("blog", request, 0)}
                             <c:when test="${param.tag != null}">
                                 <c:set value="${param.tag.replace('-', ' ')}" var="tag" />
                                 <c:set value="${blogdao.getAllBlogsWithTag(blogdao.getIDTag(param.tag.replace('-', ' ')))}" var="blogs" />
+                                <nav id="breadcrumb">
+                                    <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                            <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                                            <meta itemprop="position" content="1" />
+                                        </li>
+                                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                            <a itemprop="item" href="<c:url value="/blog.jsp"/>"><span itemprop="name">Il Blog</span></a>
+                                            <meta itemprop="position" content="2" />
+                                        </li>
+                                        <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                            <a itemprop="item" href="<c:url value="/blog.jsp?tag=${param.tag}"/>"><span itemprop="name">${tag}</span></a>
+                                            <meta itemprop="position" content="3" />
+                                        </li>
+                                    </ol>
+                                </nav>
                                 <h2 class="mt-5 mb-5 black-text"><i class="fas fa-tag mr-2" style="color: black;"></i>${tag}</h2>
                                 <!-- blog = getAllBlogWithTag() -->
                             </c:when>
@@ -329,7 +361,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                                             <div class="feature-img text-center">
                                                 <img class="lazy img-fluid blogIMG" data-src="/${blog.immagine}" alt="${blog.nome}">
                                             </div>
-                                                <a class="posts-title" href="<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>">
+                                            <a class="posts-title" href="<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>">
                                                 <h2 class="textOverflow nomeArt mt-3">${blog.nome}</h2>
                                             </a>
                                             <div class="excert textOverflow" style="color: #000000 !important">
@@ -348,7 +380,7 @@ ${consoledao.incrementViews("blog", request, 0)}
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
                     <div class="single-sidebar-widget">
-                        <a href='<c:url value="/blog.jsp"/>'><h1><i class="fas fa-arrow-left mr-2"></i>Torna a tutti gli articoli</h1></a>
+                        <a href='<c:url value="/blog.jsp"/>'><h5><i class="fas fa-arrow-left mr-2"></i>Torna a tutti gli articoli</h5></a>
                     </div>
                     <div class="single-sidebar-widget search-widget">
                         <form class="search-form" action="<c:url value="/blog.jsp#blog"/>">

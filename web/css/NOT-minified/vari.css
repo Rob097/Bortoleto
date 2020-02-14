@@ -69,7 +69,7 @@ h1 { font-size: 1.5em; margin: 10px; }
     margin: auto auto;
     color: white;
     font-weight: bold;
-    width: fit-content;
+    width: fit-content;width: -moz-fit-content;
     bottom: 2rem;
     position: absolute;
     text-align: center;
@@ -96,7 +96,7 @@ h1 { font-size: 1.5em; margin: 10px; }
     color: white;
     font-weight: bold;
     float: left;
-    width: fit-content;
+    width: fit-content;width: -moz-fit-content;
     bottom: 10rem;
     position: absolute;
 }

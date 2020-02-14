@@ -95,6 +95,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -133,6 +134,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -171,6 +173,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -219,6 +222,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -256,6 +260,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -312,6 +317,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                             p.setId(rs.getInt("id"));
                             p.setNome(rs.getString("nome"));
                             p.setDescrizione(rs.getString("descrizione"));
+                            p.setMeta_descrizione(rs.getString("meta_descrizione"));
                             p.setImmagine(rs.getString("immagine"));
                             p.setCategoria(rs.getString("categoria"));
                             p.setCosto(rs.getFloat("costo"));
@@ -912,6 +918,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                         p.setId(rs.getInt("id"));
                         p.setNome(rs.getString("nome"));
                         p.setDescrizione(rs.getString("descrizione"));
+                        p.setMeta_descrizione(rs.getString("meta_descrizione"));
                         p.setImmagine(rs.getString("immagine"));
                         p.setCategoria(rs.getString("categoria"));
                         p.setCosto(rs.getFloat("costo"));
@@ -1321,6 +1328,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -1351,6 +1359,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
                     p.setId(rs.getInt("id"));
                     p.setNome(rs.getString("nome"));
                     p.setDescrizione(rs.getString("descrizione"));
+                    p.setMeta_descrizione(rs.getString("meta_descrizione"));
                     p.setImmagine(rs.getString("immagine"));
                     p.setCategoria(rs.getString("categoria"));
                     p.setCosto(rs.getFloat("costo"));
@@ -1379,7 +1388,7 @@ public class JDBCProductDAO extends JDBCDAO implements ProductDAO {
         costo = blocco.stream().map((Av) -> Av.get(0).getSupplement()).reduce(costo, (accumulator, _item) -> accumulator + _item);
         return costo;
     }
-    
+
     @Override
     public double getWeightOfVariantCombinationFull(ArrayList<ArrayList<Variante>> blocco) throws DAOException {
         double peso = 0;

@@ -101,13 +101,13 @@
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="${ricetta.nome} | Bortoleto" />
-        <meta property="og:description"   content="${ricetta.descrizione}" />
+        <meta property="og:description"   content="${ricetta.meta_descrizione}" />
         <meta property="og:image"         content="https://www.macelleriadellantonio.it/console/${ricetta.immagine}" />
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
         <title>${ricetta.nome} | Bortoleto</title>
-        <meta name="Description" content="${ricetta.descrizione}">
+        <meta name="Description" content="${ricetta.meta_descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">        
@@ -333,7 +333,7 @@
                             <div class="single-post row">
                                 <div class="col-lg-12 img-margin-bottom-large">
                                     <div class="feature-img" style="text-align: center;">
-                                        <img class="lazy img-fluid" data-src="/${ricetta.immagine}" alt="${ricetta.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
+                                        <img class="img-fluid" src="/${ricetta.immagine}" alt="${ricetta.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
                                     </div>
                                 </div>
                                 <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
@@ -379,8 +379,7 @@
                                             <c:if test="${ricetta.id_prod ne 0}">
                                                 <c:set var="ricettaProd" value="${productdao.getProduct(ricetta.id_prod)}" />
                                                 <a data-toggle="tooltip" title="Acquista ${ricettaProd.nome}" target="_blank" rel="noopener" href="<c:url value="/prodotto.jsp?id=${ricettaProd.id}&nome=${ricettaProd.nome.replace(' ', '-')}&cat=${ricettaProd.categoria.replace(' ', '-')}"/>">
-                                                    <div class="container1">
-                                                        <img data-src="/${ricettaProd.immagine}" alt="ProdottoIdeaImmagine" class="lazy image1">
+                                                    <div class="container1 lazy" alt="${ricettaProd.nome}" data-src="/${ricettaProd.immagine}" style="height: 100%; min-height: 150px; max-height: 200px; max-width: 300px; background-size: cover; background-position: center center; background-repeat: no-repeat;">
                                                         <div class="overlay1">
                                                             <div class="text1"><i class="fas fa-cart-plus" style="font-size: 3rem;"></i></div>
                                                         </div>
@@ -421,7 +420,7 @@
                                                 <div class="col-md-4 zoomSlide">
                                                     <a target="blank" href="<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>">
                                                         <div class="card mb-2" style="border-radius: 5%;">
-                                                            <div class="image-liquid image-holder--original card-img-top" style=" background-image: url('/${blog.immagine}');height: 15rem;" alt="${blog.nome}"></div>                                            
+                                                            <div class="image-liquid image-holder--original card-img-top lazy" data-src="/${blog.immagine}" style="height: 15rem;" alt="${blog.nome}"></div>                                            
                                                             <div class="card-body">
                                                                 <h4 class="card-title font-weight-bold black-text">${blog.nome}</h4>
                                                             </div>

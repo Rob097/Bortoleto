@@ -23,6 +23,22 @@
     <c:when test="${param.cat != null && !param.cat.equals('')}">
         <c:set value="${catblogdao.getCatByName(param.cat.replace('-', ' '))}" var="cat" />
         <c:set value="${blogdao.getAllBlogsOfCategory(cat.id_cat)}" var="blogs" />
+        <nav id="breadcrumb">
+            <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/blog.jsp"/>"><span itemprop="name">Il Blog</span></a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/blog.jsp?cat=${param.cat}"/>"><span itemprop="name">${param.cat.replace('-', ' ')}</span></a>
+                    <meta itemprop="position" content="3" />
+                </li>
+            </ol>
+        </nav>
         <h2 class="mt-5 mb-5 black-text"><i class="fas fa-stream mr-2" style="color: black;"></i>${cat.nome}</h2>
         <!-- blogs = getAllBlogOfCategory() 
         if blogs is void -> no category found
@@ -31,6 +47,22 @@
     <c:when test="${param.tag != null && !param.tag.equals('')}">
         <c:set value="${param.tag.replace('-', ' ')}" var="tag" />
         <c:set value="${blogdao.getAllBlogsWithTag(blogdao.getIDTag(param.tag.replace('-', ' ')))}" var="blogs" />
+        <nav id="breadcrumb">
+            <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/blog.jsp"/>"><span itemprop="name">Il Blog</span></a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="<c:url value="/blog.jsp?tag=${param.tag}"/>"><span itemprop="name">${tag}</span></a>
+                    <meta itemprop="position" content="3" />
+                </li>
+            </ol>
+        </nav>
         <h2 class="mt-5 mb-5 black-text"><i class="fas fa-tag mr-2" style="color: black;"></i>${tag}</h2>
         <!-- blog = getAllBlogWithTag() -->
     </c:when>
@@ -60,7 +92,7 @@
                         <ul class="tags realTags key black-text textOverflow">
                             <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
                                 <li>
-                                    <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                    <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
                                 </li>
                             </c:forEach>
                         </ul>
@@ -117,7 +149,7 @@
                             <ul class="tags realTags key black-text textOverflow mt-2">
                                 <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
                                     <li>
-                                        <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                        <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
                                     </li>
                                 </c:forEach>
                             </ul>

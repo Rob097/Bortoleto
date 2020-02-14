@@ -58,13 +58,13 @@
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>">
         <meta property="og:type"          content="website">
         <meta property="og:title"         content="${blog.nome} - ${blog.categoria} | Bortoleto">
-        <meta property="og:description"   content="${blog.descrizione}">
+        <meta property="og:description"   content="${blog.meta_descrizione}">
         <meta property="og:image"         content="https://www.macelleriadellantonio.it/console/${blog.immagine}">
         <meta property="fb:app_id"        content="320307085338651">
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
         <title>${blog.nome} - ${blog.categoria} | Bortoleto</title>
-        <meta name="Description" content="${blog.descrizione}">
+        <meta name="Description" content="${blog.meta_descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">        
@@ -92,7 +92,7 @@
                 transition: 0.3s;
             }
             .mwfc{
-                max-width: fit-content;
+                max-width: fit-content;width: -moz-fit-content;
             }
             @media (min-width: 1200px){
                 .container {
@@ -296,7 +296,7 @@
                             <div class="single-post row">
                                 <div class="col-lg-12 img-margin-bottom-large">
                                     <div class="feature-img" style="text-align: center;">
-                                        <img class="lazy img-fluid" data-src="/${blog.immagine}" alt="${blog.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
+                                        <img class="img-fluid" src="/${blog.immagine}" alt="${blog.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
                                     </div>
                                 </div>
                                 <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
@@ -372,7 +372,7 @@
                                                 <div class="col-md-4 zoomSlide">
                                                     <a target="blank" href="<c:url value="/prodotto.jsp?id=${simile.id}&nome=${simile.nome.replace(' ', '-')}&cat=${simile.categoria.replace(' ', '-')}" />">
                                                         <div class="card mb-2" style="border-radius: 5%;">
-                                                            <div class="image-liquid image-holder--original card-img-top" style=" background-image: url('/${simile.immagine}');height: 15rem;" alt="${simile.nome}"></div>                                            
+                                                            <div class="image-liquid image-holder--original card-img-top lazy" data-src="/${simile.immagine}" style="height: 15rem;" alt="${simile.nome}"></div>                                            
                                                             <div class="card-body">
                                                                 <h4 class="card-title font-weight-bold black-text">${simile.nome}</h4>
                                                             </div>
@@ -385,7 +385,7 @@
                                                 <div class="col-md-4 zoomSlide">
                                                     <a target="blank" href="<c:url value="/categoria.jsp?id=${simile.id}&nome=${simile.nome.replace(' ', '-')}" />">
                                                         <div class="card mb-2" style="border-radius: 5%;">
-                                                            <div class="image-liquid image-holder--original card-img-top" style=" background-image: url('/${simile.immagine}');height: 15rem;" alt="${simile.nome}"></div>                                            
+                                                            <div class="image-liquid image-holder--original card-img-top lazy" data-src="/${simile.immagine}" style="height: 15rem;" alt="${simile.nome}"></div>                                            
                                                             <div class="card-body">
                                                                 <h4 class="card-title font-weight-bold black-text">${simile.nome}</h4>
                                                             </div>

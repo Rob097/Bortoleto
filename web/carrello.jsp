@@ -318,6 +318,9 @@
                     </div>
                     <div style="height: auto;" class="col-md-8 order-md-1">
                         <div id="datiBox" class="sticky-top">
+                            <div style="width: 100%; text-align: right;">
+                                <a href="<c:url value="/bottega.jsp"/>" class="mt-5" style="font-weight: 900;"><i class="fas fa-arrow-left mr-2"></i>Torna al negozio</a>
+                            </div>
                             <div style="height: 75vh; overflow: hidden scroll;">
                                 <form id="SENDATI" class="needs-validation" novalidate action="javascript:sendDati()">
                                     <h4 class="mb-3">Dati pesonali</h4>                            
@@ -357,16 +360,16 @@
                                             <div class="row">
                                                 <div class="col-md-5 mb-3">
                                                     <label for="citta">Città</label>
-                                                        <input type="text" class="form-control" id="citta" name="citta" <c:choose><c:when test="${citta ne null}">value="${citta.replace(SPACES_COOKIE, " ")}"</c:when><c:otherwise>placeholder="LA tua città"</c:otherwise></c:choose> required>
+                                                        <input type="text" class="form-control" id="citta" name="citta" <c:choose><c:when test="${citta ne null}">value="${citta.replace(SPACES_COOKIE, " ")}"</c:when><c:otherwise>placeholder="La tua città"</c:otherwise></c:choose> required>
                                                     <div class="invalid-feedback">
                                                         E' richiesto un nome di città valido che servirà per la spedizione
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
-                                                    <label for="zip">Zip</label>
+                                                    <label for="zip">CAP</label>
                                                         <input type="text" class="form-control" id="zip" name="zip" <c:choose><c:when test="${zip ne null}">value="${zip.replace(SPACES_COOKIE, " ")}"</c:when><c:otherwise>placeholder="Il CAP della tua città"</c:otherwise></c:choose> required>
                                                     <div class="invalid-feedback">
-                                                        ZIP richiesto per la spedizione
+                                                        CAP richiesto per la spedizione
                                                     </div>
                                                 </div>
                                             </div>

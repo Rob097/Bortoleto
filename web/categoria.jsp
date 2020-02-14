@@ -60,14 +60,14 @@
         <meta property="og:url"           content="https://macelleriadellantonio.it/Bortoleto/categoria/${cat.id}/${cat.nome.replace(' ', '-')}/" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Bottega online - ${cat.nome}" />
-        <meta property="og:description"   content="${cat.descrizione}" />
+        <meta property="og:description"   content="${cat.meta_descrizione}" />
         <meta property="og:image"         content="https://macelleriadellantonio.it/Bortoleto/${cat.immagine}" alt="${cat.nome}"/>
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16"  alt="Salumi online">
         <title>${cat.nome} | Bortoleto</title>
-        <meta name="Description" content="${cat.descrizione}">
+        <meta name="Description" content="${cat.meta_descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#312e2e">
@@ -240,7 +240,7 @@
                     <div class="col-md-4">
                         <div class="nav flex-column nav-pills pills-nav-link-box" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <c:if test="${!productdao.getFreshProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/alimenti-freschi/">Alimenti Freschi</a><span>${categorydao.getFreshCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/alimenti-freschi.jsp"/>"><%=varie.Costanti.FRESCHI%></a><span>${categorydao.getFreshCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${freshCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -249,7 +249,7 @@
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${!productdao.getConfProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/dal-Trentino/">Prodotti da Noi</a><span>${categorydao.getConfCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/dal-trentino.jsp"/>"><%=varie.Costanti.TRENTINO%></a><span>${categorydao.getConfCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${confCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -342,13 +342,13 @@
                     <c:choose>
                         <c:when test="${cat.freschi}">
                             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a itemprop="item" href="<c:url value="/alimenti-freschi.jsp"/>"><span itemprop="name">Alimenti Freschi</span></a>
+                                <a itemprop="item" href="<c:url value="/alimenti-freschi.jsp"/>"><span itemprop="name"><%=varie.Costanti.FRESCHI%></span></a>
                                 <meta itemprop="position" content="3" />
                             </li>
                         </c:when>
                         <c:otherwise>
                             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a itemprop="item" href="/Bortoleto/dal-Trentino/"><span itemprop="name">Dal Trentino</span></a>
+                                <a itemprop="item" href="<c:url value="/dal-trentino.jsp"/>"><span itemprop="name"><%=varie.Costanti.TRENTINO%></span></a>
                                 <meta itemprop="position" content="3" />
                             </li>
                         </c:otherwise>
@@ -369,7 +369,7 @@
                                 <div class="product">
                                     <div class="product__inner">
                                         <div class="pro__thumb" style="box-shadow: 5px 5px 20px 0px black; border-radius: 5px;">
-                                            <a href="#">
+                                            <a style="cursor: default;">
                                                 <img data-src="/${prodotto.immagine}" alt="${prodotto.nome}" class="lazy" style="border-radius: 5px;">
                                             </a>
                                         </div>

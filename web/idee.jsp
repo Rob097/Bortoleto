@@ -17,7 +17,7 @@ ${consoledao.incrementViews("idee", request, 0)}
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156001507-1"></script>
         <script>
@@ -29,7 +29,7 @@ ${consoledao.incrementViews("idee", request, 0)}
 
             gtag('config', 'UA-156001507-1');
         </script>
-        
+
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/idee.jsp"/>" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="Le idee de 'l Bortoleto" />
@@ -327,6 +327,22 @@ ${consoledao.incrementViews("idee", request, 0)}
                                 <c:choose>
                                     <c:when test="${param.prod != 0 && productdao.getProduct(param.prod).nome.toLowerCase() eq param.nome.replace('-', ' ').toLowerCase()}">
                                         <c:set value="${ricettedao.getRecipeOfProduct(param.prod)}" var="ricette" /> 
+                                        <nav id="breadcrumb">
+                                            <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                                    <a itemprop="item" href="<c:url value="/#Bortoleto"/>"><span itemprop="name">Home</span></a>
+                                                    <meta itemprop="position" content="1" />
+                                                </li>
+                                                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                                    <a itemprop="item" href="<c:url value="/idee.jsp"/>"><span itemprop="name">Idee in Cucina</span></a>
+                                                    <meta itemprop="position" content="2" />
+                                                </li>
+                                                <li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                                    <a href="<c:url value="/idee.jsp?prod=${productdao.getProduct(param.prod).id}&nome=${param.nome}"/>" itemprop="item" ><em><span itemprop="name">${param.nome.replace("-"," ")}</span></em></a>
+                                                    <meta itemprop="position" content="3" />
+                                                </li>
+                                            </ol>
+                                        </nav>
                                         <h3 class="mt-5 mb-5 black-text">
                                             <i class="fas fa-stream mr-3" style="color: black;"></i>
                                             ${productdao.getProduct(param.prod).nome}
@@ -378,7 +394,7 @@ ${consoledao.incrementViews("idee", request, 0)}
                                             </p>
                                             <a href="<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>" class="primary-btn btn btn-outline-brown mb-5" style="padding-top: 0; padding-bottom: 0;">scopri di più</a>
                                         </div>
-                                        
+
                                     </div>  
                                 </c:forEach>
                                 <h4 id="noProd" class="black-text text-center invisible">Non ci sono ricette che corrispondono alla ricerca</h4>

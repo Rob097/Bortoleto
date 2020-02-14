@@ -10,71 +10,88 @@
 -->
 <urlrewrite>
     
+    <!-- Le rule sono le regole che servono per prendere l'url e capire in che file .jsp è il contenuto da prendere se nell'url c'è il from, restituisce il contenuto del to -->
     <rule>
-        <from>/alimenti-freschi/</from>
+        <from>/Alimenti-Freschi/</from>
         <to>/alimenti-freschi.jsp</to>
     </rule>
     <rule>
-        <from>/dal-Trentino/</from>
+        <from>/Dal-Trentino/</from>
         <to>/dal-trentino.jsp</to>
     </rule>
     <rule>
+        <note>Prodotto url</note>
         <from>/prodotto/([0-9]+)/([\w'-]+)/([\w'-]+)</from>
         <to>/prodotto.jsp\?id=$1&amp;nome=$3&amp;cat=$2</to>
     </rule>
     <rule>
+        <note>Categoria url</note>
         <from>/categoria/([0-9]+)/([\w'-]+)/</from>
         <to>/categoria.jsp\?id=$1&amp;nome=$2</to>
     </rule>
     <rule>
+        <note>bottega online url con i collegamenti inPage</note>
         <from>/bottega-online/(#{1}[\w]*){0,1}</from>
         <to>/bottega.jsp$1</to>
     </rule>
     <rule>
+        <note>La Macelleria url con i collegamenti inPage</note>
         <from>/La-Macelleria(#{1}[\w]*){0,1}</from>
         <to>/macelleria.jsp$1</to>
     </rule>
     <rule>
+        <note>Il Ristorante url con i collegamenti inPage</note>
         <from>/Il-Ristorante(#{1}[\w]*){0,1}</from>
         <to>/ristorante.jsp$1</to>
     </rule>
     <rule>
+        <note>Url dei tag del blog</note>
         <from>/Il-Blog/tag/([\w'-{1}]+([-]{1}[\w'])*)/</from>
         <to>/blog.jsp\?tag=$1</to>
     </rule>
     <rule>
+        <note>Url delle categorie del blog</note>
         <from>/Il-Blog/categoria/([\w'-{1}]+([-]{1}[\w'])*)/</from>
         <to>/blog.jsp\?cat=$1</to>
     </rule>
     <rule>
+        <note>Url del blog con i collegamenti inPage</note>
         <from>/Il-Blog/(#{1}[\w]*){0,1}</from>
         <to>/blog.jsp$1</to>
     </rule>    
     <rule>
+        <note>Url dei prodotti di Idee</note>
         <from>/Idee-in-Cucina/prodotto/([0-9]+)/([\w'-{1}]+([-]{1}[\w'])*)/</from>
         <to>/idee.jsp\?prod=$1&amp;nome=$2</to>
     </rule>
-    <rule>
+    <rule>        
+        <note>Url delle nostre idee</note>
         <from>/Idee-in-Cucina/le-nostre-idee/</from>
         <to>/idee.jsp\?cat=1</to>
     </rule>
     <rule>
+        <note>Url delle vostre idee</note>
         <from>/Idee-in-Cucina/le-vostre-idee/</from>
         <to>/idee.jsp\?cat=2</to>
     </rule>
-    <rule>
+    <rule>        
+        <note>Url delle idee con i collegamenti inPage</note>
         <from>/Idee-in-Cucina/(#{1}[\w]*){0,1}</from>
         <to>/idee.jsp$1</to>
     </rule>
     <rule>
+        <note>Url di un articolo</note>
         <from>/articolo/([0-9]+)/([\w'-]+)</from>
         <to>/articolo.jsp\?id=$1&amp;nome=$2</to>
     </rule> 
     <rule>
+        <note>Url di un idea</note>
         <from>/idea/([0-9]+)/([\w'-]+)</from>
         <to>/idea.jsp\?id=$1&amp;nome=$2</to>
     </rule> 
             
+            
+    <!-- le regoe outbond-rule servono per capire come trasformare l'url quando premo su un link. Il link deve essere codificato quindi in jstl devo usare il <c:url. se il link è uguale al from allora trasforma l'url nel to -->
     <outbound-rule encodefirst="true">
         <note>Remove jsessionid from embedded urls - for urls WITH query parameters</note>
         <from>^/(.*);jsessionid=.*[?](.*)$</from>
@@ -148,6 +165,14 @@
     <outbound-rule>  
         <from>/idea.jsp\?id=([0-9]+)&amp;nome=([\w'-]+)</from>  
         <to>/idea/$1/$2</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/alimenti-freschi.jsp</from>  
+        <to>/Alimenti-Freschi/</to>  
+    </outbound-rule>
+    <outbound-rule>  
+        <from>/dal-trentino.jsp</from>  
+        <to>/Dal-Trentino/</to>  
     </outbound-rule>
     
     <!--

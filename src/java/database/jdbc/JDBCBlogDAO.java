@@ -43,6 +43,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Controlla che la connessione con il DB sia aperta, altrimenti la riapre
+     *
      * @throws DAOException
      */
     @Override
@@ -79,6 +80,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -127,6 +129,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -145,7 +148,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
             throw new DAOException("Impossibile restituire il blog dall'id. (JDBCCatBlogDAO, getBlogById)", ex);
         }
     }
-    
+
     /**
      * Metodo per ritrovare un articolo in base al nome.
      *
@@ -169,6 +172,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -190,6 +194,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna il blog precedente o il successivo
+     *
      * @param type
      * @param id
      * @return
@@ -219,6 +224,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -262,6 +268,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -437,6 +444,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -612,6 +620,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna tutti gli id dei tag esistenti
+     *
      * @return
      * @throws DAOException
      */
@@ -653,6 +662,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna l'id di un tag dal testo
+     *
      * @param testo
      * @return
      * @throws DAOException
@@ -685,6 +695,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna tutti i tag di un particolare blog
+     *
      * @param id_blog
      * @return
      * @throws DAOException
@@ -715,6 +726,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna il testo di tutti i tag di un blog
+     *
      * @param id_blog
      * @return
      * @throws DAOException
@@ -761,6 +773,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna gli id dei tag collegati ad un prodotto di un blog
+     *
      * @param id_blog
      * @return
      * @throws DAOException
@@ -792,6 +805,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna gli id dei tag collegati ad una categoria di un blog
+     *
      * @param id_blog
      * @return
      * @throws DAOException
@@ -823,6 +837,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna tutti i blog di una determinata categoria
+     *
      * @param cat
      * @return
      * @throws DAOException
@@ -833,7 +848,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
         ArrayList<Blog> blogs = new ArrayList<>();
         try (PreparedStatement stm = CON.prepareStatement("select * from blog where categoria = (select nome from blog_cat where id_cat = ?) and pubblicato = true")) {
-            stm.setString(1, cat);  
+            stm.setString(1, cat);
 
             try (ResultSet rs = stm.executeQuery()) {
                 while (rs.next()) {
@@ -843,6 +858,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
@@ -869,6 +885,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna tutti i blog che contengono dei tag
+     *
      * @param tag
      * @return
      * @throws DAOException
@@ -897,6 +914,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                                 c.setNome(rs1.getString("nome"));
                                 c.setTesto(rs1.getString("testo"));
                                 c.setDescrizione(rs1.getString("descrizione"));
+                                c.setMeta_descrizione(rs1.getString("meta_descrizione"));
                                 c.setImmagine(rs1.getString("immagine"));
                                 c.setCreatore(rs1.getString("creatore"));
                                 c.setData(rs1.getTimestamp("data"));
@@ -929,6 +947,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna il testo di un determinato tag
+     *
      * @param id
      * @return
      * @throws DAOException
@@ -957,6 +976,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * Metodo che ritorna tutti gli articoli collegati ad un idea
+     *
      * @param name
      * @param category
      * @return
@@ -990,6 +1010,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
 
     /**
      * MEtodo che controlla se una categoria di blog ha degli articoli visibili
+     *
      * @param idCat
      * @return
      * @throws DAOException
@@ -1019,6 +1040,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
                     c.setNome(rs.getString("nome"));
                     c.setTesto(rs.getString("testo"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setImmagine(rs.getString("immagine"));
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));

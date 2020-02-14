@@ -62,14 +62,13 @@
                 dataLayer.push(arguments);
             }
             gtag('js', new Date());
-
             gtag('config', 'UA-156001507-1');
         </script>
 
         <meta property="og:url"           content="https://macelleriadellantonio.it/Bortoleto/prodotto/${prod.id}/${prod.categoria.replace(' ','-')}/${prod.nome.replace(' ','-')}" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="${prod.nome} - ${prod.categoria} | Bortoleto" />
-        <meta property="og:description"   content="${prod.descrizione}" />        
+        <meta property="og:description"   content="${prod.meta_descrizione}" />        
         <meta property="og:image"         content="https://macelleriadellantonio.it/Bortoleto/${prod.immagine}" />
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
 
@@ -95,7 +94,7 @@
         <!-- MetaDati per Google e Sito Web-->
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16"  alt="Salumi online">
         <title>${prod.nome} - ${prod.categoria} | Bortoleto</title>
-        <meta name="Description" content="${prod.descrizione}">
+        <meta name="Description" content="${prod.meta_descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#312e2e">
@@ -312,7 +311,7 @@
                     <div class="col-md-4">
                         <div class="nav flex-column nav-pills pills-nav-link-box" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <c:if test="${!productdao.getFreshProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/alimenti-freschi/">Alimenti Freschi</a><span>${categorydao.getFreshCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/alimenti-freschi.jsp"/>"><%=varie.Costanti.FRESCHI%></a><span>${categorydao.getFreshCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${freshCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -321,7 +320,7 @@
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${!productdao.getConfProducts().isEmpty()}">
-                                <h5><a style="color: white; margin-left: 0;" href="/Bortoleto/dal-Trentino/">Prodotti da Noi</a><span>${categorydao.getConfCategories().size()}</span></h5>
+                                <h5><a style="color: white; margin-left: 0;" href="<c:url value="/dal-trentino.jsp"/>"><%=varie.Costanti.TRENTINO%></a><span>${categorydao.getConfCategories().size()}</span></h5>
                                 <a class="nav-link active ml-0" id="v-pills-primo-tab" data-toggle="pill" role="tab" aria-controls="v-pills-primo" aria-selected="true"></a>
                                 <c:forEach items="${confCat}" var="categoria" >
                                     <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
@@ -412,13 +411,13 @@
                             <c:choose>
                                 <c:when test="${cat.freschi}">
                                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                        <a itemprop="item" href="/Bortoleto/alimenti-freschi/"><span itemprop="name">Alimenti Freschi</span></a>
+                                        <a itemprop="item" href="<c:url value="/alimenti-freschi.jsp"/>"><span itemprop="name"><%=varie.Costanti.FRESCHI%></span></a>
                                         <meta itemprop="position" content="3" />
                                     </li>
                                 </c:when>
                                 <c:otherwise>
                                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                        <a itemprop="item" href="/Bortoleto/dal-Trentino/"><span itemprop="name">Dal Trentino</span></a>
+                                        <a itemprop="item" href="<c:url value="/dal-trentino.jsp"/>"><span itemprop="name"><%=varie.Costanti.TRENTINO%></span></a>
                                         <meta itemprop="position" content="3" />
                                     </li>
                                 </c:otherwise>
@@ -437,8 +436,8 @@
                     <div id="prodotto" class="modal-product" style="margin-bottom: 6rem;">
                         <!-- Start product images -->
                         <div id="prodotto-immagine" class="product-images mb-5">
-                            <div class="main-image images" style="width: fit-content; margin: auto auto;">
-                                <img style="border-radius: 5px; max-height: 600px;" alt="big images" src="/${prod.immagine}">
+                            <div class="main-image images" data-scale="1.6" style="width: fit-content;width: -moz-fit-content; margin: auto auto; overflow: hidden;">
+                                <img style="border-radius: 5px; max-height: 600px;" alt="${prod.nome}" src="/${prod.immagine}">
                             </div>
                             <div class="mt-5">
                                 <h4 class="styled">Descrizione</h4>
@@ -469,7 +468,8 @@
 
                                         </fieldset><br>                                
                                     </div>
-                                    <div class="pro__details">
+                                    <p class="description" style="font-size: 15px;">${prod.meta_descrizione}</p>
+                                <div class="pro__details">
                                     <c:if test="${ideeProdotto ne null && !ideeProdotto.isEmpty()}">
                                         <a href="#ideeProdotto"><img style="vertical-align: text-top; margin-right: 5px;" src="/Bortoleto/img/cappello-chef.png" />Scopri curiose idee su come usare questo prodotto</a><br>
                                         </c:if>
@@ -487,7 +487,7 @@
                                                     <li><span>Peso: </span></li>                                                    
                                                         <c:if test="${array ne null && !array.isEmpty()}">
                                                             <c:forEach items="${array}" var="varianti" >
-                                                            <li><span>${varianti.get(0).variant}: </span></li>
+                                                            <li><span style="white-space: nowrap;">${varianti.get(0).variant}: </span></li>
                                                             </c:forEach>
                                                         </c:if>
                                                     <li><span>Quantità: </span></li>
@@ -587,7 +587,7 @@
                 <section id="categoria">  
                     <div class="row">
                         <div class="col-lg-6 mt-5">
-                            <div style="height: 100%; width: 100%; white-space: nowrap; width: fit-content; margin: auto auto;">
+                            <div style="height: 100%; width: 100%; white-space: nowrap; width: fit-content;width: -moz-fit-content; margin: auto auto;">
                                 <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
                                 <img style="vertical-align: middle; max-height: 600px;" src="/${cat.immagine}" />
                             </div>
@@ -786,7 +786,6 @@
             // Declare variables 
             var input, filter, table, tr, td, td1, i, txtValue, txtValue1, txtValue2, check = false;
             input = document.getElementById("myInput2");
-
             filter = input.value.toUpperCase();
             table = document.getElementById("Elementi");
             tr = table.getElementsByClassName("elemento");
@@ -1029,7 +1028,6 @@
             string = string.substring(0, string.length - 1); //rimuovo l'ultimo carattere che è un _
             //immagine di caricamento
             $('#boxDati-' + isQuick).html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
-
             //Funzione ajax per aggiornare la schermata, il isQuick è un boolean e serve per capire se ci riferiamo al prodotto o al modal QuickView
             $.ajax({
                 type: "POST",
@@ -1131,11 +1129,9 @@
         $(function () {
             /* Preferiti modal */
             $("#fluidModalBottomDangerDemo").load("/Bortoleto/ajax/preferitiModalContent.jsp");
-
             /* Carrello Modal */
             $("#cd-cart").html("<img style='width: 40%;' src='/Bortoleto/img/91.gif' />");
             $("#cd-cart").load("/Bortoleto/ajax/carrelloModalContent.jsp");
-
             /* footer */
             $("#footer").load("/Bortoleto/ajax/footer.html");
         });
@@ -1168,7 +1164,6 @@
                             'width': 50,
                             'height': 50
                         }, 1000, 'easeInOutExpo');
-
                 setTimeout(function () {
                     cart.css({
                         'animation': 'shake 0.2s cubic-bezier(.37,.07,.19,.93)'
@@ -1191,12 +1186,10 @@
         $(function () {
             $('.lazy').lazy();
         });
-
         /* PEr l'esplora categorie dropdown perchè non si chiuda premendo all'interno */
         $(document).on('click', '#dropCat .dropdown-menu', function (e) {
             e.stopPropagation();
         });
-
         /* Quantity button */
         $(".cart-plus-minus").append('<div class="dec qtybutton">-</i></div><div class="inc qtybutton">+</div>');
         $(".qtybutton").on("click", function () {
@@ -1214,6 +1207,24 @@
             }
             $button.parent().find("input").val(newVal);
         });
+        $('.main-image')
+                // tile mouse actions
+                .on('mouseover', function () {
+                    $(this).children('img').css({'transform': 'scale(' + $(this).attr('data-scale') + ')'});
+                })
+                .on('mouseout', function () {
+                    $(this).children('img').css({'transform': 'scale(1)'});
+                })
+                .on('mousemove', function (e) {
+                    $(this).children('img').css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 + '%'});
+                })
+                // tiles set up
+                .each(function () {
+                    // set up a background image for each tile based on data-image attribute
+                    $(this).children('img').css({'background-image': 'url(' + $(this).attr('data-image') + ')'});
+                    $(this).css({'border-radius': '5px'});
+                });
+
     </script>
     <!-- Eventi facebook pixel -->
     <script type="text/javascript">
@@ -1234,7 +1245,6 @@
                 content_type: 'product'
             });
         });
-
         function addToPreferFacebookEvent() {
             fbq('track', 'AddToWishlist', {
                 value: ${prod.costo.replace(',','.')},

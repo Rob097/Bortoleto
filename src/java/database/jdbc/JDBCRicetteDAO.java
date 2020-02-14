@@ -92,6 +92,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                     r.setCreatore(rs.getString("creatore"));
                     r.setData(rs.getTimestamp("data"));
                     r.setDescrizione(rs.getString("descrizione"));
+                    r.setMeta_descrizione(rs.getString("meta_descrizione"));
                     r.setViews(rs.getInt("views"));
                     r.setCategory(rs.getBoolean("categoria"));
                     r.setApprovata(rs.getBoolean("approvata"));
@@ -151,6 +152,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                     r.setCreatore(rs.getString("creatore"));
                     r.setData(rs.getTimestamp("data"));
                     r.setDescrizione(rs.getString("descrizione"));
+                    r.setMeta_descrizione(rs.getString("meta_descrizione"));
                     r.setViews(rs.getInt("views"));
                     r.setCategory(rs.getBoolean("categoria"));
                     r.setApprovata(rs.getBoolean("approvata"));
@@ -195,6 +197,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                     r.setCreatore(rs.getString("creatore"));
                     r.setData(rs.getTimestamp("data"));
                     r.setDescrizione(rs.getString("descrizione"));
+                    r.setMeta_descrizione(rs.getString("meta_descrizione"));
                     r.setViews(rs.getInt("views"));
                     r.setCategory(rs.getBoolean("categoria"));
                     r.setApprovata(rs.getBoolean("approvata"));
@@ -242,6 +245,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                     r.setCreatore(rs.getString("creatore"));
                     r.setData(rs.getTimestamp("data"));
                     r.setDescrizione(rs.getString("descrizione"));
+                    r.setMeta_descrizione(rs.getString("meta_descrizione"));
                     r.setViews(rs.getInt("views"));
                     r.setCategory(rs.getBoolean("categoria"));
                     r.setApprovata(rs.getBoolean("approvata"));
@@ -386,6 +390,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                     c.setCreatore(rs.getString("creatore"));
                     c.setData(rs.getTimestamp("data"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setMeta_descrizione(rs.getString("meta_descrizione"));
                     c.setViews(rs.getInt("views"));
                     c.setCategory(rs.getBoolean("categoria"));
                     c.setApprovata(rs.getBoolean("approvata"));
@@ -747,7 +752,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
         checkCON();
         
 
-        try (PreparedStatement stm = CON.prepareStatement("insert into ricette (nome, procedimento, descrizione, difficolta, ingredienti, creatore, tempo, id_prod, categoria, immagine, approvata) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
+        try (PreparedStatement stm = CON.prepareStatement("insert into ricette (nome, procedimento, descrizione, difficolta, ingredienti, creatore, tempo, id_prod, categoria, immagine, approvata, meta_descrizione) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")) {
             try {
                 stm.setString(1, nome);
                 stm.setString(2, procedimento);
@@ -760,6 +765,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 stm.setBoolean(9, categoria);
                 stm.setString(10, "");
                 stm.setBoolean(11, false);
+                stm.setString(12, "");
 
                 if (stm.executeUpdate() == 1) {
                 } else {
@@ -799,6 +805,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                     r.setCreatore(rs.getString("creatore"));
                     r.setData(rs.getTimestamp("data"));
                     r.setDescrizione(rs.getString("descrizione"));
+                    r.setMeta_descrizione(rs.getString("meta_descrizione"));
                     r.setViews(rs.getInt("views"));
                     r.setCategory(rs.getBoolean("categoria"));
                     r.setApprovata(rs.getBoolean("approvata"));
