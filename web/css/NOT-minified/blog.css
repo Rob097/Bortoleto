@@ -415,7 +415,7 @@ ol, ul {
     list-style: none;
 }
 
-#blog #Posts .Post .meta-details .realTags {    
+#blog #Posts .Post .meta-details .realTags, .realTags{    
     margin-bottom: 30px;
     padding-left: 0px;
     max-height: fit-content;
@@ -441,7 +441,7 @@ ol, ul {
     transition: all .4s ease 0s;
 }
 
-#articolo .single-post .meta-details .realTags {
+#articolo .single-post .meta-details .realTags, #ricetta .single-post .meta-details .realTags {
     margin-bottom: 30px;
     padding-left: 0px;
     max-height: fit-content;
@@ -454,7 +454,7 @@ ol, ul {
     border-right: 2px solid!important;
 }
 
-#articolo .single-post .meta-details .realTags li {
+#articolo .single-post .meta-details .realTags, #ricetta .single-post .meta-details .realTags li {
     display: inline-block;
     font-size: 14px;
 }

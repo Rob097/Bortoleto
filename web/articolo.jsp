@@ -298,7 +298,7 @@
                             </nav>
                             <div class="single-post row">
                                 <div class="col-lg-3 col-md-3 meta-details container-sticky" style="text-align: right;  margin-top: 35px;">
-                                    <div class="sticky-top visible-md" style="top: 6rem;">
+                                    <div class="sticky-top visible-md" style="top: 6rem;padding-top:5rem;">
                                         <ul class="tags" style="padding: 0;">
                                             <li><a href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>" class="categoriaArt">${blog.categoria}</a><i class="fas fa-stream ml-2" style="color: black;"></i></li>
                                         </ul>
