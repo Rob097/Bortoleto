@@ -482,7 +482,8 @@ hr{
 
 .box-articoli{
     background-color: white;
-    padding: 20px 15px 20px 15px;
+    max-width: 500px;
+    margin: auto;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 20px;
 }

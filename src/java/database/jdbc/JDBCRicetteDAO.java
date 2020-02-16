@@ -79,7 +79,6 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 while (rs.next()) {
                     Ricetta r = new Ricetta();
                     r.setId(rs.getInt("id"));
-                    r.setId_prod(rs.getInt("id_prod"));
                     r.setNome(rs.getString("nome"));
                     ingredienti = rs.getString("ingredienti").split("_");
                     r.setIngredienti(new ArrayList<>(Arrays.asList(ingredienti)));
@@ -139,7 +138,6 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 while (rs.next()) {
                     r = new Ricetta();
                     r.setId(rs.getInt("id"));
-                    r.setId_prod(rs.getInt("id_prod"));
                     r.setNome(rs.getString("nome"));
                     ingredienti = rs.getString("ingredienti").split("_");
                     r.setIngredienti(new ArrayList<>(Arrays.asList(ingredienti)));
@@ -184,7 +182,6 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 while (rs.next()) {
                     r = new Ricetta();
                     r.setId(rs.getInt("id"));
-                    r.setId_prod(rs.getInt("id_prod"));
                     r.setNome(rs.getString("nome"));
                     ingredienti = rs.getString("ingredienti").split("_");
                     r.setIngredienti(new ArrayList<>(Arrays.asList(ingredienti)));
@@ -222,7 +219,7 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
     public ArrayList<Ricetta> getRecipeOfProduct(int id_prod) throws DAOException {
         checkCON();
         
-        try (PreparedStatement stm = CON.prepareStatement("SELECT * FROM ricette where id_prod = ? AND approvata = true")) {
+        try (PreparedStatement stm = CON.prepareStatement("select * from ricette where id in (select id_idea from prodotti_idea where id_prod = ?) and approvata = true")) {
             stm.setInt(1, id_prod);
             Ricetta r;
             ArrayList<Ricetta> ricette = new ArrayList<>();
@@ -232,7 +229,6 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 while (rs.next()) {
                     r = new Ricetta();
                     r.setId(rs.getInt("id"));
-                    r.setId_prod(rs.getInt("id_prod"));
                     r.setNome(rs.getString("nome"));
                     ingredienti = rs.getString("ingredienti").split("_");
                     r.setIngredienti(new ArrayList<>(Arrays.asList(ingredienti)));
@@ -377,7 +373,6 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 while (rs.next()) {
                     c = new Ricetta();
                     c.setId(rs.getInt("id"));
-                    c.setId_prod(rs.getInt("id_prod"));
                     c.setNome(rs.getString("nome"));
                     c.setProcedimento(rs.getString("procedimento"));
                     ingredienti = rs.getString("ingredienti").split("_");
@@ -743,16 +738,15 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
      * @param ingredienti
      * @param creatore
      * @param tempo
-     * @param id_prod
      * @param categoria
      * @throws DAOException
      */
     @Override
-    public void addRecipe(String nome, String procedimento, String descrizione, String difficolta, String ingredienti, String creatore, int tempo, int id_prod, boolean categoria) throws DAOException {
+    public void addRecipe(String nome, String procedimento, String descrizione, String difficolta, String ingredienti, String creatore, int tempo, boolean categoria) throws DAOException {
         checkCON();
         
 
-        try (PreparedStatement stm = CON.prepareStatement("insert into ricette (nome, procedimento, descrizione, difficolta, ingredienti, creatore, tempo, id_prod, categoria, immagine, approvata, meta_descrizione) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")) {
+        try (PreparedStatement stm = CON.prepareStatement("insert into ricette (nome, procedimento, descrizione, difficolta, ingredienti, creatore, tempo, categoria, immagine, approvata, meta_descrizione) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
             try {
                 stm.setString(1, nome);
                 stm.setString(2, procedimento);
@@ -761,11 +755,10 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 stm.setString(5, ingredienti);
                 stm.setString(6, creatore);
                 stm.setInt(7, tempo);
-                stm.setInt(8, id_prod);
-                stm.setBoolean(9, categoria);
-                stm.setString(10, "");
-                stm.setBoolean(11, false);
-                stm.setString(12, "");
+                stm.setBoolean(8, categoria);
+                stm.setString(9, "");
+                stm.setBoolean(10, false);
+                stm.setString(11, "");
 
                 if (stm.executeUpdate() == 1) {
                 } else {
@@ -792,7 +785,6 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
                 while (rs.next()) {
                     r = new Ricetta();
                     r.setId(rs.getInt("id"));
-                    r.setId_prod(rs.getInt("id_prod"));
                     r.setNome(rs.getString("nome"));
                     ingredienti = rs.getString("ingredienti").split("_");
                     r.setIngredienti(new ArrayList<>(Arrays.asList(ingredienti)));
@@ -816,5 +808,117 @@ public class JDBCRicetteDAO extends JDBCDAO implements RicetteDAO {
             //throw new DAOException("Impossibile restituire il prodotto. (JDBCProductDAO, getProduct)", ex);
             return null;
         }
+    }
+    
+    /**
+     * Metodo che ritorna tutti gli id dei prodotti-idea esistenti
+     *
+     * @return
+     * @throws DAOException
+     */
+    @Override
+    public ArrayList<Integer> getAllProdottiIdea() throws DAOException {
+        checkCON();
+
+        ArrayList<Integer> prods_idea = new ArrayList<>();
+        ArrayList<Ricetta> ricette;
+        boolean check;
+
+        try (PreparedStatement stm = CON.prepareStatement("select * from prodotti_idea")) {
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    if(getRecipe(rs.getInt("id_idea")) != null){
+                        prods_idea.add(rs.getInt("id"));
+                    }
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new DAOException("getAllTags error 1", ex);
+        }
+
+        Collections.shuffle(prods_idea);
+
+        return prods_idea;
+    }
+    
+    /**
+     * Metodo che ritorna l'id del prodotto di un determinato prodotto-idea
+     *
+     * @param id
+     * @return
+     * @throws DAOException
+     */
+    @Override
+    public int getProdFormProdIdea(int id) throws DAOException {
+        checkCON();
+
+        try (PreparedStatement stm = CON.prepareStatement("select id_prod from prodotti_idea where id = ?")) {
+            stm.setInt(1, id);
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    return rs.getInt("id_prod");
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new DAOException("getProdFormProdIdea error", ex);
+        }
+        return 0;
+    }
+    
+    /**
+     * Metodo che ritorna l'id dell'idea di un determinato prodotto-idea
+     *
+     * @param id
+     * @return
+     * @throws DAOException
+     */
+    @Override
+    public int getIdeaFormProdIdea(int id) throws DAOException {
+        checkCON();
+
+        try (PreparedStatement stm = CON.prepareStatement("select id_idea from prodotti_idea where id = ?")) {
+            stm.setInt(1, id);
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    return rs.getInt("id_idea");
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new DAOException("getIdeaFormProdIdea error", ex);
+        }
+        return 0;
+    }
+    
+    /**
+     * Metodo che ritorna tutti i prod_idea di un'idea
+     *
+     * @param id
+     * @return
+     * @throws DAOException
+     */
+    @Override
+    public ArrayList<Integer> getAllProdsOfIdea(int id) throws DAOException {
+        checkCON();
+
+        ArrayList<Integer> ids = new ArrayList<>();
+        try (PreparedStatement stm = CON.prepareStatement("select id_prod from prodotti_idea where id_idea = ?")) {
+            stm.setInt(1, id);
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    ids.add(rs.getInt("id_prod"));
+                }
+            }
+
+        } catch (SQLException ex) {
+            throw new DAOException("getIdeaFormProdIdea error", ex);
+        }
+        return ids;
     }
 }

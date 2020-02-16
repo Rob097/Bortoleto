@@ -94,7 +94,22 @@ ${consoledao.incrementViews("home", request, 0)}
                 background: none;
                 position: static;
             }
-
+            .box-img-last{
+                border-radius:5px;
+                margin-bottom:3rem;
+                max-width:500px;
+                height:350px;
+                background-size:cover;
+                background-position:center center;
+                background-repeat:no-repeat;
+            }
+            .img-last{
+                border-radius: 5px;
+                width: 100%;
+                max-width: 500px;
+                max-height: 350px;
+                margin-bottom: 3rem;    
+            }
         </style>
 
         <!-- Script per la cookie policy -->
@@ -639,11 +654,15 @@ ${consoledao.incrementViews("home", request, 0)}
                     <c:set var="lastBlog" value="${blogdao.getLastBlog()}" />
                     <c:if test="${lastBlog ne null}">
                         <div class="box-articoli">
-                            <h4 class="articolo-titolo">${lastBlog.nome}</h4>
-                            <p class="articolo-categoria">${lastBlog.categoria}</p>
-                            <div class="textOverflow">
-                                <p class="articolo-testo">${lastBlog.descrizione}</p>
-                            </div>                        
+                            <div class="box-img-last" style="background-image:url('/${lastBlog.immagine}');" alt="${lastBlog.nome}">
+                            </div>
+                            <div style="padding: 0 15px 15px 15px;margin:auto;max-width:500px;">
+                                <h4 class="articolo-titolo">${lastBlog.nome}</h4>
+                                <p class="articolo-categoria">${lastBlog.categoria}</p>
+                                <div class="textOverflow">
+                                    <p class="articolo-testo">${lastBlog.meta_descrizione}</p>
+                                </div> 
+                            </div>
                         </div>
                         <div class="articolo-bottone">
                             <a href="<c:url value="/articolo.jsp?id=${lastBlog.id}&nome=${lastBlog.nome.replace(' ', '-')}"/>" target="_blank" rel="noopener" class="btn btnAcquista" style="padding: 12px 20px;">leggi di più</a>
@@ -655,10 +674,14 @@ ${consoledao.incrementViews("home", request, 0)}
                     <c:set var="lastIdea" value="${ricettedao.getLastRecipe()}" />
                     <c:if test="${lastIdea ne null}">
                         <div class="box-articoli">
-                            <h4 class="articolo-titolo">${lastIdea.nome}</h4>
-                            <p class="articolo-categoria">${lastIdea.creatore}</p>
-                            <div class="textOverflow">
-                                <p class="articolo-testo">${lastIdea.descrizione}</p>
+                            <div class="box-img-last" style="background-image:url('/${lastIdea.immagine}');" alt="${lastIdea.nome}">
+                            </div>
+                            <div style="padding: 0 15px 15px 15px;margin:auto;max-width:500px;">
+                                <h4 class="articolo-titolo">${lastIdea.nome}</h4>
+                                <p class="articolo-categoria">${lastIdea.creatore}</p>
+                                <div class="textOverflow">
+                                    <p class="articolo-testo">${lastIdea.meta_descrizione}</p>
+                                </div>
                             </div>
                         </div>
                         <div class="articolo-bottone">

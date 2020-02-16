@@ -27,7 +27,7 @@ public interface RicetteDAO {
     public ArrayList<Ricetta> getOrderedBy(String type, ArrayList<Ricetta> ricette) throws DAOException;
     public ArrayList<Ricetta> getByType(String type) throws DAOException;
     public int getTypeSize(String type) throws DAOException;
-    public void addRecipe(String nome, String procedimento, String descrizione, String difficolta, String ingredienti, String creatore, int tempo, int id_prod, boolean categoria) throws DAOException;
+    public void addRecipe(String nome, String procedimento, String descrizione, String difficolta, String ingredienti, String creatore, int tempo, boolean categoria) throws DAOException;
     public Ricetta getLastRecipe() throws DAOException;
     
     //Valutazione
@@ -39,4 +39,10 @@ public interface RicetteDAO {
     public ArrayList<Commento> getAllComments() throws DAOException;
     public ArrayList<Commento> getComments(int id_ricetta) throws DAOException;
     public void postComment(int id_ricetta, String nome, String commento) throws DAOException;
+    
+    //Prodotti-Idea
+    public ArrayList<Integer> getAllProdottiIdea() throws DAOException;
+    public int getProdFormProdIdea(int id) throws DAOException;
+    public int getIdeaFormProdIdea(int id) throws DAOException;
+    public ArrayList<Integer> getAllProdsOfIdea(int id) throws DAOException;
 }

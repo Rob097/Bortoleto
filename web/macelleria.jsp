@@ -373,7 +373,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                     </div>
                 </div>
                 <div class='col-lg-8'>
-                    <div id="parallaxN2" class="image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/UiyL4l-QB267-M566GkkFOPKfsvHa7SyHknYt2Hocri0jGB65tVNe5Adrfafjvkll1jN5lUaabti8EekOdrj66aAjRRMTgn5-GsqgJDkQsUNi0_JdeDoIvz-M8HNn5EUVLc2UTcarw=w2400" style="height: 500px; width: 100%; position: relative; border-radius: 0; background-repeat: no-repeat; background-position: center center;">
+                    <div id="parallaxN2" class="image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/immagini_sito/macelleria/i_nostri_prodotti.jpg" style="height: 500px; width: 100%; position: relative; border-radius: 0; background-repeat: no-repeat; background-position: center center;">
                         <div class="effetto1">
                             <div style="height: 500px;">
                             </div>

@@ -3,7 +3,7 @@
     Created on : 7-apr-2019, 15.28.17
     Author     : Roberto97
 --%>
-
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -207,12 +207,13 @@ ${consoledao.incrementViews("idee", request, 0)}
     <!--####################################################################
     INIZIO CONTENUTO
     #####################################################################-->
-    <div id="parallaxN2" style="margin-bottom: 5rem;" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/I9A-nG4LTWgwDGk_goYkbvjyq8AytBPrO8Kg1wurUgir4K2jR0FL5gDYoq2eULW_24ndIkv7EAMAtMEYpIl9CUtBjVcdiE5oUpiHm3vBKyYFTSlAsJtFGHRfa0q0rqOoUGmUUPkhUa0Ci4QhmHQ3YhT0p4Y5GGKHW7xE-O0CxRjgswwN5WzdcUAQzhI3s3tLGZ-yxNVrg2y7v5LIzaHtTCQDjDUp-NpTkpjBSUDAtSYqnuuDQe0bf1637ZZm8nrmZHWFWOwH7VGCBv4P5IcZr8j3SsyXbOusH8gAIsJTjeugDIcp36pMKpSDbf4NPJMR6RLLoMRb6WW1rdTCtbxag_v_7T3DbHpB45F6wJEm6xxwi2fyIWnAISjOc735mC-F77Or3lR-uRxldBgKKe9vy3aOzjxQOYCSltrqKCFfxAITyjTtl0V2sUYbYRv4wfZwEHKkic2ShPhBtW-wW4Vyyk39aVvmcyoTwpcXg0mgY_wL_f7PGIGqLJ6oX6TqyC8UmfD1Gaq8hSkcC5TxOCuXk9mR7ZGJfLxh6VhSFFFyfvc3DvvTozhvDGEZ3m4yR3r-nwewAhom-2CEFhh11_6wWkEbVg2HAQyN1_D_p-0Y6Eluao_K82VY2XPsZmPkXNAx1TmeqaWdkonY71ePOFxghBNAY-KgO8A=w1560-h878-no">
+    <div id="parallaxN2" style="margin-bottom: 5rem;" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/Bortoleto/img/idee-sfondo.jpg">
         <div class="effetto1">
             <div style="height: 30rem;">
-                <div class="container cPara" style="">
+                <div class="container cPara">
                     <div class="customPaddingPara">
                         <h1 class="customStylePara">Le idee de 'l Bortoleto</h1>
+                        <p>Scopri sempre interessanti consigli e idee su come preparare i prodotti de 'L Bortoleto</p>
                     </div>
                 </div>
                 <div class="scrollIcon">
@@ -266,14 +267,14 @@ ${consoledao.incrementViews("idee", request, 0)}
                             <c:if test="${ricetta.nome.toLowerCase().contains(param.search.replace('+', ' '))}">
                                 <div class="row mb-4 Ricetta">
                                     <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
-                                        <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
-                                            <ul class="tags key black-text" style="padding-left: 0px;">
+                                        <ul class="tags realTags key black-text textOverflow">
+                                            <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="tag" >
+                                                <c:set var="prodIdea" value="${productdao.getProduct(tag)}" />
                                                 <li>
-                                                    <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${productdao.getProduct(ricetta.id_prod).nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
-                                                    <i class="fas fa-stream ml-2" style="color: black;"></i>
+                                                    <a class="tagLink" href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">#${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
                                                 </li>
-                                            </ul>
-                                        </c:if>
+                                            </c:forEach>
+                                        </ul>
                                         <div class="user-details row detailPost" style="color: #757777;">
                                             <p style="padding-left: 0px;" class="creator user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
                                             <p style="padding-left: 0px;" class="date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></span></p>
@@ -365,14 +366,14 @@ ${consoledao.incrementViews("idee", request, 0)}
                                     <c:set value="${ricettedao.getComments(ricetta.id)}" var="commenti" />
                                     <div class="row mb-4 Ricetta">
                                         <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
-                                            <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
-                                                <ul class="tags key black-text" style="padding-left: 0px;">
+                                            <ul class="tags realTags key black-text textOverflow">
+                                                <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="tag" >
+                                                    <c:set var="prodIdea" value="${productdao.getProduct(tag)}" />
                                                     <li>
-                                                        <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${productdao.getProduct(ricetta.id_prod).nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
-                                                        <i class="fas fa-stream ml-2" style="color: black;"></i>
+                                                        <a class="tagLink" href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">#${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
                                                     </li>
-                                                </ul>
-                                            </c:if>
+                                                </c:forEach>
+                                            </ul>
                                             <div class="user-details row detailPost" style="color: #757777;">
                                                 <p style="padding-left: 0px;" class="creator user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
                                                 <p style="padding-left: 0px;" class="date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))} <i class="far fa-calendar-alt ml-2" style="color: black;"></i></span></p>
@@ -464,6 +465,19 @@ ${consoledao.incrementViews("idee", request, 0)}
                             </li>
                         </ul>
                     </div>
+                    <c:if test="${!ricettedao.getAllProdottiIdea().isEmpty()}">
+                        <div class="single-sidebar-widget tag-cloud-widget">
+                            <h4 class="tagcloud-title">Tags</h4>
+                            <ul>
+                                <c:forEach items="${ricettedao.getAllProdottiIdea()}" var="tag" >
+                                    <c:set var="prodIdea" value="${productdao.getProduct(ricettedao.getProdFormProdIdea(tag))}" />
+                                    <li>
+                                        <a href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </c:if>
                     <div class="single-sidebar-widget newsletter-widget">
                         <h4 class="newsletter-title">Newsletter</h4>
                         <p>

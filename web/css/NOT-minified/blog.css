@@ -17,7 +17,7 @@ html, body{
     width:100%;
     margin:0;
     max-width:none;
-    background-image: -webkit-linear-gradient(left, #000000 0%, transparent 40%, transparent 60%, #000000);
+    background-image: -webkit-linear-gradient(left, #000000 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.5) 60%, #000000);
 }
 footer{
     background-color:#222222;
@@ -534,3 +534,24 @@ h3.nomeRic, h2.nomeRic{
     text-align: center;
     margin: 20px 0px;
 }
+.container-sticky{
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+            }
+            @media (min-width: 768px){
+                .invisible-md{
+                    display: none;
+                }
+            }
+            @media (max-width: 767px){
+                .visible-md{
+                    display: none;
+                }
+            }
+            .description p, .description span{
+                color: #444 !important;
+            }
+            .description p strong, .description span strong{
+                font-weight: 700;
+            }

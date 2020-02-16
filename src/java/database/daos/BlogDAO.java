@@ -26,7 +26,7 @@ public interface BlogDAO {
     public void incrementViews(int id, int viewsOld, HttpServletRequest request) throws DAOException;
     public ArrayList<Blog> getOrderedBy(String type, ArrayList<Blog> blogs) throws DAOException;
     public ArrayList<Blog> getAllBlogsOfCategory(String cat) throws DAOException;
-    public ArrayList<Blog> getBlogsOfIdeaProd(String name, String category) throws DAOException;
+    public ArrayList<Blog> getBlogsOfIdeaProd(int id_idea, HttpServletRequest request) throws DAOException;
     public boolean hasVisibileBlogs(int idCat) throws DAOException;
     public Blog getLastBlog() throws DAOException;
     

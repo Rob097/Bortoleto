@@ -1,7 +1,9 @@
 package database.jdbc;
 
 import database.daos.BlogDAO;
+import database.daos.ProductDAO;
 import database.entities.Blog;
+import database.entities.Prodotto;
 import database.exceptions.DAOException;
 import database.exceptions.DAOFactoryException;
 import database.factories.JDBCDAOFactory;
@@ -977,35 +979,69 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
     /**
      * Metodo che ritorna tutti gli articoli collegati ad un idea
      *
-     * @param name
-     * @param category
+     * @param id_idea
+     * @param request
      * @return
      * @throws DAOException
      */
     @Override
-    public ArrayList<Blog> getBlogsOfIdeaProd(String name, String category) throws DAOException {
+    public ArrayList<Blog> getBlogsOfIdeaProd(int id_idea, HttpServletRequest request) throws DAOException {
 
-        boolean check = false;
-        int idTagName = getIDTag(name);
-        int idTagCat = getIDTag(category);
-        ArrayList<Blog> byName = getAllBlogsWithTag(idTagName);
-        ArrayList<Blog> byCategory = getAllBlogsWithTag(idTagCat);
-        ArrayList<Blog> blogs = new ArrayList<>(byCategory);
+        checkCON();
 
-        for (Blog b : byName) {
-            for (Blog g : byCategory) {
-                if (b.getId() == g.getId()) {
-                    check = true;
-                } else {
+        ArrayList<Integer> ids = new ArrayList<>();
+        try (PreparedStatement stm = CON.prepareStatement("select id_prod from prodotti_idea where id_idea = ?")) {
+            stm.setInt(1, id_idea);
+
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    ids.add(rs.getInt("id_prod"));
                 }
             }
-            if (!check) {
-                blogs.add(b);
-            }
-            check = false;
+
+        } catch (SQLException ex) {
+            throw new DAOException("getIdeaFormProdIdea error", ex);
         }
 
-        return blogs;
+        try {
+            boolean check;
+            int idTagName;
+            int idTagCat;
+            ArrayList<Blog> byName;
+            ArrayList<Blog> byCategory;
+            ArrayList<Blog> blogs = new ArrayList<>();
+            Prodotto p;
+            ProductDAO productdao = (ProductDAO) request.getSession().getAttribute("productdao");
+
+            if (productdao != null) {
+                for (int i : ids) {
+                    p = productdao.getProduct(i);
+                    check = false;
+                    idTagName = getIDTag(p.getNome());
+                    idTagCat = getIDTag(p.getCategoria());
+                    byName = getAllBlogsWithTag(idTagName);
+                    byCategory = getAllBlogsWithTag(idTagCat);
+                    blogs = new ArrayList<>(byCategory);
+
+                    for (Blog b : byName) {
+                        for (Blog g : byCategory) {
+                            if (b.getId() == g.getId()) {
+                                check = true;
+                            } else {
+                            }
+                        }
+                        if (!check) {
+                            blogs.add(b);
+                        }
+                        check = false;
+                    }
+
+                }
+            }
+            return blogs;
+        } catch (DAOException e) {
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -1017,6 +1053,7 @@ public class JDBCBlogDAO extends JDBCDAO implements BlogDAO {
      */
     @Override
     public boolean hasVisibileBlogs(int idCat) throws DAOException {
+        checkCON();
         ArrayList<Blog> categoria = getAllBlogsOfCategory("" + idCat);
         if (!categoria.isEmpty()) {
             if (categoria.stream().anyMatch((b) -> (b.isPubblicato()))) {

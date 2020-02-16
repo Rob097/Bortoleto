@@ -482,7 +482,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                     <div class="row">
                         <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                             <a class="hover-img tipo1" href="#materiePrime" onclick="callMaterie('Dal Trentino')">
-                                <div class="div-img-materie" style="min-width: 150px;  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/console/img/ristorante/dal-trentino/il-cappelli.jpg);" alt="Dal Trentino"></div>
+                                <div class="div-img-materie" style="min-width: 150px;  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/console/img/immagini_sito/ristorante/dal-trentino/il-cappelli.jpg);" alt="Dal Trentino"></div>
                                 <h3 class="text-in-img-menu-02">Dal Trentino</h3>
                             </a>
                         </div>
@@ -498,13 +498,13 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                     <div class="row">
                         <div data-aos="fade-down" data-aos-duration="2000" class="col-12 wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
                             <a href="#materiePrime" onclick="callMaterie('La Carne')" class="hover-img tipo1">
-                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/ristorante/la-carne/manzo-al-sesamo.jpg');" alt="La Carne"></div>
+                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/immagini_sito/ristorante/la-carne/manzo-al-sesamo.jpg');" alt="La Carne"></div>
                                 <h3 class="text-in-img-menu-02">La Carne</h3>
                             </a>
                         </div>
                         <div data-aos="fade-up" data-aos-duration="2000" class="col-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img tipo2">
-                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/ristorante/fatto-da-noi/frittelle.jpg');" alt="Fatto da Noi"></div>
+                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/immagini_sito/ristorante/fatto-da-noi/frittelle.jpg');" alt="Fatto da Noi"></div>
                                 <h3 class="text-in-img-menu-02">Fatto da noi</h3>
                             </a>
                         </div>

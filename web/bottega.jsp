@@ -203,7 +203,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
 
     <!-- Fine navbar -->
 
-    <div id="parallaxN2" style="margin-bottom: 5rem;" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/IGBlo6cpD4QbzMWCBPMyAteGNG0OzjZLUH7eBSqeHpnhM2R92f2uOK6nrlxqWTVX3rD74TFYdkeX7kT63_zy_ZyVlQ0k2VYZNJlJiaXVAw7w_nYLDNRoPckUxY2C072R2RIiFU0CVA=w2400">
+    <div id="parallaxN2" style="margin-bottom: 5rem;" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/ico/feature_BG.jpg">
         <div class="effetto1">
             <div style="height: 30rem;">
                 <div id="carouselContent" class="carousel slide" data-interval="8500" data-ride="carousel" style="height: 100%; border-radius: 20px; color: white; font-weight: bold;">
@@ -219,12 +219,12 @@ ${consoledao.incrementViews("bottega", request, 0)}
                             </p>
                             <a style="color: white !important;" href="http://www.keatchen.it" target="_blank">
                                 Scopri di più su come funziona Keatchen!<br>
-                                <img alt="KeatchenLogo" style="width: 20%;" src="https://lh3.googleusercontent.com/6QOIaGv5w7KSjKo8XuMGgg_aXFQPbjQUX1TADK7LBCmxvRvNQncQRs-xDhdOz8rxnDg1tHL-zuybheQTO5a-ad3TE1YkXASmHIY7zd1jVhLMzbJE-W1rD_7NwYN-phBCflLlXuRB5Q=w2400"/>
+                                <img alt="KeatchenLogo" style="width: 20%;" src="/console/img/ico/keatchen.jpg"/>
                             </a>
                         </div>
                         <div class="carousel-item text-center p-4"><i style="color: #86070f;" class="fas fa-chalkboard-teacher icon carouselIco"></i>
                             <h3 class="carouselTitle">Scegli la qualità</h3>
-                            <p class="carouselText">Tutti i prodotti acquistabili da questo negozio online, così come nei nostri punti vendita, sono prodotti che realiziamo scegliendo le materie prime di prima qualità e lavorandole con passione e professionalità da ormai 5 generazioni</p>
+                            <p class="carouselText">Tutti i prodotti acquistabili da questo negozio online, così come nei nostri punti vendita, vengono realizzati scegliendo materie di prima qualità e lavorandole con passione e professionalità da ormai 5 generazioni</p>
                         </div>
                         <div class="carousel-item text-center p-4"><i style="color: #86070f;" class="fas fa-shield-alt icon carouselIco"></i>
                             <h3 class="carouselTitle">Pagamenti sicuri</h3>

@@ -166,12 +166,13 @@ ${consoledao.incrementViews("blog", request, 0)}
     <!--####################################################################
     INIZIO CONTENUTO
     #####################################################################-->
-    <div id="parallaxN2" style="margin-bottom: 5rem;" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/I9A-nG4LTWgwDGk_goYkbvjyq8AytBPrO8Kg1wurUgir4K2jR0FL5gDYoq2eULW_24ndIkv7EAMAtMEYpIl9CUtBjVcdiE5oUpiHm3vBKyYFTSlAsJtFGHRfa0q0rqOoUGmUUPkhUa0Ci4QhmHQ3YhT0p4Y5GGKHW7xE-O0CxRjgswwN5WzdcUAQzhI3s3tLGZ-yxNVrg2y7v5LIzaHtTCQDjDUp-NpTkpjBSUDAtSYqnuuDQe0bf1637ZZm8nrmZHWFWOwH7VGCBv4P5IcZr8j3SsyXbOusH8gAIsJTjeugDIcp36pMKpSDbf4NPJMR6RLLoMRb6WW1rdTCtbxag_v_7T3DbHpB45F6wJEm6xxwi2fyIWnAISjOc735mC-F77Or3lR-uRxldBgKKe9vy3aOzjxQOYCSltrqKCFfxAITyjTtl0V2sUYbYRv4wfZwEHKkic2ShPhBtW-wW4Vyyk39aVvmcyoTwpcXg0mgY_wL_f7PGIGqLJ6oX6TqyC8UmfD1Gaq8hSkcC5TxOCuXk9mR7ZGJfLxh6VhSFFFyfvc3DvvTozhvDGEZ3m4yR3r-nwewAhom-2CEFhh11_6wWkEbVg2HAQyN1_D_p-0Y6Eluao_K82VY2XPsZmPkXNAx1TmeqaWdkonY71ePOFxghBNAY-KgO8A=w1560-h878-no">
+    <div id="parallaxN2" style="margin-bottom: 5rem;" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/immagini_sito/blog/header-blog.jpg">
         <div class="effetto1">
             <div style="height: 30rem;">
                 <div class="container cPara" style="">
                     <div class="customPaddingPara">
                         <h1 class="customStylePara">Il Blog de 'l Bortoleto</h1>
+                        <p>Resta informato sulle novità e scopri sempre nuovi aneddoti sulla qualità dei prodotti gastronomici trentini che realizziamo</p>
                     </div>
                 </div>
                 <div class="scrollIcon">

@@ -64,14 +64,11 @@ public class AddIdea extends HttpServlet {
         RequestDispatcher view;
         try {
             String nome = "", procedimento = "", descrizione = "", difficolta = "ignota", creatore = "";
-            int id_prod = 0, tempo = 0;
+            int tempo = 0;
             boolean categoria = false;
             String ingS = "";
             if (request.getAttribute("titolo") != null) {
                 nome = (String) request.getAttribute("titolo");
-            }
-            if (request.getAttribute("product") != null) {
-                id_prod = Integer.parseInt((String) request.getAttribute("product"));
             }
             if (request.getAttribute("autore") != null) {
                 creatore = (String) request.getAttribute("autore");
@@ -86,7 +83,7 @@ public class AddIdea extends HttpServlet {
             if (request.getAttribute("ingredienti") != null) {
                 ingS = (String) request.getAttribute("ingredienti");
             }
-            ricettedao.addRecipe(nome, procedimento, descrizione, difficolta, ingS, creatore, tempo, id_prod, categoria);
+            ricettedao.addRecipe(nome, procedimento, descrizione, difficolta, ingS, creatore, tempo, categoria);
             consoledao.addNotifica(NEW_IDEA, "../console/idee.jsp");
             response.setHeader("NOTIFICA", "La tua idea è stata inviata correttamente! Grazie per il tuo contributo");
             response.setHeader("STATO", "positivo");

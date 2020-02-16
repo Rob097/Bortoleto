@@ -10,7 +10,7 @@
 <!-- Per impedire solo a Google di indicizzare la pagina -->
 <meta name="googlebot" content="noindex">
 
-
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -76,14 +76,14 @@
             <c:if test="${ricetta.nome.toLowerCase().contains(param.search.replace('+', ' '))}">
                 <div class="row mb-4 Ricetta">
                     <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
-                        <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
-                            <ul class="tags key black-text" style="padding-left: 0px;">
+                        <ul class="tags realTags key black-text textOverflow">
+                            <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="tag" >
+                                <c:set var="prodIdea" value="${productdao.getProduct(tag)}" />
                                 <li>
-                                    <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${ricetta.nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
-                                    <i class="fas fa-stream ml-2" style="color: black;"></i>
+                                    <a class="tagLink" href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">#${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
                                 </li>
-                            </ul>
-                        </c:if>
+                            </c:forEach>
+                        </ul>
                         <div class="user-details row detailPost" style="color: #777777;">
                             <p style="padding-left: 0px;" class="creator user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
                             <p style="padding-left: 0px;" class="date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></span></p>
@@ -130,14 +130,14 @@
                     <c:set value="${ricettedao.getComments(ricetta.id)}" var="commenti" />
                     <div class="row mb-4 Ricetta">
                         <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
-                            <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
-                                <ul class="tags key black-text" style="padding-left: 0px;">
+                            <ul class="tags realTags key black-text textOverflow">
+                                <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="tag" >
+                                    <c:set var="prodIdea" value="${productdao.getProduct(tag)}" />
                                     <li>
-                                        <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${ricetta.nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
-                                        <i class="fas fa-stream ml-2" style="color: black;"></i>
+                                        <a class="tagLink" href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">#${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
                                     </li>
-                                </ul>
-                            </c:if>
+                                </c:forEach>
+                            </ul>
                             <div class="user-details row detailPost" style="color: #777777;">
                                 <p style="padding-left: 0px;" class="creator user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
                                 <p style="padding-left: 0px;" class="date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))} <i class="far fa-calendar-alt ml-2" style="color: black;"></i></span></p>

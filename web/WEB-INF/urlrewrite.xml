@@ -61,7 +61,7 @@
     </rule>    
     <rule>
         <note>Url dei prodotti di Idee</note>
-        <from>/Idee-in-Cucina/prodotto/([0-9]+)/([\w'-{1}]+([-]{1}[\w'])*)/</from>
+        <from>/Idee-in-Cucina/tag/([0-9]+)/([\w'-{1}]+([-]{1}[\w'])*)/</from>
         <to>/idee.jsp\?prod=$1&amp;nome=$2</to>
     </rule>
     <rule>        
@@ -140,7 +140,7 @@
     </outbound-rule>
     <outbound-rule>  
         <from>/idee.jsp\?prod=([0-9]+)&amp;nome=([\w'-]+([-]{1}[\w'])*)</from>  
-        <to>/Idee-in-Cucina/prodotto/$1/$2/</to>  
+        <to>/Idee-in-Cucina/tag/$1/$2/</to>  
     </outbound-rule>
     <outbound-rule>  
         <from>/idee.jsp\?cat=0</from>  

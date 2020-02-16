@@ -87,6 +87,9 @@
         <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
         <!-- fine include css -->    
         <style>
+            body{
+                overflow-x: visible;
+            }
             .overGold:hover{
                 color: #b4505a;
                 transition: 0.3s;
@@ -158,14 +161,14 @@
         "name" : "${blog.nome}",
         "headline" : "${blog.nome}",
         "publisher": {
-            "@type" : "Organization",
-            "name": "'L Bortoleto",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "/Bortoleto/img/logo2.png",
-                "height": "60px",
-                "width": "auto"
-            }
+        "@type" : "Organization",
+        "name": "'L Bortoleto",
+        "logo": {
+        "@type": "ImageObject",
+        "url": "/Bortoleto/img/logo2.png",
+        "height": "60px",
+        "width": "auto"
+        }
         },
         "author" : {
         "@type" : "Person",
@@ -245,12 +248,12 @@
     <!--####################################################################
     INIZIO CONTENUTO
     #####################################################################-->
-    <div id="parallaxN2" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/qn-cGonjNTsmXcCpTuCHvVF2-ii8N5OOqnjKdPQOT9iTX93xNmyhPUUH5jtVZsXOhuVu2CAT8HpRFb258aOErpE7Kph-TftmfpvVd93MdsLDFbVBi76j22MiM92wliBTqE_jTK6E8vy7Ilck0Td0mRepKvbmgRCK1Nlz_z2VSRb6StTYUW6b5XUL5W7sEHSZZqKxyC2Q_qV97HQ4rA2i2kWhexD6eC88byii6ku3r67dUfY70fKhqLGK5Tn7Y3jLaf_K0uNFmr5vqHu5-cow_egftD5Wn9upI-B_HJ7ZdIdA_78o7DdmBY2rKjJsp6rdVH7dMiMIuxv3WLmhbpkfalAIVDjb3Y3EfLYOtdPQopdETR7uX5B47PNoFMi1I_bNo_ZLWB0e3owNu14kANdaybjIjdeGRE_s2K1fyIRXMK7s12BdfefrcPJJz3Gw74Z8XfhfJALqxVXsC9HXSyxk65L-5XHfZzsqQ26LPl6NtmCroAJQ9M6Pi6f68-ydHd3s9HzaV0HIcly19YYAE7rH35bJcy1l5WndpoC7ZvEBNoPj3xv7yrGBmU0tqh07H4oTfdxwqzfzLj_0ltqfHmKtax3NUrUrWC9chvN9vkGxC6GmZIkJoke_IcD87WdrGFfM25o4dTx8GYzz9a6rv0sJ_kUpzsX2zmw=w1560-h763-no">
+    <div id="parallaxN2" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/ico/meat-background.jpg">
         <div class="effetto1">
             <div style="height: 30rem;">
                 <div class="container cPara" style="">
                     <div class="customPaddingPara">
-                        <h1 class="customStylePara">Il Blog de 'l Bortoleto</h1>
+                        <h2 class="customStylePara">Il Blog de 'l Bortoleto</h2>
                     </div>
                 </div>
                 <div class="scrollIcon">
@@ -294,52 +297,90 @@
                                 </ol>
                             </nav>
                             <div class="single-post row">
-                                <div class="col-lg-12 img-margin-bottom-large">
-                                    <div class="feature-img" style="text-align: center;">
-                                        <img class="img-fluid" src="/${blog.immagine}" alt="${blog.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
-                                    <ul class="tags" style="padding: 0;">
-                                        <li><a href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>" class="categoriaArt">${blog.categoria}</a><i class="fas fa-stream ml-2" style="color: black;"></i></li>
-                                    </ul>
-                                    <ul class="tags realTags key black-text textOverflow">
-                                        <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
-                                            <li>
-                                                <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
-                                            </li>
-                                        </c:forEach>
-                                    </ul>
-                                    <div class="user-details row">
-                                        <p class="personalized user-name col-lg-12 col-md-12 col-6">${blog.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
-                                        <p class="right-small personalized date col-lg-12 col-md-12 col-6">${blog.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></p>                                            
-                                        <p class="personalized comments col-lg-12 col-md-12 col-6"><a href="#commenti">${commenti.size()} Commenti</a> <i class="far fa-comment" style="color: black;"></i></p>
-                                        <p class="right-small personalized view col-lg-12 col-md-12 col-6">${blog.views} Letture<i class="far fa-eye ml-2" style="color: black;"></i></p>
-                                        <ul class="social-links col-lg-12 col-md-12 col-12 center-small mb-5">
-                                            <li><a aria-label="Condividi su Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dialog/share?app_id=320307085338651&display=popup&href=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>&redirect_uri=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>"><i class="fab fa-facebook-f overGold"></i></a></li>
-                                            <li><a aria-label="Condividi su Twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>&text=${blog.nome}"><i class="fab fa-twitter overGold"></i></a></li>
+                                <div class="col-lg-3 col-md-3 meta-details container-sticky" style="text-align: right;  margin-top: 35px;">
+                                    <div class="sticky-top visible-md" style="top: 6rem;">
+                                        <ul class="tags" style="padding: 0;">
+                                            <li><a href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>" class="categoriaArt">${blog.categoria}</a><i class="fas fa-stream ml-2" style="color: black;"></i></li>
                                         </ul>
-                                        <div id="ratingDiv" class="no-padding mb-5 personalized center-small col-lg-12 col-md-12 col-12">
-                                            <c:set var="rate" value="${blogdao.getRate(blog.id)}" />
-                                            <label class="text-muted">${blogdao.getNumberRate(blog.id)} valutazioni (${rate} <i class="far fa-star"></i>)</label><br>
-                                            <fieldset class="rating text-center" style="display: initial;">
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star5" name="rating" value="5" <c:if test="${rate >= 5}">checked</c:if> /><label class = "full" for="star5" title="5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star4half" name="rating" value="4.5" <c:if test="${rate >= 4.5 && rate < 5}">checked</c:if>/><label class="half" for="star4half" title="4.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star4" name="rating" value="4" <c:if test="${rate >= 4 && rate < 4.5}">checked</c:if>/><label class = "full" for="star4" title="4 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star3half" name="rating" value="3.5" <c:if test="${rate >= 3.5 && rate < 4}">checked</c:if>/><label class="half" for="star3half" title="3.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star3" name="rating" value="3" <c:if test="${rate >= 3 && rate < 3.5}">checked</c:if>/><label class = "full" for="star3" title="3 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star2half" name="rating" value="2.5" <c:if test="${rate >= 2.5 && rate < 3}">checked</c:if>/><label class="half" for="star2half" title="2.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star2" name="rating" value="2" <c:if test="${rate >= 2 && rate < 2.5}">checked</c:if>/><label class = "full" for="star2" title="2 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star1half" name="rating" value="1.5" <c:if test="${rate >= 1.5 && rate < 2}">checked</c:if>/><label class="half" for="star1half" title="1.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star1" name="rating" value="1" <c:if test="${rate >= 1 && rate < 1.5}">checked</c:if>/><label class = "full" for="star1" title="1 stella"></label>
-                                                <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="starhalf" name="rating" value="0.5" <c:if test="${rate >= 0.5 && rate < 1}">checked</c:if>/><label class="half" for="starhalf" title="0.5 stelle"></label>
-                                                </fieldset><br>                                
+                                        <ul class="tags realTags key black-text textOverflow">
+                                            <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
+                                                <li>
+                                                    <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                        <div class="user-details row">
+                                            <p class="personalized user-name col-lg-12 col-md-12 col-6">${blog.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
+                                            <p class="right-small personalized date col-lg-12 col-md-12 col-6">${blog.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></p>                                            
+                                            <p class="personalized comments col-lg-12 col-md-12 col-6"><a href="#commenti">${commenti.size()} Commenti</a> <i class="far fa-comment" style="color: black;"></i></p>
+                                            <p class="right-small personalized view col-lg-12 col-md-12 col-6">${blog.views} Letture<i class="far fa-eye ml-2" style="color: black;"></i></p>
+                                            <ul class="social-links col-lg-12 col-md-12 col-12 center-small mb-5">
+                                                <li><a aria-label="Condividi su Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dialog/share?app_id=320307085338651&display=popup&href=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>&redirect_uri=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>"><i class="fab fa-facebook-f overGold"></i></a></li>
+                                                <li><a aria-label="Condividi su Twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>&text=${blog.nome}"><i class="fab fa-twitter overGold"></i></a></li>
+                                            </ul>
+                                            <div id="ratingDiv" class="no-padding mb-5 personalized center-small col-lg-12 col-md-12 col-12">
+                                                <c:set var="rate" value="${blogdao.getRate(blog.id)}" />
+                                                <label class="text-muted">${blogdao.getNumberRate(blog.id)} valutazioni (${rate} <i class="far fa-star"></i>)</label><br>
+                                                <fieldset class="rating text-center" style="display: initial;">
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star5" name="rating" value="5" <c:if test="${rate >= 5}">checked</c:if> /><label class = "full" for="star5" title="5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star4half" name="rating" value="4.5" <c:if test="${rate >= 4.5 && rate < 5}">checked</c:if>/><label class="half" for="star4half" title="4.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star4" name="rating" value="4" <c:if test="${rate >= 4 && rate < 4.5}">checked</c:if>/><label class = "full" for="star4" title="4 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star3half" name="rating" value="3.5" <c:if test="${rate >= 3.5 && rate < 4}">checked</c:if>/><label class="half" for="star3half" title="3.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star3" name="rating" value="3" <c:if test="${rate >= 3 && rate < 3.5}">checked</c:if>/><label class = "full" for="star3" title="3 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star2half" name="rating" value="2.5" <c:if test="${rate >= 2.5 && rate < 3}">checked</c:if>/><label class="half" for="star2half" title="2.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star2" name="rating" value="2" <c:if test="${rate >= 2 && rate < 2.5}">checked</c:if>/><label class = "full" for="star2" title="2 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star1half" name="rating" value="1.5" <c:if test="${rate >= 1.5 && rate < 2}">checked</c:if>/><label class="half" for="star1half" title="1.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star1" name="rating" value="1" <c:if test="${rate >= 1 && rate < 1.5}">checked</c:if>/><label class = "full" for="star1" title="1 stella"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="starhalf" name="rating" value="0.5" <c:if test="${rate >= 0.5 && rate < 1}">checked</c:if>/><label class="half" for="starhalf" title="0.5 stelle"></label>
+                                                    </fieldset><br>                                
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9 col-md-9">
+                                    <div class="col-lg-9 col-md-9 img-margin-bottom-large">
                                         <h1 class="personalized mt-20 mb-20" style="min-height: fit-content; margin-top: 0px; margin-bottom: 23px; padding: 0px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 45px; color: rgb(74, 74, 74);">${blog.nome}</h1>
-                                    <div class="personalized excert" style="font-family: 'Roboto', sans-serif !important; text-align: justify;">
+                                    <div class="feature-img" style="text-align: center;">
+                                        <img class="img-fluid" src="/${blog.immagine}" alt="${blog.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
+                                    </div>
+                                    <div class="invisible-md" style="margin-top: 3rem;">
+                                        <ul class="tags" style="padding: 0;">
+                                            <li><a href="<c:url value="/blog.jsp?cat=${blog.categoria.replace(' ', '-')}"/>" class="categoriaArt">${blog.categoria}</a><i class="fas fa-stream ml-2" style="color: black;"></i></li>
+                                        </ul>
+                                        <ul class="tags realTags key black-text textOverflow">
+                                            <c:forEach items="${blogdao.getAllTextTagsOfBlog(blog.id)}" var="tag" >
+                                                <li>
+                                                    <a class="tagLink" href="<c:url value="/blog.jsp?tag=${tag.replace(' ', '-')}"/>">#${StringUtils.capitalize(tag.toLowerCase())}</a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                        <div class="user-details row">
+                                            <p class="personalized user-name col-lg-12 col-md-12 col-6">${blog.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
+                                            <p class="right-small personalized date col-lg-12 col-md-12 col-6">${blog.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></p>                                            
+                                            <p class="personalized comments col-lg-12 col-md-12 col-6"><a href="#commenti">${commenti.size()} Commenti</a> <i class="far fa-comment" style="color: black;"></i></p>
+                                            <p class="right-small personalized view col-lg-12 col-md-12 col-6">${blog.views} Letture<i class="far fa-eye ml-2" style="color: black;"></i></p>
+                                            <ul class="social-links col-lg-12 col-md-12 col-12 center-small mb-5">
+                                                <li><a aria-label="Condividi su Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dialog/share?app_id=320307085338651&display=popup&href=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>&redirect_uri=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>"><i class="fab fa-facebook-f overGold"></i></a></li>
+                                                <li><a aria-label="Condividi su Twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https://macelleriadellantonio.it/<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>&text=${blog.nome}"><i class="fab fa-twitter overGold"></i></a></li>
+                                            </ul>
+                                            <div id="ratingDiv" class="no-padding mb-5 personalized center-small col-lg-12 col-md-12 col-12">
+                                                <c:set var="rate" value="${blogdao.getRate(blog.id)}" />
+                                                <label class="text-muted">${blogdao.getNumberRate(blog.id)} valutazioni (${rate} <i class="far fa-star"></i>)</label><br>
+                                                <fieldset class="rating text-center" style="display: initial;">
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star5" name="rating" value="5" <c:if test="${rate >= 5}">checked</c:if> /><label class = "full" for="star5" title="5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star4half" name="rating" value="4.5" <c:if test="${rate >= 4.5 && rate < 5}">checked</c:if>/><label class="half" for="star4half" title="4.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star4" name="rating" value="4" <c:if test="${rate >= 4 && rate < 4.5}">checked</c:if>/><label class = "full" for="star4" title="4 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star3half" name="rating" value="3.5" <c:if test="${rate >= 3.5 && rate < 4}">checked</c:if>/><label class="half" for="star3half" title="3.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star3" name="rating" value="3" <c:if test="${rate >= 3 && rate < 3.5}">checked</c:if>/><label class = "full" for="star3" title="3 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star2half" name="rating" value="2.5" <c:if test="${rate >= 2.5 && rate < 3}">checked</c:if>/><label class="half" for="star2half" title="2.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star2" name="rating" value="2" <c:if test="${rate >= 2 && rate < 2.5}">checked</c:if>/><label class = "full" for="star2" title="2 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star1half" name="rating" value="1.5" <c:if test="${rate >= 1.5 && rate < 2}">checked</c:if>/><label class="half" for="star1half" title="1.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="star1" name="rating" value="1" <c:if test="${rate >= 1 && rate < 1.5}">checked</c:if>/><label class = "full" for="star1" title="1 stella"></label>
+                                                    <input onclick="rate($(this).val(), ${blog.id});" type="radio" id="starhalf" name="rating" value="0.5" <c:if test="${rate >= 0.5 && rate < 1}">checked</c:if>/><label class="half" for="starhalf" title="0.5 stelle"></label>
+                                                    </fieldset><br>                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="personalized excert description mt-5" style="text-align: justify;">
                                         ${blog.testo}
                                     </div>
                                 </div>

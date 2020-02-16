@@ -122,6 +122,14 @@
         <filter-name>imagesCache</filter-name>
         <url-pattern>*.png</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>imagesCache</filter-name>
+        <url-pattern>*.jpg</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>imagesCache</filter-name>
+        <url-pattern>*.gif</url-pattern>
+    </filter-mapping>
     <listener>
         <description>ServletContextListener</description>
         <listener-class>listeners.WebAppListener</listener-class>

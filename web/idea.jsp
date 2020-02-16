@@ -10,6 +10,7 @@
 <%@page import="database.factories.DAOFactory"%>
 <%@page import="database.entities.Ricetta"%>
 <%@page import="database.daos.RicetteDAO"%>
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -69,25 +70,36 @@
             "datePublished" : "${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-yy"))}",
             "image" : "/${ricetta.immagine}",
             "recipeInstructions": [
-                {
-                  "@type": "HowToStep",
-                  "text": "${ricetta.procedimento}"
-                }
+            {
+            "@type": "HowToStep",
+            "text": "${ricetta.descrizione}"
+            }
             ],
-            "description": "${ricetta.procedimento}",
+            "description": "${ricetta.descrizione}",
             "recipeCuisine": "Italiana",
-            <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
-            "keywords": "${productdao.getProduct(ricetta.id_prod).nome}",
+                
+            <c:set var="AllProdsOfIdea" value="${ricettedao.getAllProdsOfIdea(ricetta.id)}"/>
+            <c:if test="${!AllProdsOfIdea.isEmpty()}">
+                "keywords": [
+                <c:set var="size" value="${0}"/>
+                <c:forEach items="${AllProdsOfIdea}" var="idProd">                    
+                    <c:set var="size" value="${size + 1}"/>
+                    <c:set var="prod" value="${productdao.getProduct(idProd)}"/>
+                    "${prod.nome}"<c:if test="${size < AllProdsOfIdea.size()}">,</c:if>
+                </c:forEach>
+                ],
             </c:if>
+                
             <c:if test="${ricetta.ingredienti ne null && !ricetta.ingredienti.isEmpty() && !ricetta.ingredienti.get(0).equals('')}">
                 "recipeIngredient": [
                 <c:set var="size" value="${0}"/>
                 <c:forEach items="${ricetta.ingredienti}" var="ingrediente">                    
                     <c:set var="size" value="${size + 1}"/>
-                        "${ingrediente}"<c:if test="${size < ricetta.ingredienti.size()}">,</c:if>
+                    "${ingrediente}"<c:if test="${size < ricetta.ingredienti.size()}">,</c:if>
                 </c:forEach>
                 ],
             </c:if>
+            
             "url" : "https://macelleriadellantonio.it/Bortoleto/idea/${ricetta.id}/${ricetta.nome.replace(" ", "-")}",
             "aggregateRating" : {
             "@type" : "AggregateRating",
@@ -130,6 +142,9 @@
         <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
         <!-- fine include css -->    
         <style>
+            body{
+                overflow-x: visible;
+            }
             .container1 {
                 position: relative;
                 width: 80%;
@@ -148,7 +163,7 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
-                height: 100%;
+                height: inherit;
                 width: 100%;
                 opacity: 1;
                 transition: .5s ease;
@@ -286,12 +301,12 @@
     <!--####################################################################
     INIZIO CONTENUTO
     #####################################################################-->
-    <div id="parallaxN2" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="https://lh3.googleusercontent.com/qn-cGonjNTsmXcCpTuCHvVF2-ii8N5OOqnjKdPQOT9iTX93xNmyhPUUH5jtVZsXOhuVu2CAT8HpRFb258aOErpE7Kph-TftmfpvVd93MdsLDFbVBi76j22MiM92wliBTqE_jTK6E8vy7Ilck0Td0mRepKvbmgRCK1Nlz_z2VSRb6StTYUW6b5XUL5W7sEHSZZqKxyC2Q_qV97HQ4rA2i2kWhexD6eC88byii6ku3r67dUfY70fKhqLGK5Tn7Y3jLaf_K0uNFmr5vqHu5-cow_egftD5Wn9upI-B_HJ7ZdIdA_78o7DdmBY2rKjJsp6rdVH7dMiMIuxv3WLmhbpkfalAIVDjb3Y3EfLYOtdPQopdETR7uX5B47PNoFMi1I_bNo_ZLWB0e3owNu14kANdaybjIjdeGRE_s2K1fyIRXMK7s12BdfefrcPJJz3Gw74Z8XfhfJALqxVXsC9HXSyxk65L-5XHfZzsqQ26LPl6NtmCroAJQ9M6Pi6f68-ydHd3s9HzaV0HIcly19YYAE7rH35bJcy1l5WndpoC7ZvEBNoPj3xv7yrGBmU0tqh07H4oTfdxwqzfzLj_0ltqfHmKtax3NUrUrWC9chvN9vkGxC6GmZIkJoke_IcD87WdrGFfM25o4dTx8GYzz9a6rv0sJ_kUpzsX2zmw=w1560-h763-no">
+    <div id="parallaxN2" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/ico/meat-background.jpg">
         <div class="effetto1">
             <div style="height: 30rem;">
                 <div class="container cPara" style="">
                     <div class="customPaddingPara">
-                        <h1 class="customStylePara">Le idee de 'l Bortoleto</h1>
+                        <h2 class="customStylePara">Le idee de 'l Bortoleto</h2>
                     </div>
                 </div>
                 <div class="scrollIcon">
@@ -331,67 +346,89 @@
                                 </ol>
                             </nav>
                             <div class="single-post row">
-                                <div class="col-lg-12 img-margin-bottom-large">
-                                    <div class="feature-img" style="text-align: center;">
-                                        <img class="img-fluid" src="/${ricetta.immagine}" alt="${ricetta.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3  col-md-3 meta-details" style="text-align: right;  margin-top: 35px;">
-                                    <c:if test="${ricetta.id_prod ne null && ricetta.id_prod != 0}">
-                                        <ul class="tags key black-text" style="padding-left: 0px;">
-                                            <li>
-                                                <a href="<c:url value="/idee.jsp?prod=${ricetta.id_prod}&nome=${productdao.getProduct(ricetta.id_prod).nome.replace(' ', '-')}"/>" class="categoriaArt">${productdao.getProduct(ricetta.id_prod).nome}</a>
-                                                <i class="fas fa-stream ml-2" style="color: black;"></i>
-                                            </li>
+                                <div class="col-lg-3  col-md-3 meta-details container-sticky" style="text-align: right;  margin-top: 35px;">
+                                    <div class="sticky-top visible-md" style="top: 6rem;padding-top:5rem;">
+                                        <ul class="tags realTags key black-text textOverflow">
+                                            <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="tag" >
+                                                <c:set var="prodIdea" value="${productdao.getProduct(tag)}" />
+                                                <li>
+                                                    <a class="tagLink" href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">#${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
+                                                </li>
+                                            </c:forEach>
                                         </ul>
-                                    </c:if>
-                                    <div class="user-details row">
-                                        <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
-                                        <p style="padding-left: 0px;" class="right-small personalized date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></p>                                            
-                                        <p style="padding-left: 0px;" class="personalized comments col-lg-12 col-md-12 col-6"><a href="#commenti">${commenti.size()} Commenti</a> <i class="far fa-comment" style="color: black;"></i></p>
-                                        <p style="padding-left: 0px;" class="right-small personalized view col-lg-12 col-md-12 col-6">${ricetta.views} Letture<i class="far fa-eye ml-2" style="color: black;"></i></p>
-                                        <ul class="social-links col-lg-12 col-md-12 col-12 center-small">
-                                            <li><a aria-label="Condividi su Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dialog/share?app_id=320307085338651&display=popup&href=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>&redirect_uri=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>"><i class="fab fa-facebook-f overGold"></i></a></li>
-                                            <li><a aria-label="Condividi su Twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>&text=${ricetta.nome}"><i class="fab fa-twitter overGold"></i></a></li>
-                                        </ul>
-                                        <div id="ratingDiv" class="no-padding mb-5 personalized center-small col-lg-12 col-md-12 col-12">
-                                            <c:set var="rate" value="${ricettedao.getRate(ricetta.id)}" />
-                                            <label class="text-muted">${ricettedao.getNumberRate(ricetta.id)} valutazioni (${rate} <i class="far fa-star"></i>)</label><br>
-                                            <fieldset class="rating text-center" style="display: initial;">
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star5" name="rating" value="5" <c:if test="${rate >= 5}">checked</c:if> /><label class = "full" for="star5" title="5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star4half" name="rating" value="4.5" <c:if test="${rate >= 4.5 && rate < 5}">checked</c:if>/><label class="half" for="star4half" title="4.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star4" name="rating" value="4" <c:if test="${rate >= 4 && rate < 4.5}">checked</c:if>/><label class = "full" for="star4" title="4 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star3half" name="rating" value="3.5" <c:if test="${rate >= 3.5 && rate < 4}">checked</c:if>/><label class="half" for="star3half" title="3.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star3" name="rating" value="3" <c:if test="${rate >= 3 && rate < 3.5}">checked</c:if>/><label class = "full" for="star3" title="3 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star2half" name="rating" value="2.5" <c:if test="${rate >= 2.5 && rate < 3}">checked</c:if>/><label class="half" for="star2half" title="2.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star2" name="rating" value="2" <c:if test="${rate >= 2 && rate < 2.5}">checked</c:if>/><label class = "full" for="star2" title="2 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star1half" name="rating" value="1.5" <c:if test="${rate >= 1.5 && rate < 2}">checked</c:if>/><label class="half" for="star1half" title="1.5 stelle"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star1" name="rating" value="1" <c:if test="${rate >= 1 && rate < 1.5}">checked</c:if>/><label class = "full" for="star1" title="1 stella"></label>
-                                                <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="starhalf" name="rating" value="0.5" <c:if test="${rate >= 0.5 && rate < 1}">checked</c:if>/><label class="half" for="starhalf" title="0.5 stelle"></label>
-                                                </fieldset><br>                                
+                                        <div class="user-details row">
+                                            <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.getTempoFormat()}<i class="far fa-clock ml-2" style="color: black;"></i></p>
+                                            <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.difficolta}<i class="far fa-smile ml-2" style="color: black;"></i></p> 
+                                            <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
+                                            <p style="padding-left: 0px;" class="right-small personalized date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></p>                                            
+                                            <p style="padding-left: 0px;" class="personalized comments col-lg-12 col-md-12 col-6"><a href="#commenti">${commenti.size()} Commenti</a> <i class="far fa-comment" style="color: black;"></i></p>
+                                            <p style="padding-left: 0px;" class="right-small personalized view col-lg-12 col-md-12 col-6">${ricetta.views} Letture<i class="far fa-eye ml-2" style="color: black;"></i></p>
+                                            <ul class="social-links col-lg-12 col-md-12 col-12 center-small">
+                                                <li><a aria-label="Condividi su Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dialog/share?app_id=320307085338651&display=popup&href=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>&redirect_uri=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>"><i class="fab fa-facebook-f overGold"></i></a></li>
+                                                <li><a aria-label="Condividi su Twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>&text=${ricetta.nome}"><i class="fab fa-twitter overGold"></i></a></li>
+                                            </ul>
+                                            <div id="ratingDiv" class="no-padding mb-5 personalized center-small col-lg-12 col-md-12 col-12">
+                                                <c:set var="rate" value="${ricettedao.getRate(ricetta.id)}" />
+                                                <label class="text-muted">${ricettedao.getNumberRate(ricetta.id)} valutazioni (${rate} <i class="far fa-star"></i>)</label><br>
+                                                <fieldset class="rating text-center" style="display: initial;">
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star5" name="rating" value="5" <c:if test="${rate >= 5}">checked</c:if> /><label class = "full" for="star5" title="5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star4half" name="rating" value="4.5" <c:if test="${rate >= 4.5 && rate < 5}">checked</c:if>/><label class="half" for="star4half" title="4.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star4" name="rating" value="4" <c:if test="${rate >= 4 && rate < 4.5}">checked</c:if>/><label class = "full" for="star4" title="4 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star3half" name="rating" value="3.5" <c:if test="${rate >= 3.5 && rate < 4}">checked</c:if>/><label class="half" for="star3half" title="3.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star3" name="rating" value="3" <c:if test="${rate >= 3 && rate < 3.5}">checked</c:if>/><label class = "full" for="star3" title="3 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star2half" name="rating" value="2.5" <c:if test="${rate >= 2.5 && rate < 3}">checked</c:if>/><label class="half" for="star2half" title="2.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star2" name="rating" value="2" <c:if test="${rate >= 2 && rate < 2.5}">checked</c:if>/><label class = "full" for="star2" title="2 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star1half" name="rating" value="1.5" <c:if test="${rate >= 1.5 && rate < 2}">checked</c:if>/><label class="half" for="star1half" title="1.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star1" name="rating" value="1" <c:if test="${rate >= 1 && rate < 1.5}">checked</c:if>/><label class = "full" for="star1" title="1 stella"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="starhalf" name="rating" value="0.5" <c:if test="${rate >= 0.5 && rate < 1}">checked</c:if>/><label class="half" for="starhalf" title="0.5 stelle"></label>
+                                                    </fieldset><br>                                
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9 col-md-9 black-text">
-                                        <h2 class="textOverflow personalized mt-20 mb-15" style="min-height: fit-content; margin-top: 0px; margin-bottom: 23px; padding: 0px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 45px; color: rgb(74, 74, 74);">${ricetta.nome}</h2><br>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <c:if test="${ricetta.id_prod ne 0}">
-                                                <c:set var="ricettaProd" value="${productdao.getProduct(ricetta.id_prod)}" />
-                                                <a data-toggle="tooltip" title="Acquista ${ricettaProd.nome}" target="_blank" rel="noopener" href="<c:url value="/prodotto.jsp?id=${ricettaProd.id}&nome=${ricettaProd.nome.replace(' ', '-')}&cat=${ricettaProd.categoria.replace(' ', '-')}"/>">
-                                                    <div class="container1 lazy" alt="${ricettaProd.nome}" data-src="/${ricettaProd.immagine}" style="height: 100%; min-height: 150px; max-height: 200px; max-width: 300px; background-size: cover; background-position: center center; background-repeat: no-repeat;">
-                                                        <div class="overlay1">
-                                                            <div class="text1"><i class="fas fa-cart-plus" style="font-size: 3rem;"></i></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </c:if>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="personalized view" style="text-align: right;">${ricetta.getTempoFormat()}<i class="far fa-clock ml-2" style="color: black;"></i></p>
-                                            <p class="personalized view" style="text-align: right;">${ricetta.difficolta}<i class="far fa-smile ml-2" style="color: black;"></i></p> 
-                                        </div>
+                                    <div class="col-lg-9 col-md-9 black-text img-margin-bottom-large">
+                                        <h1 class="textOverflow personalized mt-20 mb-15" style="min-height: fit-content; margin-top: 0px; margin-bottom: 23px; padding: 0px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 45px; color: rgb(74, 74, 74);">${ricetta.nome}</h1><br>
+                                    <div class="feature-img" style="text-align: center;">
+                                        <img class="img-fluid" src="/${ricetta.immagine}" alt="${ricetta.nome}" style="max-height: 500px; border-radius: 10px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.64);">
                                     </div>
+                                    <div class="invisible-md" style="margin-top: 3rem;">
+                                        <ul class="tags realTags key black-text textOverflow">
+                                            <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="tag" >
+                                                <c:set var="prodIdea" value="${productdao.getProduct(tag)}" />
+                                                <li>
+                                                    <a class="tagLink" href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">#${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                        <div class="user-details row">
+                                            <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.getTempoFormat()}<i class="far fa-clock ml-2" style="color: black;"></i></p>
+                                            <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.difficolta}<i class="far fa-smile ml-2" style="color: black;"></i></p> 
+                                            <p style="padding-left: 0px;" class="personalized user-name col-lg-12 col-md-12 col-6">${ricetta.creatore}<i class="far fa-user ml-2" style="color: black;"></i></p>
+                                            <p style="padding-left: 0px;" class="right-small personalized date col-lg-12 col-md-12 col-6">${ricetta.data.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))}<i class="far fa-calendar-alt ml-2" style="color: black;"></i></p>                                            
+                                            <p style="padding-left: 0px;" class="personalized comments col-lg-12 col-md-12 col-6"><a href="#commenti">${commenti.size()} Commenti</a> <i class="far fa-comment" style="color: black;"></i></p>
+                                            <p style="padding-left: 0px;" class="right-small personalized view col-lg-12 col-md-12 col-6">${ricetta.views} Letture<i class="far fa-eye ml-2" style="color: black;"></i></p>
+                                            <ul class="social-links col-lg-12 col-md-12 col-12 center-small">
+                                                <li><a aria-label="Condividi su Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/dialog/share?app_id=320307085338651&display=popup&href=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>&redirect_uri=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>"><i class="fab fa-facebook-f overGold"></i></a></li>
+                                                <li><a aria-label="Condividi su Twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https://macelleriadellantonio.it/<c:url value="/idea.jsp?id=${ricetta.id}&nome=${ricetta.nome.replace(' ', '-')}"/>&text=${ricetta.nome}"><i class="fab fa-twitter overGold"></i></a></li>
+                                            </ul>
+                                            <div id="ratingDiv" class="no-padding mb-5 personalized center-small col-lg-12 col-md-12 col-12">
+                                                <c:set var="rate" value="${ricettedao.getRate(ricetta.id)}" />
+                                                <label class="text-muted">${ricettedao.getNumberRate(ricetta.id)} valutazioni (${rate} <i class="far fa-star"></i>)</label><br>
+                                                <fieldset class="rating text-center" style="display: initial;">
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star5" name="rating" value="5" <c:if test="${rate >= 5}">checked</c:if> /><label class = "full" for="star5" title="5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star4half" name="rating" value="4.5" <c:if test="${rate >= 4.5 && rate < 5}">checked</c:if>/><label class="half" for="star4half" title="4.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star4" name="rating" value="4" <c:if test="${rate >= 4 && rate < 4.5}">checked</c:if>/><label class = "full" for="star4" title="4 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star3half" name="rating" value="3.5" <c:if test="${rate >= 3.5 && rate < 4}">checked</c:if>/><label class="half" for="star3half" title="3.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star3" name="rating" value="3" <c:if test="${rate >= 3 && rate < 3.5}">checked</c:if>/><label class = "full" for="star3" title="3 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star2half" name="rating" value="2.5" <c:if test="${rate >= 2.5 && rate < 3}">checked</c:if>/><label class="half" for="star2half" title="2.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star2" name="rating" value="2" <c:if test="${rate >= 2 && rate < 2.5}">checked</c:if>/><label class = "full" for="star2" title="2 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star1half" name="rating" value="1.5" <c:if test="${rate >= 1.5 && rate < 2}">checked</c:if>/><label class="half" for="star1half" title="1.5 stelle"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="star1" name="rating" value="1" <c:if test="${rate >= 1 && rate < 1.5}">checked</c:if>/><label class = "full" for="star1" title="1 stella"></label>
+                                                    <input onclick="rate($(this).val(), ${ricetta.id});" type="radio" id="starhalf" name="rating" value="0.5" <c:if test="${rate >= 0.5 && rate < 1}">checked</c:if>/><label class="half" for="starhalf" title="0.5 stelle"></label>
+                                                    </fieldset><br>                                
+                                                </div>
+                                            </div>
+                                        </div>
                                     <c:if test="${ricetta.ingredienti ne null && !ricetta.ingredienti.isEmpty() && !ricetta.ingredienti.get(0).equals('')}">
                                         <div class="comments-area" style="box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.17);; padding-bottom: 0; margin-top: 30px;">
                                             <h6><i>Cosa usare:</i></h6>
@@ -403,18 +440,46 @@
                                         </div>
                                     </c:if>
                                     <h5 class="mt-5"><i>Cosa fare</i></h5>
-                                    <div class="personalized excert" style="overflow-wrap: break-word;">
+                                    <div class="personalized excert description" style="overflow-wrap: break-word;">
                                         ${ricetta.procedimento}
                                     </div>
                                 </div>
                             </div>
 
-                            <c:set var="blogs" value="${blogdao.getBlogsOfIdeaProd(productdao.getProduct(ricetta.id_prod).nome, productdao.getProduct(ricetta.id_prod).categoria)}" />
-                            <c:if test="${blogs ne null && !blogs.isEmpty()}">
-                                <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 white-text" data-ride="carousel">
 
+                            <c:if test="${!ricettedao.getAllProdsOfIdea(ricetta.id).isEmpty()}">
+                                <!-- Prodotti legati all'idea -->
+                                <h4 class="Cherry_Swash center15 black-text">Quello che abbiamo usato</h4>
+                                <div id="carousel-example-multi1" class="carousel slide carousel-multi-item v-2 white-text" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox" style="overflow-y: hidden; overflow-x: scroll;">
-                                        <h4 class="Cherry_Swash center15 black-text">Articoli che ti possono interessare</h4>
+                                        <div style="margin-top: 1.5rem; display: inline-flex;" class="carousel-item active">
+                                            <c:forEach items="${ricettedao.getAllProdsOfIdea(ricetta.id)}" var="prod" >
+                                                <c:set var="ricettaProd" value="${productdao.getProduct(prod)}" />
+                                                <div class="col-md-4 zoomSlide">
+                                                    <a data-toggle="tooltip" title="Acquista ${ricettaProd.nome}" target="_blank" rel="noopener" href="<c:url value="/prodotto.jsp?id=${ricettaProd.id}&nome=${ricettaProd.nome.replace(' ', '-')}&cat=${ricettaProd.categoria.replace(' ', '-')}" />">
+                                                        <div class="card mb-2" style="border-radius: 5%;">
+                                                            <div class="image-liquid image-holder--original card-img-top lazy" data-src="/${ricettaProd.immagine}" style="height: 15rem;" alt="${ricettaProd.nome}">
+                                                                <div class="overlay1">
+                                                                    <div class="text1"><i class="fas fa-cart-plus" style="font-size: 3rem;"></i></div>
+                                                                </div>
+                                                            </div>                                            
+                                                            <div class="card-body">
+                                                                <h4 class="card-title font-weight-bold black-text">${ricettaProd.nome}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+
+                            <c:set var="blogs" value="${blogdao.getBlogsOfIdeaProd(ricetta.id, request)}" />
+                            <c:if test="${blogs ne null && !blogs.isEmpty()}">
+                                <h4 class="Cherry_Swash center15 black-text" style='margin-top: 5rem;'>Approfondisci l'argomento con un po' di cultura</h4>
+                                <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 white-text" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox" style="overflow-y: hidden; overflow-x: scroll;">                                        
                                         <div style="margin-top: 1.5rem; display: inline-flex;" class="carousel-item active">
                                             <c:forEach items="${blogs}" var="blog" >
                                                 <div class="col-md-4 zoomSlide">
@@ -559,6 +624,19 @@
                                 </li>
                             </ul>
                         </div>
+                        <c:if test="${!ricettedao.getAllProdottiIdea().isEmpty()}">
+                            <div class="single-sidebar-widget tag-cloud-widget">
+                                <h4 class="tagcloud-title">Tags</h4>
+                                <ul>
+                                    <c:forEach items="${ricettedao.getAllProdottiIdea()}" var="tag" >
+                                        <c:set var="prodIdea" value="${productdao.getProduct(ricettedao.getProdFormProdIdea(tag))}" />
+                                        <li>
+                                            <a href="<c:url value="/idee.jsp?prod=${prodIdea.id}&nome=${prodIdea.nome.replace(' ', '-')}"/>">${StringUtils.capitalize(prodIdea.nome.toLowerCase())}</a>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </c:if>
                         <div class="single-sidebar-widget newsletter-widget">
                             <h4 class="newsletter-title">Newsletter</h4>
                             <p>
