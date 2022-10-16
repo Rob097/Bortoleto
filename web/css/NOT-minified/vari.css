@@ -44,12 +44,12 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating:not(:checked) > label:hover ~ label { color: #b4505a;  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.rating > input:checked ~ label:hover ~ label { color: #b4505a80;  } 
 
 .scrollIcon{
     color: white;
@@ -128,7 +128,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         bottom: 3rem;
     }
 }
-@media (max-width: 400px){
+@media (max-width: 642px){
     .cPara{
         bottom: 5rem;
     }

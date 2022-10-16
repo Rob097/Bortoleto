@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="request" value="<%=request%>"/>
+<%@ page import="varie.Costanti" %>
+<c:set value="<%=varie.Costanti.SPACES_COOKIE%>" var="SPACES_COOKIE" />
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
@@ -26,41 +28,40 @@ ${consoledao.incrementViews("home", request, 0)}
 
             gtag('config', 'UA-156001507-1');
         </script>
+        
+        <!-- MetaDati per Google e Sito Web-->
+        <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" alt="Macelleria Dellantonio favicon">
+        <title>Ristorante Macelleria Dellantonio - Home Page | Bortoleto</title>
+        <meta name="Description" content="Ristorante Macelleria 'L Bortoleto. Qualità e tradizione delle specialità Trentine dal 1901. Predazzo Val di Fiemme (Trentino).">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#31353d">
 
         <!-- OpenGraph metaTags -->
         <meta property="og:url"           content="https://macelleriadellantonio.it/Bortoleto/" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Ristorante Macelleria 'L Bortoleto" />
+        <meta property="og:title"         content="Ristorante Macelleria Dellantonio - Home Page | Bortoleto" />
         <meta property="og:description"   content="Ristorante Macelleria 'L Bortoleto. Qualità e tradizione delle specialità Trentine dal 1901. Predazzo Val di Fiemme (Trentino)." />
         <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Ristorante Macelleria"/>
         <meta property="og:site_name" content="Ristorante Macelleria Dellantonio 'L Bortoleto">
 
         <!-- Microdati per Facebook Pixel -->
         <meta property="fb:app_id"         content="320307085338651" />
-
-        <!-- MetaDati per Google e Sito Web-->
-        <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" alt="Macelleria Dellantonio favicon">
-        <title>Ristorante Macelleria 'L Bortoleto</title>
-        <meta name="Description" content="Ristorante Macelleria 'L Bortoleto. Qualità e tradizione delle specialità Trentine dal 1901. Predazzo Val di Fiemme (Trentino).">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#31353d">
-
         <!-- CSS include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet nofollow">
         <!--miei css -->
-        <link href="css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/Cards-min.css" type="text/css">
-        <link rel="stylesheet" href="css/style-min.css">
-        <link rel="stylesheet" href="css/font-min.css">
-        <link rel="stylesheet" href="css/vari-min.css">
-        <link rel="stylesheet" href="css/animations-min.css">
-        <link rel="stylesheet" href="css/macelleriaCSS-min.css">
-        <link href="css/mouseScroll.css" rel="stylesheet">
-        <link href="css/home-min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/navbar-min.css">
+        <link href="css/mdb.min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="css/Cards-min.css" type="text/css">
+        <link rel="stylesheet nofollow" href="css/style-min.css">
+        <link rel="stylesheet nofollow" href="css/font-min.css">
+        <link rel="stylesheet nofollow" href="css/vari-min.css">
+        <link rel="stylesheet nofollow" href="css/animations-min.css">
+        <link rel="stylesheet nofollow" href="css/macelleriaCSS-min.css">
+        <link href="css/mouseScroll.css" rel="stylesheet nofollow">
+        <link href="css/home-min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="css/navbar-min.css">
         <!-- fine include css -->
 
         <style>      
@@ -705,7 +706,7 @@ ${consoledao.incrementViews("home", request, 0)}
                     <p>
                         <a rel="nofollow" href="https://www.google.com.br/maps/place/Macelleria+Dellantonio+S.n.c./@46.3125673,11.5998089,17z/data=!3m1!4b1!4m9!1m3!11m2!2s8plO4Vi8KGpSPZrzosvM0xXeNW3bUA!3e1!3m4!1s0x4778640a1b138a65:0xe3b41055e8ff2377!8m2!3d46.3125636!4d11.6019976">Via Cesare Battisti 2</a><br>
                         <a href="tel:0462501231">0462-501231</a><br>
-                        <a href="mailto:info@macelleriadellantonio.it">info@macelleriadellantonio</a>
+                        <a href="mailto:info@macelleriadellantonio.it">info@macelleriadellantonio.it</a>
                     </p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-12" style="margin: 0 auto;">
@@ -713,15 +714,15 @@ ${consoledao.incrementViews("home", request, 0)}
                     <p>
                         <a rel="nofollow" href="https://www.google.com.br/maps/place/macelleria+dellantonio+s.n.c./@46.4764974,11.7387952,17z/data=!3m1!4b1!4m9!1m3!11m2!2s8plO4Vi8KGpSPZrzosvM0xXeNW3bUA!3e1!3m4!1s0x47786a4ba3b3e0d1:0xa84761f876bbe6b4!8m2!3d46.4764937!4d11.7409839">Piaz de Ciampedel 27</a><br>
                         <a href="tel:0462750416">0462-750416</a><br>
-                        <a href="mailto:info@macelleriadellantonio.it">info@macelleriadellantonio</a>
+                        <a href="mailto:info@macelleriadellantonio.it">info@macelleriadellantonio.it</a>
                     </p>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-12" style="margin: 0 auto;">
                     <h3>Ristorante</h3>
                     <p>
                         <a rel="nofollow" href="https://www.google.com.br/maps/place/Ristorante+'l+Bortoleto/@46.3108192,11.599008,17z/data=!3m1!4b1!4m5!3m4!1s0x4778633806ab5a6d:0xef49608af9171d85!8m2!3d46.3108155!4d11.6011967">Via Cavour 2</a><br>
-                        <a href="tel:0462501261">0462-501261</a><br>
-                        <a href="mailto:info@macelleriadellantonio.it">info@macelleriadellantonio</a>
+                        <a href="tel:0462501261">0462-500261</a><br>
+                        <a href="mailto:ristorantelbortoleto@gmail.com">ristorantelbortoleto@gmail.com</a>
                     </p>
                 </div>
             </div>
@@ -733,14 +734,14 @@ ${consoledao.incrementViews("home", request, 0)}
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Il tuo nome" required>
+                        <input type="text" class="form-control" id="nome" <c:if test="${nome ne null && cognome ne null}">value="${nome.replace(SPACES_COOKIE, ' ')} ${cognome.replace(SPACES_COOKIE, ' ')}"</c:if>placeholder="Il tuo nome" required>
                         <div class="invalid-feedback">
                             Il campo relativo al nome non è complilato in modo corretto
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="La tua email" required>
+                        <input type="email" class="form-control" id="email" <c:if test="${email ne null}">value="${email.replace(SPACES_COOKIE, " ")}"</c:if> placeholder="La tua email" required>
                         <div class="invalid-feedback">
                             Il campo relativo all'email non è complilato in modo corretto
                         </div>

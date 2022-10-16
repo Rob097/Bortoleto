@@ -366,7 +366,7 @@ header {
     border: 5px solid rgba(0,0,0,.125);
 }
 #cd-cart .cd-cart-items li:last-child {
-    border-bottom: 1px solid #e0e6ef;
+    border-bottom: 5px solid #e0e6ef;
 }
 #cd-cart .cd-qty, #cd-cart .cd-price {
     color: #a5aebc;
@@ -1214,3 +1214,4 @@ SEARCH
         margin: 0 1em;
     }
 }
+#emailSub2{color:black;}

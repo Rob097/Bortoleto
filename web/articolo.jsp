@@ -14,6 +14,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="request" value="<%=request%>"/>
+<%@ page import="varie.Costanti" %>
+<c:set value="<%=varie.Costanti.SPACES_COOKIE%>" var="SPACES_COOKIE" />
 <c:set value="${catblogdao.getAllCatBlog()}" var="catblog"/>
 <c:set value="${blogdao.getAllBlogs()}" var="blogs"/>
 <c:set value="${blogdao.getMostViewedBlog()}" var="viewed"/>
@@ -57,34 +59,34 @@
 
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/articolo.jsp?id=${blog.id}&nome=${blog.nome.replace(' ', '-')}"/>">
         <meta property="og:type"          content="website">
-        <meta property="og:title"         content="${blog.nome} - ${blog.categoria} | Bortoleto">
+        <meta property="og:title"         content="${blog.nome} - ${blog.categoria} - Il Blog | Bortoleto">
         <meta property="og:description"   content="${blog.meta_descrizione}">
         <meta property="og:image"         content="https://www.macelleriadellantonio.it/console/${blog.immagine}">
         <meta property="fb:app_id"        content="320307085338651">
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
-        <title>${blog.nome} - ${blog.categoria} | Bortoleto</title>
+        <title>${blog.nome} - ${blog.categoria} - Il Blog | Bortoleto</title>
         <meta name="Description" content="${blog.meta_descrizione}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">        
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- fine bootstrap include -->
 
         <!--include css -->
-        <link rel="stylesheet" href="/Bortoleto/css/Cards-min.css" type="text/css">
-        <link rel="stylesheet" href="/Bortoleto/css/style-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/prodotto-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/parallax.css">
-        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/blog-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/vari-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/Cards-min.css" type="text/css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/style-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/prodotto-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/parallax.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/blog-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/vari-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/navbar-min.css">
         <!-- fine include css -->    
         <style>
             body{
@@ -116,6 +118,9 @@
                 .container {
                     max-width: 650px;
                 }
+            }
+            img{
+                border-radius: 5px;
             }
         </style>
         <script type="text/javascript">
@@ -248,7 +253,7 @@
     <!--####################################################################
     INIZIO CONTENUTO
     #####################################################################-->
-    <div id="parallaxN2" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/ico/meat-background.jpg">
+    <div id="parallaxN2" class="imgPara image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="/console/img/immagini_sito/blog/header-articolo.jpg">
         <div class="effetto1">
             <div style="height: 30rem;">
                 <div class="container cPara" style="">
@@ -494,7 +499,7 @@
                                 <form method="POST" action="/Bortoleto/postBlogComment">
                                     <div class="form-group">
                                         <label class="black-text" for="nome">Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Il tuo nome" required="">
+                                        <input type="text" class="form-control" id="nome" name="nome" <c:if test="${nome ne null && cognome ne null}">value="${nome.replace(SPACES_COOKIE, ' ')} ${cognome.replace(SPACES_COOKIE, ' ')}"</c:if> placeholder="Il tuo nome" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="black-text" for="commento">Commento</label>
@@ -586,7 +591,7 @@
                                                 <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
                                                 </div>
                                             </div>
-                                            <input type="email" class="form-control" id="emailSub2" name='email' placeholder="La tua email"/>
+                                            <input type="email" class="form-control" id="emailSub2" name='email' <c:if test="${email ne null}">value="${email.replace(SPACES_COOKIE, " ")}"</c:if> placeholder="La tua email" required/>
                                         </div>
                                     </div>
                                     <input type="submit" id="sendButtonSubB2" class="bbtns" value="Iscriviti">

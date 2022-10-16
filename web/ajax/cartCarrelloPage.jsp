@@ -30,6 +30,7 @@
             <i style="color: #ff3547;" class="far fa-frown fa-4x mb-3 animated rotateIn"></i>
             <h3 style="text-align: center;">Non hai prodotti nel carrello</h3>
             <p class="pt-5">Ricorda che i prodotti del carrello, se non vengono cancellati manualmente, hanno una durata di <b style="font-weight: bold;">30 giorni</b>.</p>
+            <a class="btn" style="background-color: #9e0000; color: white;" href="<c:url value="/bottega.jsp" />">Ritorna alla bottega online</a>
         </div>
     </c:when>
     <c:otherwise>
@@ -137,9 +138,9 @@
                 </c:otherwise>
             </c:choose>
         </li>
-        <li class="list-group-item d-flex justify-content-between bg-light">
-            <span style="color: #000080; font-weight: bold;">Totale</span>
-            <strong style="color: #000080; font-weight: bold;">€ ${totaleCart}</strong>
+        <li class="list-group-item d-flex justify-content-between bg-light" style="color: #ffffff;font-weight: bold;background-color: #b4505a !important;">
+            <span style="padding:5px;margin:0;">Totale dell'ordine</span>
+            <strong style="font-size:20px;">€ ${totaleCart}</strong>
         </li>
         <a onclick="svuotaCarrello();" class="checkout-btn" style="padding: .75rem 1.25rem; color: white; text-align: center;background-color: #5f0b0b; font-weight: 600;">Svuota carrello</a>
     </c:otherwise>

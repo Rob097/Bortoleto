@@ -18,11 +18,11 @@
         <meta name="theme-color" content="#31353d">
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/navbar-min.css">
         <!-- fine bootstrap include -->
         <style>
             footer{

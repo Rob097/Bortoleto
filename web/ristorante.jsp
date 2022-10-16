@@ -9,6 +9,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="request" value="<%=request%>"/> <!-- Request lo chiamo con una scriplets e lo salvo in una variabile perchè serve per diversi metodi java -->
 <c:set var="response" value="<%=response%>"/> <!-- Response lo chiamo con una scriplets e lo salvo in una variabile perchè serve per diversi metodi java -->
+<%@ page import="varie.Costanti" %>
+<c:set value="<%=varie.Costanti.SPACES_COOKIE%>" var="SPACES_COOKIE" />
 ${consoledao.incrementViews("ristorante", request, 0)}
 <!DOCTYPE html>
 <html lang="en">
@@ -42,23 +44,25 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         <meta name="theme-color" content="#31353d">        
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet nofollow" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet nofollow">
         <!-- fine bootstrap include -->
-        <link href="css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/parallax.css">
-        <link rel="stylesheet" href="css/font-min.css">
-        <link rel="stylesheet" href="css/style-min.css">
-        <link rel="stylesheet" href="css/Cards-min.css" type="text/css">
-        <link rel="stylesheet" href="css/prodotto-min.css">
-        <link rel="stylesheet" href="css/macelleriaCSS-min.css">
-        <link rel="stylesheet" href="css/vari-min.css">
-        <link rel="stylesheet" href="css/animations-min.css">
-        <link rel="stylesheet" href="css/ristorante-min.css">
-        <link rel="stylesheet" href="css/animate-min.css">        
-        <link rel="stylesheet" href="css/navbar-min.css">
+        <link href="css/mdb.min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="css/parallax.css">
+        <link rel="stylesheet nofollow" href="css/font-min.css">
+        <link rel="stylesheet nofollow" href="css/style-min.css">
+        <link rel="stylesheet nofollow" href="css/Cards-min.css" type="text/css">
+        <link rel="stylesheet nofollow" href="css/prodotto-min.css">
+        <link rel="stylesheet nofollow" href="css/macelleriaCSS-min.css">
+        <link rel="stylesheet nofollow" href="css/vari-min.css">
+        <link rel="stylesheet nofollow" href="css/animations-min.css">
+        <link rel="stylesheet nofollow" href="css/ristorante-min.css">
+        <link rel="stylesheet nofollow" href="css/animate-min.css">        
+        <link rel="stylesheet nofollow" href="css/navbar-min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <style>  
             .sottotitoli {
                 font-size: 14px;
@@ -111,6 +115,83 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             }
             .eapps-widget-toolbar-panel-share{
                 position: relative !important;
+            }
+            #stagioni-section{
+                padding: 30px;
+            }
+            .title-container-stagioni{
+                animation-delay: 1s; animation-duration: 3s;
+            }
+            .title-container-stagioni h4{
+                margin-bottom: -15px;font-weight: 700!important;
+                font-size: 60px;
+                color: #ffffff!important;
+                text-align: center!important;
+                text-shadow: 0em 0.1em 0.1em rgba(0,0,0,0.4)!important;text-transform: uppercase;font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+            }   
+            .title-container-stagioni p{
+                margin-bottom: -15px;font-family: 'Cruz Script',Helvetica,Arial,Lucida,sans-serif!important;
+                font-weight: 700!important;
+                font-size: 50px;
+                color: #b4505a!important;
+                text-align: center!important;
+                text-shadow: 0em 0.1em 0.1em #ffffff!important;
+            }
+            .img-stagioni{
+                max-width: 600px;
+                width:100%;
+                border-radius: 5px;
+            }
+            .divider-custom{
+                color: #666;
+                font-family: "Open Sans",Arial,sans-serif;
+                font-weight: 500;
+                line-height: 1.7em;
+                -webkit-font-smoothing: antialiased;
+                cursor: move;
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                background: 0 0;
+                font-size: 100%;
+                vertical-align: baseline;
+                display: block;
+                width: 100%;
+                pointer-events: none;
+                background-repeat-y: no-repeat;
+                margin-top: -1px;
+                touch-action: none;
+                top: 0;
+                z-index: 1;
+                height: 100px;
+            }
+            .divider6{
+                background: transparent;
+                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNiNDUwNWEiPjxwYXRoIGQ9Ik0wIDUxLjc2YzM2LjIxLTIuMjUgNzcuNTctMy41OCAxMjYuNDItMy41OCAzMjAgMCAzMjAgNTcgNjQwIDU3IDI3MS4xNSAwIDMxMi41OC00MC45MSA1MTMuNTgtNTMuNFYwSDB6IiBmaWxsLW9wYWNpdHk9Ii4zIi8+PHBhdGggZD0iTTAgMjQuMzFjNDMuNDYtNS42OSA5NC41Ni05LjI1IDE1OC40Mi05LjI1IDMyMCAwIDMyMCA4OS4yNCA2NDAgODkuMjQgMjU2LjEzIDAgMzA3LjI4LTU3LjE2IDQ4MS41OC04MFYwSDB6IiBmaWxsLW9wYWNpdHk9Ii41Ii8+PHBhdGggZD0iTTAgMHYzLjRDMjguMiAxLjYgNTkuNC41OSA5NC40Mi41OWMzMjAgMCAzMjAgODQuMyA2NDAgODQuMyAyODUgMCAzMTYuMTctNjYuODUgNTQ1LjU4LTgxLjQ5VjB6Ii8+PC9nPjwvc3ZnPg==);
+                background-size: 100% 100px;
+                position: absolute;
+            }
+            .divider7{
+                background: rgba(0,0,0,0.8);
+                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiPjxwYXRoIGQ9Ik0wIDE0MGw2NDAtNzAgNjQwIDcwVjBMNjQwIDcwIDAgMHYxNDB6IiBmaWxsLW9wYWNpdHk9Ii41Ii8+PHBhdGggZD0iTTAgMTQwaDEyODBMNjQwIDcwIDAgMTQweiIvPjwvZz48L3N2Zz4=);
+                background-size: 100% 100px;
+                bottom: 0;
+            }
+            @media(min-width: 768px){
+                #stagioni-section{
+                    padding: 50px 100px 50px 100px;
+                }
+            }
+            @media(max-width: 768px){
+                .title-container-stagioni h4{
+                    font-size: 25px;
+                }
+                .title-container-stagioni p{
+                    font-size: 35px;
+                    margin-top: 20px;
+                }
             }
         </style>
         <script type="text/javascript">
@@ -353,6 +434,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         </a>
         <!--/.Controls-->
 
+        <div class="et_pb_bottom_inside_divider divider-custom divider7"></div>
     </div>
     <!--/.Carousel Wrapper-->
 
@@ -418,11 +500,23 @@ ${consoledao.incrementViews("ristorante", request, 0)}
     </div>
 
     <section id="menu" class="mb-5">
-        <div id="sections" class="container">                    
-            <div class="mt-5 mb-5 text-center">
-                <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">Il Menu</h2>
-                <h3 style="display: none;">ristorante l bortoleto predazzo menu</h3>
+        <div class="row image-liquid image-holder--original parallax-window" data-parallax="scroll" data-image-src="http://192.168.1.107/bortoleto/wp-content/uploads/2020/02/menu-background-image-2-3.jpg" style="height: 70vh; width: 90%; margin: auto; position: relative; border-radius: 0; background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <div class="et_pb_top_inside_divider divider-custom divider6"></div>
+            <div style="position: relative;display: table;width:100%;height:100%;">
+                <div style="display: table-cell;vertical-align: middle;text-align:center;">
+                    <h2 data-aos="fade-right" data-aos-duration="2000" style='color:white;font-family:"montserrat"; font-size: 5rem;position:relative;z-index:1;'>Il Menu</h2>
+                    <p data-aos="fade-up" data-aos-duration="2000" style="
+                       font-family: 'Cruz Script',Helvetica,Arial,Lucida,sans-serif;
+                       font-weight: 700;
+                       color: #b4505a!important;
+                       font-size: 2.5rem;
+                       line-height: 1.2em;
+                       text-shadow: 0px 0px 20px white;position:relative;z-index:1;">Specialità Trentine</p>
+                    <h3 style="display: none;">ristorante l bortoleto predazzo menu</h3>
+                </div>
             </div>
+        </div>
+        <div id="sections" class="container">
 
             <c:set var="position" value="0"/>
             <c:forEach items="${menudao.getAllMenu()}" var="menu" >
@@ -435,7 +529,7 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                                         <div style="height: 700px;">
                                         </div>
                                     </div>
-                                </div>  
+                                </div> 
                             </div> 
                             <div class='col-lg-4' style="z-index: 1;">
                                 <div class="largeBox dxLB" data-aos="fade-right" data-aos-duration="2000">
@@ -469,55 +563,107 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         </div>
     </section>
 
-    <hr style="border: 3px solid rgb(121, 85, 72); width: 50%; border-radius: 100%;"/>
+    <section id="stagioni-section">
+        <div id="materie-prime-ristorante-bortoleto" class="carousel slide carousel-fade" data-ride="carousel" data-interval="80000">
 
-    <section id="materiePrime" class="content-menu-02">
-        <div class="container" style="padding-top: 5rem;">
-            <div class="mb-5 text-center">
-                <h4 class="sottotitoli" data-aos="fade-right" data-aos-duration="2000">Le materie prime</h4>
-                <h2 class="macTitle" data-aos="fade-right" data-aos-duration="2000">La Stagionalità dei Prodotti</h2>
-            </div>
-            <div class="row">
-                <div class="col-content-menu-02 col-sm-7 col-md-3" style="margin: auto auto;">
-                    <div class="row">
-                        <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                            <a class="hover-img tipo1" href="#materiePrime" onclick="callMaterie('Dal Trentino')">
-                                <div class="div-img-materie" style="min-width: 150px;  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/console/img/immagini_sito/ristorante/dal-trentino/il-cappelli.jpg);" alt="Dal Trentino"></div>
-                                <h3 class="text-in-img-menu-02">Dal Trentino</h3>
-                            </a>
-                        </div>
-                        <div data-aos="fade-right" data-aos-duration="2000" class="col-12 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                            <a class="hover-img tipo2">
-                                <div class="div-img-materie" style="min-width: 150px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://templates.aucreative.co/deli/images/img-menu-page-02-03.jpg');" alt="Varie"></div>
-                                <h3 class="text-in-img-menu-02">Cooming Soon</h3>
-                            </a>
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#materie-prime-ristorante-bortoleto" data-slide-to="0" class="active" style="background-color:#b4505a;"></li>
+                <li data-target="#materie-prime-ristorante-bortoleto" data-slide-to="1" style="background-color:#b4505a;"></li>
+                <li data-target="#materie-prime-ristorante-bortoleto" data-slide-to="2" style="background-color:#b4505a;"></li>
+                <li data-target="#materie-prime-ristorante-bortoleto" data-slide-to="3" style="background-color:#b4505a;"></li>
+            </ol>
+            <!--/.Indicators-->
+
+            <!--Slides-->
+            <div class="carousel-inner pt-5 pb-5" role="listbox" style="min-height: 600px;  ">
+
+                <div class="carousel-item active background slide-materie-carousel mt-5" style="position: relative;display: table;background-image: url(/console/img/immagini_sito/ristorante/la-carne/manzo-al-sesamo.jpg); background-color: rgba(0,0,0,.3); background-blend-mode: color; height: 600px;">
+                    <div class="et_pb_top_inside_divider divider-custom divider6"></div>
+                    <div style="display: table-cell;vertical-align: middle;">
+                        <div class="title-container-stagioni" data-animation="animated fadeInDown" style="width: 80%;margin: auto;">
+                            <h4 class="h3-responsive">La Stagionalità dei prodotti</h4>
+                            <p style="">Le Materie Prime</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-content-menu-02 col-sm-7 col-md-5" style="margin: auto auto;">
-                    <div class="row">
-                        <div data-aos="fade-down" data-aos-duration="2000" class="col-12 wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
-                            <a href="#materiePrime" onclick="callMaterie('La Carne')" class="hover-img tipo1">
-                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/immagini_sito/ristorante/la-carne/manzo-al-sesamo.jpg');" alt="La Carne"></div>
-                                <h3 class="text-in-img-menu-02">La Carne</h3>
-                            </a>
+
+                <!--La Carne -->
+                <div class="carousel-item" style="height: 100%;">
+                    <div class="et_pb_top_inside_divider divider-custom divider6"></div>
+                    <div class="row" style="margin-top: 6rem;">
+                        <div class="col-lg-6">
+                            <div data-animation="animated fadeInLeft" style="height:100%; position: relative;display: table;width: auto; animation-duration: 2s;margin: auto;">
+                                <div style="display: table-cell;vertical-align: middle;">
+                                    <img data-src="/console/img/immagini_sito/ristorante/la-carne/manzo-al-sesamo.jpg" class="img-stagioni lazy" alt="La Carne"/>
+                                </div>
+                            </div>
                         </div>
-                        <div data-aos="fade-up" data-aos-duration="2000" class="col-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#materiePrime" onclick="callMaterie('Fatto da noi')" class="hover-img tipo2">
-                                <div class="div-img-materie" style="min-width: 270px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/console/img/immagini_sito/ristorante/fatto-da-noi/frittelle.jpg');" alt="Fatto da Noi"></div>
-                                <h3 class="text-in-img-menu-02">Fatto da noi</h3>
-                            </a>
+                        <div data-animation="animated fadeInUp" style="animation-duration: 2s;" class="col-lg-6">      
+                            <h4 class="sottotitoli" style="text-align: right;">La Qualità nel piatto</h4>  
+                            <h3 class="styled mb-5" style="text-align: right;margin: 0;font-weight: 600!important;text-transform: uppercase!important;">La Carne</h3>
+                            <div id="text" class="description" style="font-size: 16px;font-weight: 400;"><p>Nasciamo come <strong>ristorante macelleria</strong>&nbsp;e proprio per questo motivo la carne rappresenta la parte pi&ugrave; importante della nostra cucina. Tra i diversi tipi di carne che offriamo quelli che pi&ugrave; meritano attenzione sono sicuramente la <strong>carne rossa</strong> e la <strong>selvaggina</strong>.</p><p>Da sempre la <strong><a title="Macelleria Dellantonio" href="https://macelleriadellantonio.it/La-Macelleria" target="_blank">macelleria Dellantonio</a></strong> si basa sulla filosofia della <strong>filiera a km 0</strong>. Questo significa che la nostra qualit&agrave; nel piatto parte dai pascoli della Val di Fiemme dove vivono bovini 100% Italiani e locali. Da qui tutto avviene esclusivamente nei nostri laboratori di Predazzo dove&nbsp;ci preoccupiamo di <strong>frollare la carne</strong> e scegliere i tagli migliori per preparare&nbsp;<strong>secondi piatti di carne raffinati</strong> e salutari che vengono incontro alle esigenze dei palati pi&ugrave; fini mantenendo un perfetto equilibrio tra gustosit&agrave; e leggerezza.<br />Ci troviamo a 1000 metri, ai piedi delle <strong>Dolomiti</strong> e qui vivono molti animali selvatici come Cervi, Caprioli e Camosci. Anche in questo la macelleria Dellantonio punta sul km 0, per questo in autunno e primavera, quando i cacciatori iniziano la loro attivit&agrave;, il nostro menu si adegua alla <strong>stagione</strong> offrendo secondi piatti raffinati ottimi per una <strong>cena a base di carne</strong> locale.</p><p>&nbsp;</p></div>
                         </div>
                     </div>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="2000" class="col-content-menu-02 col-sm-7 col-md-4 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; margin: auto auto;">
-                    <a href="#materiePrime" onclick="callMaterie('Il Vino')" class="hover-img tipo3">
-                        <div class="div-img-materie" style="min-width: 210px; background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://templates.aucreative.co/deli/images/img-menu-page-02-05.jpg');" alt="Il Vino"></div>
-                        <h3 class="text-in-img-menu-02">Il Vino</h3>
-                    </a>
+                <!--/La Carne -->
+
+                <!--Dal Trentino -->
+                <div class="carousel-item" style="height: 100%;">
+                    <div class="et_pb_top_inside_divider divider-custom divider6"></div>
+                    <div class="row" style="margin-top: 6rem;">
+                        <div class="col-lg-6">
+                            <div data-animation="animated fadeInLeft" style="height:100%; position: relative;display: table;width: auto; animation-duration: 2s;margin: auto;">
+                                <div style="display: table-cell;vertical-align: middle;">
+                                    <img data-src="/console/img/immagini_sito/ristorante/dal-trentino/orzo-goever.jpg" class="img-stagioni lazy" alt="Dal Trentino"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-animation="animated fadeInUp" style="animation-duration: 2s;" class="col-lg-6">      
+                            <h4 class="sottotitoli" style="text-align: right;">La Qualità nel piatto</h4>  
+                            <h3 class="styled mb-5" style="text-align: right;margin: 0;font-weight: 600!important;text-transform: uppercase!important;">Dal Trentino</h3>
+                            <div id="text" class="description" style="font-size: 16px;font-weight: 400;"><p>Il nostro territorio &egrave; caratterizzato da una <strong>biodiversit&agrave; unica</strong> che rende i settori pi&ugrave; importanti proprio quelli dell'<strong>allevamento</strong> e dell'<strong>agricoltura</strong>.&nbsp;<br />Da qui la nostra volont&agrave; di&nbsp;appoggiarci il pi&ugrave; possibile agli allevatori e agricoltori Trentini, sia per mantenere la <strong>filiera km0</strong>, sia per una sicurezza sulla provenienza e sulla qualit&agrave; dei prodotti.<p/><p>Tra le principali <strong>eccellenze Trentine</strong> che siamo onorati di poter portare sui tavoli del nostro ristorante citiamo la pasta <a title="Pastificio Felicetti" href="https://www.felicetti.it/" target="_blank" rel="nofollow">Felicetti</a>&nbsp;&nbsp;<img src="https://www.quotidianosostenibile.it/wp-content/uploads/2016/02/felicetti-logo.jpg" alt="Pastificio Felicetti" width="28" height="29" />, pastificio nato a Predazzo e ormai di fama internazionale per la qualit&agrave; dei suoi grani e delle sue lavorazioni. Il grano <a title="Goever" href="http://www.goever.it/" target="_blank" rel="nofollow">Goever&nbsp;<img src="http://www.goever.it/wp-content/uploads/2016/11/cropped-cropped-Gover-001.jpg" alt="Goever" width="63" height="21" /></a>, senza il quale il nostro orzo Trentino non sarebbe la stessa cosa. L'<a title="Uovo di Montagna" href="https://www.uovadimontagna.info/" target="_blank">uovo di montagna</a>&nbsp;<img src="https://static.wixstatic.com/media/d51a8c_dd50b50673ea4bb388dd74b805bbbd12~mv2.png/v1/fill/w_144,h_189,al_c,q_85,usm_0.66_1.00_0.01/d51a8c_dd50b50673ea4bb388dd74b805bbbd12~mv2.webp" alt="Uovo di Montagna" width="24" height="32" /> che rappresenta la volont&agrave; di un consumo sostenibile che&nbsp;garantisce la salute e la qualit&agrave; della vita degli animali a favore delle propriet&agrave; invidiabili delle uova prodotte nei loro allevamenti.<br />Direttamente dal lago di Garda le Sarde e Sardine degli allevamenti <a title="Armanini" href="https://www.armanini.it/" target="_blank">Armanini&nbsp;<img src="https://www.trentiner.it/media/catalog/category/cache/585X265/Senza_titolo_1.jpg" alt="Armanini" width="82" height="37" /></a>che garantiscono sicurezza e genuinit&agrave;.<br /><br />Inoltre da sempre la <a title="Macelleria Dellantonio" href="/Bortoleto/La-Macelleria">macelleria Dellantonio</a> si appoggia agli allevamenti locali della val di Fiemme e Fassa.</p></div>
+                        </div>
+                    </div>
                 </div>
+                <!--/Dal Trentino -->
+
+                <!--Fatto da Noi -->
+                <div class="carousel-item" style="height: 100%;">
+                    <div class="et_pb_top_inside_divider divider-custom divider6"></div>
+                    <div class="row" style="margin-top: 6rem;">
+                        <div class="col-lg-6">
+                            <div data-animation="animated fadeInLeft" style="height:100%; position: relative;display: table;width: auto; animation-duration: 2s;margin: auto;">
+                                <div style="display: table-cell;vertical-align: middle;">
+                                    <img data-src="/console/img/immagini_sito/ristorante/fatto-da-noi/frittelle.jpg" class="img-stagioni lazy" alt="Fatto da Noi"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-animation="animated fadeInUp" style="animation-duration: 2s;" class="col-lg-6">      
+                            <h4 class="sottotitoli" style="text-align: right;">La Qualità nel piatto</h4>  
+                            <h3 class="styled mb-5" style="text-align: right;margin: 0;font-weight: 600!important;text-transform: uppercase!important;">Fatto da Noi</h3>
+                            <div id="text" class="description" style="font-size: 16px;font-weight: 400;"><p>Quando le sale si svuotano e la tensione del servizio sparisce in cucina inizia la <strong>produzione</strong>.&nbsp;<p/><p>Quello a cui non rinunciamo sono le cose <strong>fatte in casa</strong> che esaltano tutti gli aromi e i sapori dei <strong>prodotti freschi</strong> e di qualit&agrave;.<br />I <strong>grissini</strong> che trovi al tavolo, assieme ai piccoli <strong>panini</strong> dalla forma tozza e dalla consistenza morbida dentro e croccante fuori, sono rigorosamente impastati e sfornati quotidianamente dai nostri forni.<br />Il nostro <strong><a href='#menu'>menù</a></strong> punta a esaltare la <strong>stagionalit&agrave; dei prodotti</strong>, per cui non sempre troverai alcuni piatti, ma se avrai la fortuna di poterci venire a trovare nel periodo giusto quello che ti aspetta sono i <strong>tortellini di pasta fresca</strong> fatta in casa, cucinati al momento e serviti asciutti o in un delizioso brodo di <strong>verdure di stagione</strong> per deliziarti anche con il profumo.&nbsp;<br />Per concludere in dolcezza tutti i nostri <strong>gelati</strong> sono sempre fatti da noi. Vieni a provare il gelato al <strong>Vin Brul&egrave;</strong> in autunno!&nbsp;</p><p>Molte altre pietanze sono fatte in casa da noi e per scoprirle ti invitiamo a <strong>venire a trovarci</strong>, saremmo lieti d'intrattenervi con le migliori <strong>specialit&agrave; trentine</strong>!</p></div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Fatto da Noi -->
+
             </div>
+            <!--/.Slides-->
+
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#materie-prime-ristorante-bortoleto" role="button" data-slide="prev" style="color:#b4505a;">
+                <span aria-hidden="true"><i style="font-size: xx-large;" class="fas fa-angle-left"></i></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#materie-prime-ristorante-bortoleto" role="button" data-slide="next" style="color:#b4505a;">
+                <span aria-hidden="true"><i style="font-size: xx-large;" class="fas fa-angle-right"></i></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
+
         </div>
+        <!--/.Carousel Wrapper-->
     </section>
 
     <!-- Section: Testimonials v.2 Facebook review -->
@@ -566,14 +712,14 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Il tuo nome" required>
-                        <div class="invalid-feedback">
-                            Il campo relativo al nome non è complilato in modo corretto
+                        <input type="text" class="form-control" id="nome" <c:if test="${nome ne null && cognome ne null}">value="${nome.replace(SPACES_COOKIE, ' ')} ${cognome.replace(SPACES_COOKIE, ' ')}"</c:if>placeholder="Il tuo nome" required>
+                            <div class="invalid-feedback">
+                                Il campo relativo al nome non è complilato in modo corretto
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="La tua email" required>
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" <c:if test="${email ne null}">value="${email.replace(SPACES_COOKIE, " ")}"</c:if> placeholder="La tua email" required>
                         <div class="invalid-feedback">
                             Il campo relativo all'email non è complilato in modo corretto
                         </div>
@@ -622,7 +768,8 @@ ${consoledao.incrementViews("ristorante", request, 0)}
     <script type="text/javascript" src="js/mdb.min.js">async;</script>
     <script src="js/vari-min.js" async></script>
     <script src="js/modernizr-min.js" async></script>
-    <script src="js/main-min.js" async></script>   
+    <script src="js/main-min.js" ></script>   
+    <script src="js/owl.carousel.min.js"></script>
     <script src="js/nav.js"></script>
     <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
     <script>
@@ -636,6 +783,45 @@ ${consoledao.incrementViews("ristorante", request, 0)}
         function enableBtn() {
             document.getElementById("senderButton").disabled = false;
         }
+
+        /* Demo Scripts for Bootstrap Carousel and Animate.css article
+         * on SitePoint by Maria Antonietta Perna
+         */
+        (function ($) {
+            //Function to animate slider captions
+            function doAnimations(elems) {
+                //Cache the animationend event in a variable
+                var animEndEv = "webkitAnimationEnd animationend";
+
+                elems.each(function () {
+                    var $this = $(this),
+                            $animationType = $this.data("animation");
+                    $this.addClass($animationType).one(animEndEv, function () {
+                        $this.removeClass($animationType);
+                    });
+                });
+            }
+
+            //Variables on page load
+            var $myCarousel = $("#materie-prime-ristorante-bortoleto"),
+                    $firstAnimatingElems = $myCarousel
+                    .find(".carousel-item:first")
+                    .find("[data-animation ^= 'animated']");
+
+            //Initialize carousel
+            $myCarousel.carousel();
+
+            //Animate captions in first slide on page load
+            doAnimations($firstAnimatingElems);
+
+            //Other slides to be animated on carousel slide event
+            $myCarousel.on("slide.bs.carousel", function (e) {
+                var $animatingElems = $(e.relatedTarget).find(
+                        "[data-animation ^= 'animated']"
+                        );
+                doAnimations($animatingElems);
+            });
+        })(jQuery);
     </script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -675,10 +861,6 @@ ${consoledao.incrementViews("ristorante", request, 0)}
             }
             aosInit();
         }
-        function backMaterie() {
-            $('#materiePrime').html(materie);
-            aosInit();
-        }
         //Load Menu page
         function callMenu(nome, immagine) {
             $.ajax({
@@ -697,23 +879,6 @@ ${consoledao.incrementViews("ristorante", request, 0)}
                 },
                 error: function () {
                     alert("Errore call Menu");
-                }
-            });
-        }
-        //Load Materie Prime page
-        function callMaterie(id) {
-            $.ajax({
-                type: "GET",
-                url: "ajax/ristorante/materie.jsp",
-                data: {id: id},
-                cache: false,
-                success: function (response) {
-                    materie = $('#materiePrime').html().toString();
-                    $('#materiePrime').html(response);
-                    aosInit();
-                },
-                error: function () {
-                    alert("Errore call materie");
                 }
             });
         }

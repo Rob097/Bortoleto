@@ -10,6 +10,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="request" value="<%=request%>"/>
+<%@ page import="varie.Costanti" %>
+<c:set value="<%=varie.Costanti.SPACES_COOKIE%>" var="SPACES_COOKIE" />
 <c:set value="${catblogdao.getAllCatBlog()}" var="catblog" />
 <c:set value="${blogdao.getAllBlogs()}" var="blogs" />
 <c:set value="${blogdao.getMostViewedBlog()}" var="viewed" />
@@ -33,34 +35,34 @@ ${consoledao.incrementViews("blog", request, 0)}
 
         <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/blog.jsp"/>" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Blog de 'l Bortoleto" />
-        <meta property="og:description"   content="Resta informato sulle novità e scopri sempre nuovi aneddoti sulla qualità dei prodotti gastronomici trentini che realizziamo" />
+        <meta property="og:title"         content="Il Blog de 'L Bortoleto - Storie di qualità delle specialità Trentine" />
+        <meta property="og:description"   content="Scopri novità e aneddoti interessanti sulla storia e la qualità delle specialità gastronomiche Trentine che realizziamo - Blog de 'L Bortoleto" />
         <meta property="og:image"         content="/Bortoleto/img/logo2.png" />
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16" >
-        <title>Blog de 'l Bortoleto</title>
-        <meta name="Description" content="Resta informato sulle novità e scopri sempre nuovi aneddoti sulla qualità dei prodotti gastronomici trentini che realizziamo">
+        <title>Il Blog de 'L Bortoleto - Storie di qualità delle specialità Trentine</title>
+        <meta name="Description" content="Scopri novità e aneddoti interessanti sulla storia e la qualità delle specialità gastronomiche Trentine che realizziamo - Blog de 'L Bortoleto">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">        
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- fine bootstrap include -->
 
         <!--include css -->
-        <link rel="stylesheet" href="/Bortoleto/css/Cards-min.css" type="text/css">
-        <link rel="stylesheet" href="/Bortoleto/css/style-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/prodotto-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/parallax.css">
-        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/blog-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/vari-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/Cards-min.css" type="text/css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/style-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/prodotto-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/parallax.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/blog-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/vari-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/navbar-min.css">
         <!-- fine include css -->    
         <style> 
             html, body{
@@ -172,7 +174,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                 <div class="container cPara" style="">
                     <div class="customPaddingPara">
                         <h1 class="customStylePara">Il Blog de 'l Bortoleto</h1>
-                        <p>Resta informato sulle novità e scopri sempre nuovi aneddoti sulla qualità dei prodotti gastronomici trentini che realizziamo</p>
+                        <p>Scopri novità e aneddoti interessanti sulla storia e la qualità delle specialità gastronomiche Trentine che realizziamo</p>
                     </div>
                 </div>
                 <div class="scrollIcon">
@@ -455,7 +457,7 @@ ${consoledao.incrementViews("blog", request, 0)}
                                             <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
                                             </div>
                                         </div>
-                                        <input type="email" class="form-control" id="emailSub2" name='email' placeholder="La tua email"/>
+                                        <input type="email" class="form-control" id="emailSub2" name='email' <c:if test="${email ne null}">value="${email.replace(SPACES_COOKIE, " ")}"</c:if> placeholder="La tua email" required/>
                                     </div>
                                 </div>
                                 <input type="submit" id="sendButtonSubB2" class="bbtns" value="Iscriviti">

@@ -73,19 +73,19 @@
         <meta name="theme-color" content="#312e2e">
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet nofollow">
         <!-- fine bootstrap include -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+        <link rel="stylesheet nofollow" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
         <!--include css -->
-        <link rel="stylesheet" href="/Bortoleto/css/style-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/bottegaCSS-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/vari-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/prodotto-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/style-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/bottegaCSS-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/vari-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/prodotto-min.css">
         <style>
         </style>
         <script type="text/javascript">
@@ -135,10 +135,12 @@
             <select data-width="300px" onchange="$('#loading-search-product').css('display', 'block'); location = this.value;" class="selectpicker" id="cerca" name="cerca" data-live-search="true">
                 <option disabled selected value> -- Cerca un Prodotto -- </option>
                 <c:forEach items="${categorydao.getAllCategories()}" var="categoria" >
-                    <option value="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />" style="font-weight: 700;">${categoria.nome}</option>
-                    <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
-                        <option data-tokens="${pr.nome} ${categoria.nome} ${pr.nome}" value="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">${pr.nome}</option>
-                    </c:forEach>
+                    <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
+                        <option value="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />" style="font-weight: 700;">${categoria.nome}</option>
+                        <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
+                            <option data-tokens="${pr.nome} ${categoria.nome} ${pr.nome}" value="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">${pr.nome}</option>
+                        </c:forEach>
+                    </c:if>
                 </c:forEach>
             </select>
             <div id="loading-search-product" style='display: none;'>
@@ -224,11 +226,7 @@
 
     <!-- Fine navbar -->
 
-    <div class='brand-box'>
-        <h6>'L Bortoleto</h6>
-    </div>
-
-    <div class="container sticky-top">
+    <div class="container sticky-top mt-5">
         <ul id="dropCat" class="dropdown nav">    
             <div class="btn btn-secondary nav-link dropdown-toggle categorieDrop" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff !important; font-weight: 900; color: black !important; margin: auto auto;">
                 Categorie
@@ -320,15 +318,12 @@
     </div>
 
     <div class="container">
-        <div class="scrollIcon" style="position: relative; margin-top: 2rem;">
-            <a style="color: black;" href="#prodotti">
-                <i class="fas fa-chevron-down"></i>
-                <h5>Scorri</h5>
-            </a>
-        </div>
         <section id="prodotti"> 
             <p class="sottotitoli" style="text-align: center; margin: 2rem auto 0 auto;">Qualità Trentina</p>
             <h1 class='consigliati-h4'>${cat.nome}</h1>
+            <div class="description">
+                ${cat.descrizione}
+            </div>
             <nav id="breadcrumb">
                 <ol class="cd-breadcrumb custom-separator" itemscope itemtype="https://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -772,6 +767,7 @@
             if (val !== null) {
                 val = !val;
             }
+            $('#ritiroCheckOnModal').parent().html("<img style='width: 50%;' src='/Bortoleto/img/91.gif' />");
             $.ajax({
                 type: "GET",
                 url: "/Bortoleto/ajax/cartCarrelloPage.jsp?val=" + val,

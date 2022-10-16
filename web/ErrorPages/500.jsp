@@ -26,13 +26,13 @@
         <title>500 Errore Interno</title>
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet nofollow">
         <!--include css -->
-        <link rel="stylesheet" href="/Bortoleto/css/style-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/ErrorPages/ErrorPages_CSS/style.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/style-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/ErrorPages/ErrorPages_CSS/style.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/navbar-min.css">
     </head>
 
     <body class="foo white-text" id="topPage" data-spy="scroll" data-target=".sidebar" style='background-color: #ffce92;'>

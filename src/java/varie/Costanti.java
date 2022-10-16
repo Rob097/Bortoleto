@@ -65,7 +65,7 @@ public class Costanti {
     public static ArrayList<Prodotto> suggeriti = new ArrayList<>();
     
     /* Se si aggiornano i nomi della sue macrocategorie bisogna aggiornare anche nel file /WEB-INF/urlrewrite.xml e nella sitemapBortoleto.xml */
-    public static final String TRENTINO = "Dal Trentino";
+    public static final String TRENTINO = "Specialità Del Trentino";
     public static final String FRESCHI = "Alimenti Freschi";
     
 }

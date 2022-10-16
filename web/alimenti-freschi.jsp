@@ -35,33 +35,33 @@ ${consoledao.incrementViews("bottega", request, 0)}
         <!--<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c9f39799b272f00119ab911&product=social-ab' async='async'></script>-->
         <meta property="og:url"           content="<c:url value="/alimenti-freschi.jsp"/>" />
         <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Bottega online - Carne Trentina e Salumi Freschi" />
-        <meta property="og:description"   content="Acquista online i prodotti della Macelleria Dellantonio 'l Bortoleto. Carne e salumi freschi della Val di Fiemme, Trentino Alto Adige" />
+        <meta property="og:title"         content="Prodotti Freschi - Carne 100% Locale e Insaccati Freschi | Bortoleto" />
+        <meta property="og:description"   content="Carne 100% Trentina e Insaccati freschi della tradizione Trentina! Acquista ora i prodotti della Macelleria Dellantonio! | Bortoleto" />
         <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Salumi online"/>
         <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
         <meta property="fb:app_id"         content="320307085338651" />
 
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16"  alt="Salumi online">
-        <title>Bottega online - Carne Trentina e Salumi Freschi</title>
-        <meta name="Description" content="Acquista online i prodotti della Macelleria Dellantonio 'l Bortoleto. Salumi e formaggi artigianali della Val di Fiemme, Trentino Alto Adige">
+        <title>Prodotti Freschi - Carne 100% Locale e Insaccati Freschi | Bortoleto</title>
+        <meta name="Description" content="Carne 100% Trentina e Insaccati freschi della tradizione Trentina! Acquista ora i prodotti della Macelleria Dellantonio! | Bortoleto">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#312e2e">
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="/Bortoleto/css/mdb.min.css" rel="stylesheet nofollow">
         <!-- fine bootstrap include -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+        <link rel="stylesheet nofollow" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
         <!--include css -->
-        <link rel="stylesheet" href="/Bortoleto/css/style-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/font-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/bottegaCSS-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/navbar-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/vari-min.css">
-        <link rel="stylesheet" href="/Bortoleto/css/prodotto-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/style-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/font-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/bottegaCSS-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/vari-min.css">
+        <link rel="stylesheet nofollow" href="/Bortoleto/css/prodotto-min.css">
         <style>
             .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
                 color: #b4505a;
@@ -115,10 +115,12 @@ ${consoledao.incrementViews("bottega", request, 0)}
             <select data-width="300px" onchange="$('#loading-search-product').css('display', 'block'); location = this.value;" class="selectpicker" id="cerca" name="cerca" data-live-search="true">
                 <option disabled selected value> -- Cerca un Prodotto -- </option>
                 <c:forEach items="${categorydao.getAllCategories()}" var="categoria" >
-                    <option value="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />" style="font-weight: 700;">${categoria.nome}</option>
-                    <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
-                        <option data-tokens="${pr.nome} ${categoria.nome} ${pr.nome}" value="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">${pr.nome}</option>
-                    </c:forEach>
+                    <c:if test="${!productdao.getAllProductsOfCategory(categoria.nome).isEmpty()}" >
+                        <option value="<c:url value="/categoria.jsp?id=${categoria.id}&nome=${categoria.nome.replace(' ', '-')}" />" style="font-weight: 700;">${categoria.nome}</option>
+                        <c:forEach items="${productdao.getAllProductsOfCategory(categoria.nome)}" var="pr" >
+                            <option data-tokens="${pr.nome} ${categoria.nome} ${pr.nome}" value="<c:url value="/prodotto.jsp?id=${pr.id}&nome=${pr.nome.replace(' ', '-')}&cat=${pr.categoria.replace(' ', '-')}" />">${pr.nome}</option>
+                        </c:forEach>
+                    </c:if>
                 </c:forEach>
             </select>
             <div id="loading-search-product" style='display: none;'>
@@ -204,11 +206,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
 
     <!-- Fine navbar -->
 
-    <div class='brand-box'>
-        <h6>'L Bortoleto</h6>
-    </div>
-
-    <div class="container sticky-top">
+    <div class="container sticky-top mt-5">
         <ul id="dropCat" class="dropdown nav">    
             <div class="btn btn-secondary nav-link dropdown-toggle categorieDrop" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff !important; font-weight: 900; color: black !important; margin: auto auto;">
                 Categorie
@@ -299,12 +297,6 @@ ${consoledao.incrementViews("bottega", request, 0)}
         </ul>
     </div>
     <div class="container">
-        <div class="scrollIcon" style="position: relative; margin-top: 2rem;">
-            <a style="color: black;" href="#categorie">
-                <i class="fas fa-chevron-down"></i>
-                <h5>Scorri</h5>
-            </a>
-        </div>
         <section id="categorie"> 
             <p class="sottotitoli" style="text-align: center; margin: 2rem auto 0 auto;">Qualità Trentina</p>
             <h1 class='consigliati-h4'><%=varie.Costanti.FRESCHI%></h1>
@@ -663,6 +655,7 @@ ${consoledao.incrementViews("bottega", request, 0)}
             if (val !== null) {
                 val = !val;
             }
+            $('#ritiroCheckOnModal').parent().html("<img style='width: 50%;' src='/Bortoleto/img/91.gif' />");
             $.ajax({
                 type: "GET",
                 url: "/Bortoleto/ajax/cartCarrelloPage.jsp?val=" + val,

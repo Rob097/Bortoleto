@@ -12,6 +12,9 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="varie.Costanti" %>
+<c:set value="<%=varie.Costanti.SPACES_COOKIE%>" var="SPACES_COOKIE" />
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <div class="comment-form">
@@ -19,10 +22,10 @@
     <form method="POST" action="/Bortoleto/sendRecipe" id="sendRicetta">
         <div class="form-group form-inline">
             <div class="form-group col-lg-6 col-md-12 name">
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Il tuo nome" required>
+                <input type="text" class="form-control" id="nome" name="nome" <c:if test="${nome ne null && cognome ne null}">value="${nome.replace(SPACES_COOKIE, ' ')} ${cognome.replace(SPACES_COOKIE, ' ')}"</c:if> placeholder="Il tuo nome" required>
             </div>
             <div class="form-group col-lg-6 col-md-12 name">
-                <input type="email" class="form-control" id="email" name="email" placeholder="La tua email" required>
+                <input type="email" class="form-control" id="email" name="email" <c:if test="${email ne null}">value="${email.replace(SPACES_COOKIE, " ")}"</c:if> placeholder="La tua email" required>
             </div>
         </div>
         <div class="form-group form-inline">

@@ -535,23 +535,23 @@ h3.nomeRic, h2.nomeRic{
     margin: 20px 0px;
 }
 .container-sticky{
-                display: flex;
-                justify-content: space-around;
-                align-items: flex-start;
-            }
-            @media (min-width: 768px){
-                .invisible-md{
-                    display: none;
-                }
-            }
-            @media (max-width: 767px){
-                .visible-md{
-                    display: none;
-                }
-            }
-            .description p, .description span{
-                color: #444 !important;
-            }
-            .description p strong, .description span strong{
-                font-weight: 700;
-            }
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+@media (min-width: 768px){
+    .invisible-md{
+        display: none;
+    }
+}
+@media (max-width: 767px){
+    .visible-md{
+        display: none;
+    }
+}
+.description p, .description span{
+    color: #444 !important;
+}
+.description p strong, .description span strong{
+    font-weight: 700;
+}

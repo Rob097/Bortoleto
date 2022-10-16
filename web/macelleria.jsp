@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="request" value="<%=request%>"/>
+<%@ page import="varie.Costanti" %>
+<c:set value="<%=varie.Costanti.SPACES_COOKIE%>" var="SPACES_COOKIE" />
 ${consoledao.incrementViews("macelleria", request, 0)}
 <!DOCTYPE html>
 <html lang="en">
@@ -23,37 +25,37 @@ ${consoledao.incrementViews("macelleria", request, 0)}
 
             gtag('config', 'UA-156001507-1');
         </script>
-
-        <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/macelleria.jsp"/>" />
-        <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Macelleria Dellantonio - Predazzo e Campitello | Trentino" />
-        <meta property="og:description"   content="Macelleria Dellantonio Predazzo val di Fiemme e Campitello val di Fassa. Antica macelleria km 0 del Trentino. Scopri la carne e i salumi del Trentino Alto Adige" />
-        <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Macelleria"/>
-        <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
-        <meta property="fb:app_id"         content="320307085338651" />
-
+        
         <link rel="icon" href="/Bortoleto/img/favicon.ico" sizes="16x16"  alt="Macelleria">
-        <title>Macelleria Dellantonio - Predazzo e Campitello | Trentino</title>
-        <meta name="Description" content="Macelleria Dellantonio Predazzo val di Fiemme e Campitello val di Fassa. Antica macelleria km 0 del Trentino. Scopri la carne e i salumi del Trentino Alto Adige">
+        <title>Macelleria Dellantonio - Predazzo e Campitello | Bortoleto</title>
+        <meta name="Description" content="Macelleria Dellantonio Predazzo val di Fiemme e Campitello val di Fassa. Antica macelleria km 0 del Trentino. Carne e i salumi del Trentino Alto Adige">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#31353d">
 
-        <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- fine bootstrap include -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <meta property="og:url"           content="https://macelleriadellantonio.it<c:url value="/macelleria.jsp"/>" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Macelleria Dellantonio - Predazzo e Campitello | Bortoleto" />
+        <meta property="og:description"   content="Macelleria Dellantonio Predazzo val di Fiemme e Campitello val di Fassa. Antica macelleria km 0 del Trentino. Carne e i salumi del Trentino Alto Adige" />
+        <meta property="og:image"         content="/Bortoleto/img/logo2.png" alt="Macelleria"/>
+        <meta property="og:site_name" content="Macelleria Ristorante Dellantonio 'L Bortoleto">
+        <meta property="fb:app_id"         content="320307085338651" />
 
-        <link href="css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/parallax.css">
-        <link rel="stylesheet" href="css/font-min.css">
-        <link rel="stylesheet" href="css/vari-min.css">
-        <link rel="stylesheet" href="css/style-min.css">
-        <link rel="stylesheet" href="css/Cards-min.css" type="text/css">
-        <link rel="stylesheet" href="css/prodotto-min.css">
-        <link rel="stylesheet" href="css/macelleriaCSS-min.css">
-        <link rel="stylesheet" href="css/navbar-min.css">
+        <!-- bootstrap include -->
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- fine bootstrap include -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet nofollow">
+
+        <link href="css/mdb.min.css" rel="stylesheet nofollow">
+        <link rel="stylesheet nofollow" href="css/parallax.css">
+        <link rel="stylesheet nofollow" href="css/font-min.css">
+        <link rel="stylesheet nofollow" href="css/vari-min.css">
+        <link rel="stylesheet nofollow" href="css/style-min.css">
+        <link rel="stylesheet nofollow" href="css/Cards-min.css" type="text/css">
+        <link rel="stylesheet nofollow" href="css/prodotto-min.css">
+        <link rel="stylesheet nofollow" href="css/macelleriaCSS-min.css">
+        <link rel="stylesheet nofollow" href="css/navbar-min.css">
 
         <style> 
             #eapps-instagram-feed-1 {
@@ -87,7 +89,7 @@ ${consoledao.incrementViews("macelleria", request, 0)}
             {
             "@context" : "http://schema.org",
             "@type" : "LocalBusiness",
-            "name" : "'L Bortoleto Macelleria Dellantonio",
+            "name" : "Macelleria Dellantonio 'L Bortoleto",
             "image" : "/Bortoleto/img/logo2.png",
             "telephone" : "0462501231",
             "email" : "info@macelleriadellantonio.it",
@@ -458,14 +460,14 @@ ${consoledao.incrementViews("macelleria", request, 0)}
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Il tuo nome" required>
+                            <input type="text" class="form-control" id="nome" <c:if test="${nome ne null && cognome ne null}">value="${nome.replace(SPACES_COOKIE, ' ')} ${cognome.replace(SPACES_COOKIE, ' ')}"</c:if>placeholder="Il tuo nome" required>
                             <div class="invalid-feedback">
                                 Il campo relativo al nome non è complilato in modo corretto
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="La tua email" required>
+                            <input type="email" class="form-control" id="email" <c:if test="${email ne null}">value="${email.replace(SPACES_COOKIE, " ")}"</c:if> placeholder="La tua email" required>
                             <div class="invalid-feedback">
                                 Il campo relativo all'email non è complilato in modo corretto
                             </div>

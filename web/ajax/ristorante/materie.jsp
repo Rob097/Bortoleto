@@ -5,10 +5,10 @@
 --%>
 
 
-<!-- Per impedire alla maggior parte dei motori di ricerca di indicizzare la pagina -->
+<!-- Per impedire alla maggior parte dei motori di ricerca di indicizzare la pagina 
 <meta name="robots" content="noindex">
-    <!-- Per impedire solo a Google di indicizzare la pagina -->
-    <meta name="googlebot" content="noindex">
+    <!-- Per impedire solo a Google di indicizzare la pagina 
+    <meta name="googlebot" content="noindex">-->
 
 
         <%@page contentType="text/html" pageEncoding="UTF-8"%>

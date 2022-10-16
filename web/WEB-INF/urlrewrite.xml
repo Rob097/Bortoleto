@@ -16,7 +16,7 @@
         <to>/alimenti-freschi.jsp</to>
     </rule>
     <rule>
-        <from>/Dal-Trentino/</from>
+        <from>/specialità-del-trentino/</from>
         <to>/dal-trentino.jsp</to>
     </rule>
     <rule>
@@ -172,7 +172,7 @@
     </outbound-rule>
     <outbound-rule>  
         <from>/dal-trentino.jsp</from>  
-        <to>/Dal-Trentino/</to>  
+        <to>/specialità-del-trentino/</to>  
     </outbound-rule>
     
     <!--

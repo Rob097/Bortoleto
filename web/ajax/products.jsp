@@ -165,7 +165,7 @@
             <ul class="text-justify modalCaption description" style="color: black;">
                 <p>L'assortimento è sicuramente vasto, dai salumi di manzo e cavallo (con carni macellate da noi), a quelli di puro suino allevato e macellato in trentino con marchio Bizzotto. Sono quasi tutti senza glutine e lattosio, per venire incontro alle nuove esigenze alimentari.<br>Ecco un elenco dei salumi che potrete trovare nei nostri punti vendita o che potrete accquistare nella nostra bottega online o via email con spedizione direttamente a casa vostra, ovunque in Italia.</p>
                 <br><hr class="style18"><br>
-                <h3 class="text-center description" style="color:#ff8000; font-size: 1.75rem;">INSACCATI SATGIONATI</h3><br>
+                <h3 class="text-center description" style="color:#ff8000; font-size: 1.75rem;">INSACCATI STAGIONATI</h3><br>
                 <dl>
                     <li><dt class="nomesalume">LUGANEGA NOSTRANA:</dt><dd class="descrizionesalumeright">Salamino nostrano dal gusto deciso ma equilibrato.</dd></li>
                     <li><dt class="nomesalume">LUGANEGA FINA:</dt><dd class="descrizionesalumeright">Un vero e proprio ungheresino nostrano lievemente affumicato e aromatizzato.</dd></li>

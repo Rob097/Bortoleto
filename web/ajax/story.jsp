@@ -87,14 +87,14 @@
             </div>
             <div class="col-md-6">
                 <h4>2007</h4>
-                <p class="text-muted justify description">Il giorno 7 dicembre 2007, viene innaugurato il Nostro punto vendita a Campitello di Fassa, situato nella "piaz de Ciampedel, 28". 
+                <p class="text-muted justify description">Il giorno 7 dicembre 2007, viene inaugurato il Nostro punto vendita a Campitello di Fassa, situato nella "piaz de Ciampedel, 28". 
                     Ora la stessa qualità dei prodotti che trovate a Predazzo, potete trovarla anche in val di Fassa nel centro di Campitello.</p>
             </div>
         </div>
         <div class="row flex-column-reverse flex-md-row">
             <div class="col-md-6">
                 <h4>2018</h4>
-                <p class="text-muted justify description">Il 29 Giugno 2018 è stato innaugurato "'l Bortoleto" il nostro nuovo ristorante situato a Predazzo in via Cavour 2, 
+                <p class="text-muted justify description">Il 29 Giugno 2018 è stato inaugurato "'l Bortoleto" il nostro nuovo ristorante situato a Predazzo in via Cavour 2, 
                     nei locali della vecchia macelleria. Luogo Moderno e rispettoso della tradizione Trentina. Gestito dallo chef Simone Dellantonio e dalla 
                     caposala Valeria Dellantonio</p>
             </div>

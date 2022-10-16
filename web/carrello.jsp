@@ -55,17 +55,17 @@
         <meta name="theme-color" content="#31353d">
 
         <!-- bootstrap include -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet nofollow" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet nofollow" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/mdb.min.css" rel="stylesheet nofollow">
         <!-- fine bootstrap include -->
 
         <!--include css -->
-        <link rel="stylesheet" href="css/Cards-min.css" type="text/css">
-        <link rel="stylesheet" href="css/style-min.css">
-        <link rel="stylesheet" href="css/form-validation.css">
-        <link rel="stylesheet" href="css/font-min.css">
-        <link rel="stylesheet" href="css/navbar-min.css">
+        <link rel="stylesheet nofollow" href="css/Cards-min.css" type="text/css">
+        <link rel="stylesheet nofollow" href="css/style-min.css">
+        <link rel="stylesheet nofollow" href="css/form-validation.css">
+        <link rel="stylesheet nofollow" href="css/font-min.css">
+        <link rel="stylesheet nofollow" href="css/navbar-min.css">
         <!-- fine include css --> 
         <style>
             footer{
@@ -195,6 +195,7 @@
                     <i style="color: #ff3547;" class="far fa-frown fa-4x mb-3 animated rotateIn"></i>
                     <h3 style="text-align: center;">Non hai prodotti nel carrello</h3>
                     <p class="pt-5">Ricorda che i prodotti del carrello, se non vengono cancellati manualmente, hanno una durata di <b style="font-weight: bold;">30 giorni</b>.</p>
+                    <a class="btn" style="background-color: #9e0000; color: white;" href="<c:url value="/bottega.jsp" />">Ritorna alla bottega online</a>
                 </div>
             </c:when>
             <c:otherwise>                    
@@ -309,11 +310,10 @@
                                     </c:otherwise>
                                 </c:choose>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between bg-light">
-                                <span style="color: #000080; font-weight: bold;">Totale</span>
-                                <strong style="color: #000080; font-weight: bold;">€ ${totaleCart}</strong>
+                            <li class="list-group-item d-flex justify-content-between bg-light" style="color: #ffffff;font-weight: bold;background-color: #b4505a !important;">
+                                <span style="padding:5px;margin:0;">Totale dell'ordine</span>
+                                <strong style="font-size:20px;">€ ${totaleCart}</strong>
                             </li>
-                            <a onclick="svuotaCarrello();" class="checkout-btn" style="padding: .75rem 1.25rem; color: white; text-align: center;background-color: #5f0b0b; font-weight: 600;">Svuota carrello</a>
                         </ul>
                     </div>
                     <div style="height: auto;" class="col-md-8 order-md-1">
@@ -621,6 +621,8 @@
             if (val !== null) {
                 val = !val;
             }
+            $('#ritiroCheck').parent().html("<img style='width: 50%;' src='/Bortoleto/img/91.gif' />");
+            $('#ritiroCheckOnModal').parent().html("<img style='width: 50%;' src='/Bortoleto/img/91.gif' />");
             $.ajax({
                 type: "GET",
                 url: "/Bortoleto/ajax/cartCarrelloPage.jsp?val=" + val,
